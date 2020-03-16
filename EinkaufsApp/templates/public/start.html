@@ -1,0 +1,21 @@
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+    <a href="registrieren_helfender">Registrieren als Helfender</a>
+        <br>
+    <a href="registrieren_empfaenger">Registrieren um Lebensmittel zu erhalten</a>
+        <br>
+    <a href="schwarzes_brett">Aktuelle Aufträge</a>
+        <br>
+    <a href="anmelden">Anmelden</a>
+        <br>
+    <a href="abmelden/">Abmelden</a>
+{% endblock %}

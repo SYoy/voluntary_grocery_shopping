@@ -1,0 +1,16 @@
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+    <h2>home</h2>
+    <p>angemeldet als {{ username }}, Gruppe: {{ group }}</p>
+        <br>
+    <a href="{% url 'logout' %}">Abmelden</a>
+{% endblock %}

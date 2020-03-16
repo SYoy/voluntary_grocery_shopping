@@ -1,16 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="" />
+    <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_signup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap-theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/dosis-font.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/themify-icons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/3isE9muMMOq1K7TQ7HkKvIDGDUGfDkXyfkzVDelzfFk.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/O6SOu9hYsPHTU43R17NS5XYhjbSpvc47ee6xR_80Hnw.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/RPKDmaFi75RJkvjWaDDb0nYhjbSpvc47ee6xR_80Hnw.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/VK-RlLrn4NFhRGqPkj6IwBkAz4rYn47Zy2rvigWQf6w.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/oaBFj7Fz9Y9_eW3k9Jd9X6CWcynf_cDxXwCLxiixG1c.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/jquery.easing.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/scrolling-nav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/validator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationHelper.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationInNeed.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/faq.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/EinkaufsApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EinkaufsApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" module-name="EinkaufsApp" is-module-sdk="true">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+    <option name="myUseModuleSdk" value="true" />
+    <option name="myModuleName" value="EinkaufsApp" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\voluntary_grocery_shopping\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1ZCXzRqvdNb6qxXYXKrWmOWO9Y4" />
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked\dist" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked" />
+      <recent name="D:\voluntary_grocery_shopping\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\public" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\accounts" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\app1" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -33,8 +135,8 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="EinkaufsApp.settings" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="SDK_HOME" value="C:\Users\mariu\AppData\Local\Programs\Python\Python36\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -61,10 +163,25 @@
       <option name="presentableId" value="Default" />
       <updated>1584344312042</updated>
       <workItem from="1584344314829" duration="829000" />
+      <workItem from="1584345528785" duration="9456000" />
+      <workItem from="1584355007355" duration="13036000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
