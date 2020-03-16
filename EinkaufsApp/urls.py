@@ -30,7 +30,7 @@ urlpatterns = [
     path(r'abmelden/', LogoutView.as_view(template_name='accounts/logout.html'), name="logout"),
 
     path('home/', views.home, name='home'),
-    path('einkaufsliste/', views.einkaufsliste, name='einkaufsliste'),
+    path('einkauf/', views.einkaufsliste, name='einkaufsliste'),
     path('helfen/', views.helfen, name='helfen'),
 
     path('admin/', admin.site.urls),

@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Corona Einkaufshelfer">
   <meta name="author" content="Marius Steger">
-  <meta http-equiv="refresh" content="180" >
-  <title> Einkaufshelfer - offene Auftraege </title>
+  <meta http-equiv="refresh" content="600" >
+  <title>Einkaufshilfe erhalten</title>
 
   <!-- Bootstrap -->
   <link href="static/css/bootstrap.min.css" rel="stylesheet">
@@ -21,18 +21,32 @@
   <div class="container-fluid" style="background: #99aeb5; position:relative;">
     <!-- Start: Schwarzes Brett -->
     <div class="row hero-header content-ct" style="padding-top: 15px; padding-bottom: 20px;">
-        <a href="/">
-            <div class="col-lg-2 img-rounded" style="font-size: 25px; color:#ffffff; background: #63b58c;">
-                <p style="padding-top: 3px">Zurück zur Anmeldung</p>
+        <a href="abmelden">
+            <div class="col-lg-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
+                <p style="padding-top: 3px">Abmelden</p>
             </div>
         </a>
 
         <div class="col-lg-12 img-rounded" style="color:#ffffff; width: 100%; height: 100%; margin-top: 5px; margin-left:-15px; margin-right: -15px"> <!-- ; background: #B5C9C3"> -->
-        <table class="table table-bordered img-rounded" id="dynamictable" style="font-size: 25px; color:#ffffff; width: 100%; background: #74a4b5;">
-            <tr>
-              <th colspan="2" style="font-size: 42px; text-align: center">Aktuelle Einkaufsaufträge</th>
-            </tr>
-        </table>
+            <h2 style="padding-top: 3px">Einkaufsauftrag erstellen</h2>
+            {% block content %}
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                      <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <br>
+                          <small style="color: grey">{{ field.help_text }}</small>
+                        {% endif %}
+                      </p>
+                    {% endfor %}
+                    <button type="submit">Auftrag erstellen</button>
+                  </form>
+            {% endblock %}
+        </div>
+
          <!-- <pre id="output" style="display: none; font-size: 20px; color:#ffffff; width: 854px; max-height: 480px; background: #B5C9C3;"></pre> -->
         </div>
     </div>

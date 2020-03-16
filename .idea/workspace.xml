@@ -2,50 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_signup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/dosis-font.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/themify-icons.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/3isE9muMMOq1K7TQ7HkKvIDGDUGfDkXyfkzVDelzfFk.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/O6SOu9hYsPHTU43R17NS5XYhjbSpvc47ee6xR_80Hnw.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/RPKDmaFi75RJkvjWaDDb0nYhjbSpvc47ee6xR_80Hnw.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/VK-RlLrn4NFhRGqPkj6IwBkAz4rYn47Zy2rvigWQf6w.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/oaBFj7Fz9Y9_eW3k9Jd9X6CWcynf_cDxXwCLxiixG1c.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/jquery.easing.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/scrolling-nav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/validator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationHelper.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationInNeed.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/faq.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/EinkaufsApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EinkaufsApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_einkaufliste.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/toggle_login.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,6 +62,11 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -164,7 +135,7 @@
       <updated>1584344312042</updated>
       <workItem from="1584344314829" duration="829000" />
       <workItem from="1584345528785" duration="9456000" />
-      <workItem from="1584355007355" duration="13036000" />
+      <workItem from="1584355007355" duration="17388000" />
     </task>
     <servers />
   </component>

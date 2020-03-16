@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.utils import timezone
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
@@ -6,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from EinkaufsApp.backend_forms.forms_signup import SignUpForm
+from EinkaufsApp.backend_forms.forms_einkaufliste import Einkaufsauftrag
 
 def start(request):
     return render(request, 'public/start.html')
@@ -56,11 +58,43 @@ def home(request):
 
 @login_required
 def einkaufsliste(request):
-    return HttpResponse("Einkaufslisten erstelln todo")
+    if request.user.is_authenticated and request.user.person.group in ["E","D","S"]:
+        if request.method == 'POST':
+            form = Einkaufsauftrag(request.POST)
+            if form.is_valid():
+                user = form.save()
+                user.refresh_from_db()
+                user.einkauf.nachricht = form.cleaned_data.get('nachricht')
+                user.einkauf.liste_text = form.cleaned_data.get('liste_text')
+                user.einkauf.telefonnummer = form.cleaned_data.get('telefonnummer')
+                user.einkauf.budget = form.cleaned_data.get('budget')
+                user.einkauf.status = "aktiv"
+                if user.einkauf.auftragsdatum is None:
+                    user.einkauf.auftragsdatum = timezone.now()
+
+                user.save()
+                # message
+                return render(request, 'app/app_inneed.html', {'form': form})
+        else:
+            form = Einkaufsauftrag(request.POST)
+        return render(request, 'app/app_inneed.html', {'form': form})
+
+    elif request.user.is_authenticated and request.user.person.group == "H":
+        return redirect(request, 'app/app_helper.html')
+    else:
+        return HttpResponse("Sie sind nicht angemeldet")
 
 @login_required
 def helfen(request):
-    return HttpResponse("Schwarzes brett Todo")
+
+    # TODO
+
+    if request.user.is_authenticated and request.user.person.group == "E":
+        redirect(request, 'app/app_inneed.html')
+    elif request.user.is_authenticated and request.user.person.group == "H":
+        return redirect(request, 'app/app_helper.html')
+    else:
+        return HttpResponse("Sie sind nicht angemeldet")
 
 def helfen_voransicht(request):
     return render(request, 'public/preview_blackboard.html')

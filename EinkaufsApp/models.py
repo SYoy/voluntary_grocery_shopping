@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
 
 LOCATION_CHOICES = (
     ('Malschenberg','MBG'),
@@ -40,6 +41,6 @@ class Einkauf(models.Model):
     telefonnummer = models.TextField(max_length=25, default="06222000000",
                                     help_text="Telefonnummer hier eintragen. Ihre Nummer wird nur an die HelferIn übermittelt, die ihren Einkauf tätigen möchte.")
     budget = models.CharField(max_length=4, default="30")
-    auftragsdatum = models.DateTimeField()
+    auftragsdatum = models.DateTimeField(default=timezone.now())
     abschlussdatum = models.DateTimeField()
     status = models.CharField(max_length=13, choices=STATUS_CHOICES, default='default')
