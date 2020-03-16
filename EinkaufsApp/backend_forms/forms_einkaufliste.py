@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from EinkaufsApp.models import Einkauf
+from EinkaufsApp.models import Einkaufsauftrag
 
 STATUS_CHOICES = (
     ("aktiv", "akt"),
@@ -9,19 +9,19 @@ STATUS_CHOICES = (
     ("abgeschlossen", "abg")
 )
 
-class Einkaufsauftrag(forms.Form):
-    nachricht = forms.CharField(widget=forms.Textarea(attrs={"rows": 5, "cols": 80}),
-                                help_text='Nachricht an die Helfer, bitte nicht Ihren Namen oder andere private Information nennen.')
+class EinkaufsauftragForm(forms.ModelForm):
+    nachricht = forms.CharField(widget=forms.Textarea(attrs={"rows": 3, "cols": 100}), required=True,
+                                help_text='Nachricht an die Helfer. Bitte nicht Ihren Namen oder andere private Information eintragen, damit Ihre Anfrage anonym behandelt werden kann:')
 
-    liste_text = forms.CharField(widget=forms.Textarea(attrs={"rows": 20, "cols": 80}),
-                                help_text="Einkaufsliste hier eintragen")
+    liste_text = forms.CharField(widget=forms.Textarea(attrs={"rows": 15, "cols": 100}), required=True,
+                                help_text="Einkaufsliste hier angeben:")
 
-    telefonnummer = forms.CharField(widget=forms.Textarea(attrs={"rows": 1, "cols": 25}),
+    telefonnummer = forms.CharField(widget=forms.Textarea(attrs={"rows": 1, "cols": 25}), required=True,
                                 help_text="Telefonnummer hier eintragen. Ihre Nummer wird nur an die HelferIn übermittelt, die ihren Einkauf tätigen möchte.")
 
-    budget = forms.CharField(max_length=4, widget=forms.Textarea(attrs={"rows": 1, "cols": 5}),
-                             help_text="Wie viel Geld darf Ihr Einkauf maximal kosten?")
-    # status = forms.CharField(max_length=13, choices=STATUS_CHOICES, default='default')
+    budget = forms.CharField(max_length=4, widget=forms.Textarea(attrs={"rows": 1, "cols": 5}), required=True,
+                             help_text="Budget, wie viel Geld darf Ihr Einkauf maximal kosten? (Angabe in Euro)")
 
-    # auftragsdatum = forms.DateTimeField()
-    # abschlussdatum = forms.DateTimeField()
+    class Meta:
+        model = Einkaufsauftrag
+        fields = ("nachricht", "liste_text", "telefonnummer", "budget")

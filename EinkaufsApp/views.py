@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from EinkaufsApp.backend_forms.forms_signup import SignUpForm
-from EinkaufsApp.backend_forms.forms_einkaufliste import Einkaufsauftrag
+from EinkaufsApp.backend_forms.forms_einkaufliste import EinkaufsauftragForm
 
 def start(request):
     return render(request, 'public/start.html')
@@ -58,41 +58,47 @@ def home(request):
 
 @login_required
 def einkaufsliste(request):
-    if request.user.is_authenticated and request.user.person.group in ["E","D","S"]:
+    if request.user.is_authenticated and request.user.person.group in ["E", "D", "S"]:
         if request.method == 'POST':
-            form = Einkaufsauftrag(request.POST)
+            form = EinkaufsauftragForm(request.POST)
             if form.is_valid():
-                user = form.save()
-                user.refresh_from_db()
-                user.einkauf.nachricht = form.cleaned_data.get('nachricht')
-                user.einkauf.liste_text = form.cleaned_data.get('liste_text')
-                user.einkauf.telefonnummer = form.cleaned_data.get('telefonnummer')
-                user.einkauf.budget = form.cleaned_data.get('budget')
-                user.einkauf.status = "aktiv"
-                if user.einkauf.auftragsdatum is None:
-                    user.einkauf.auftragsdatum = timezone.now()
+                auftrag = form.save()
+                auftrag.refresh_from_db()
 
-                user.save()
-                # message
+                # Aus Online Form uebernehmen
+                auftrag.nachricht = form.cleaned_data.get('nachricht')
+                auftrag.liste_text = form.cleaned_data.get('liste_text')
+                auftrag.telefonnummer = form.cleaned_data.get('telefonnummer')
+                auftrag.budget = form.cleaned_data.get('budget')
+
+                # Beim Erstellen hinzugefuegt
+                auftrag.status = "aktiv"
+                auftrag.auftragsdatum = timezone.now()
+                auftrag.user_id = request.user.id
+
+                auftrag.save()
+                # message - bzw. Auftrag bestätigen
                 return render(request, 'app/app_inneed.html', {'form': form})
         else:
-            form = Einkaufsauftrag(request.POST)
+            form = EinkaufsauftragForm(request.POST)
         return render(request, 'app/app_inneed.html', {'form': form})
 
     elif request.user.is_authenticated and request.user.person.group == "H":
-        return redirect(request, 'app/app_helper.html')
+        messages.add_message(request, messages.INFO, 'Sie sind als Helfer angemeldet und werden deshalb auf das schwarze Brett umgeleitet.')
+        return redirect("helfen")
     else:
         return HttpResponse("Sie sind nicht angemeldet")
 
 @login_required
 def helfen(request):
+    if request.user.is_authenticated and request.user.person.group == "H":
+        # TODO
+        return render(request, 'app/app_inneed.html')
 
-    # TODO
-
-    if request.user.is_authenticated and request.user.person.group == "E":
-        redirect(request, 'app/app_inneed.html')
-    elif request.user.is_authenticated and request.user.person.group == "H":
-        return redirect(request, 'app/app_helper.html')
+    elif request.user.is_authenticated and request.user.person.group == "E":
+        messages.add_message(request, messages.INFO,
+                             'Sie sind als Einkaufssuchender angemeldet und wurden deshalb auf zu Ihrer Einkaufsliste umgeleitet.')
+        return redirect("einkaufsliste")
     else:
         return HttpResponse("Sie sind nicht angemeldet")
 
