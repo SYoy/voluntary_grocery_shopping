@@ -21,7 +21,9 @@ from . import views
 
 urlpatterns = [
     path('', views.start, name='start'),
+
     path('schwarzes_brett', views.helfen_voransicht, name='public_blackboard'),
+    path('get/ajax/listings', views.listings, name="query_listings_blackboard"),
 
     path('registrieren_helfender/', views.signupHelper, name='signup_helper'),
     path('registrieren_empfaenger/', views.signupInNeed, name='signup_inneed'),
@@ -30,7 +32,7 @@ urlpatterns = [
     path(r'abmelden/', LogoutView.as_view(template_name='accounts/logout.html'), name="logout"),
 
     path('home/', views.home, name='home'),
-    path('einkauf/', views.einkaufsliste, name='einkaufsliste'),
+    path('einkauf', views.einkaufsliste, name='einkaufsliste'),
     path('helfen/', views.helfen, name='helfen'),
 
     path('admin/', admin.site.urls),

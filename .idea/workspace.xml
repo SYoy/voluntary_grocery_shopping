@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_einkaufliste.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationHelper.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationHelper.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationInNeed.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationInNeed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/toggle_login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
@@ -41,8 +40,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -67,8 +67,9 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -135,7 +136,9 @@
       <updated>1584344312042</updated>
       <workItem from="1584344314829" duration="829000" />
       <workItem from="1584345528785" duration="9456000" />
-      <workItem from="1584355007355" duration="17388000" />
+      <workItem from="1584355007355" duration="23994000" />
+      <workItem from="1584434098935" duration="15860000" />
+      <workItem from="1584458994416" duration="8772000" />
     </task>
     <servers />
   </component>
