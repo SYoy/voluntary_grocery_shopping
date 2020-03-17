@@ -121,7 +121,7 @@ def listings(request):
         if not location is None and not status is None:
             query = Einkaufsauftrag.objects.filter(user__person__location=location, status=status)
             data = serializers.serialize("json", query)
-            # TODO - render aufträge
+            # TODO sort query
             return JsonResponse({"data": data, "valid": True,
                                  "selected_loc": location,
                                  "selected_status": status}, status=200, safe=False)

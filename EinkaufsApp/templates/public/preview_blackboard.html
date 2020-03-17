@@ -15,18 +15,7 @@
   <link href="static/css/style.css" rel="stylesheet">
   <link href="static/css/themify-icons.css" rel="stylesheet">
   <link href='static/css/dosis-font.css' rel='stylesheet' type='text/css'>
-    <!--<style>
-        html,
-        body
-        ::selection {
-          background-color: #42dca3;
-          color: #ffffff;
-        }
-        #textcolor {
-          color: #000;
-        }
-    </style>
-    -->
+
 </head>
 <body id="page-top" data-spy="scroll" data-target=".side-menu">
     {% load widget_tweaks %}
@@ -41,10 +30,7 @@
     <div class="col-md-3" style="margin-right: 80px"></div>
        {% for field in form %}
         <div class="col-md-3 img-rounded" style="font-size: 25px; color:#000000; background: #129ba9; margin-left: 10px; padding-top: 4px;">
-          <!-- TODO: visibility of text
-          <div class="fieldWrapper form-group", style="font-size: 20px">
-            <div class="form-group">{{ field }}
-          </div>-->
+          <!-- TODO: visibility of text  -->
             <div class="form-group" style="margin: auto; margin-bottom: 4px">
             {{ field|add_class:'form-control' }}
             </div>
@@ -55,11 +41,9 @@
             <div class="row content-ct">
                 <div class="col-md-auto img-rounded" style="background: #0f6674; font-size: 45px; text-align: center; margin-top: 10px; margin-bottom: 10px">Aktuelle Einkaufsaufträge</div>
             </div>
+            <div class="row content-ct" id="blackboard_elements">
 
-            <div id="txtHint" class="text-center"><b>Einkaufsaufträge hier gelistet</b>
-                TODO
             </div>
-
         </div>
 
   </div>
@@ -73,61 +57,102 @@
   <script src="static/js/bootstrap.js"></script>
   <script src="static/js/jquery.easing.min.js"></script>
   <script src="static/js/scrolling-nav.js"></script>
-  <!-- TODO
+  <!-- TODO js outsourcen
   <script src="static/js/validator.js"></script>
   <script src="static/js/blackboard.js"></script>
--->
-
+    -->
   <script>
-      /* query slected location listing*/
-        $("#location").change(function (e) {
+    function addElement(elementTag, elementId, dict) {
+        // Adds an element to the document
+        var p = document.getElementById("blackboard_elements");
+        var newElement = document.createElement(elementTag);
+        newElement.setAttribute('id', elementId);
+        newElement.innerHTML = dict["nachricht"];
+
+        newElement.className = 'col-md-auto img-rounded';
+        newElement.innerHTML = '<p>Nachricht:<br>'+dict["nachricht"]+'<br></p>'+
+                '<div class"col-xs-auto img-rounded" style="background: #99aeb5">'+
+                '<p>Einkaufswunsch:</p>'+ dict["liste_text"]+'</div> <br>'+
+                //TODO : Ort
+                // '<p>Budget: '+ dict["budget"]+'€ Ort:'+ dict["location"] +'</p>';
+
+                '<p>Budget: '+ dict["budget"]+'€ </p>';
+
+        // Css styling
+        newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
+            "left; margin-right: 5px; min-width: 10%; max-width: 33%; padding: 5px");
+
+        p.appendChild(newElement);
+    }
+
+    function clearElements(){
+        var element = document.getElementById("blackboard_elements");
+        while (element.firstChild) {
+          element.removeChild(element.firstChild);
+        }
+    }
+    function addNoElementsMessage(){
+        var p = document.getElementById("blackboard_elements");
+        var newElement = document.createElement("div");
+        newElement.setAttribute('id', "NoElementsMessage");
+        newElement.innerHTML = "Für Ihre Auswahl wurden keine Treffer gefunden, bitte vergrößern Sie Ihren Suchraum.";
+
+        p.appendChild(newElement);
+    }
+
+  </script>
+    <script>
+        function updateBlockboard(e, location, status) {
             e.preventDefault();
             // get the nickname
-            var location = $(this).val();
             // GET AJAX request
             $.ajax({
                 type: 'GET',
                 url: "{% url 'query_listings_blackboard' %}",
                 data: {"location": location,
-                        "status": $("#status").val()},
-
-                success: function (response) {
-                    // if not valid user, alert the user
-                    if(response["valid"]){
-                        console.log("You selected location:" + response["selected_loc"]);
-                        console.log(response["data"])
-                    }
-                },
-                error: function (response) {
-                    console.log(response)
-                }
-            })
-        })
-  </script>
-  <script>
-      /* query slected location listing*/
-        $("#status").change(function (e) {
-            e.preventDefault();
-            // get the nickname
-            var status = $(this).val();
-            // GET AJAX request
-            $.ajax({
-                type: 'GET',
-                url: "{% url 'query_listings_blackboard' %}",
-                data: {"location": $("#location").val(),
                         "status": status},
 
                 success: function (response) {
                     // if not valid user, alert the user
                     if(response["valid"]){
-                        console.log("You selected status:" + response["selected_status"]);
-                        console.log(response["data"])
+                        console.log("You selected location:" + response["selected_loc"]);
+                        console.log(response["data"]);
+
+                        var auftraege = JSON.parse(response["data"]);
+                        if (auftraege.length > 0) {
+                            clearElements();
+                            auftraege.forEach(function(element) {
+                                addElement("div", element["pk"], element["fields"]);
+                            });
+                        } else {
+                            clearElements();
+                            addNoElementsMessage();
+                        }
                     }
                 },
                 error: function (response) {
                     console.log(response)
                 }
             })
+        }
+    </script>
+  <script>
+      /* query slected location listing*/
+        $("#location").change(function (e) {
+            var location = $(this).val();
+            var status = $("#status").val();
+
+            updateBlockboard(e, location, status)
+
+        })
+  </script>
+  <script>
+      /* query slected location listing*/
+        $("#status").change(function (e) {
+            var location = $("#location").val();
+            var status = $(this).val();
+
+            updateBlockboard(e, location, status)
         })
   </script>
 </body>
