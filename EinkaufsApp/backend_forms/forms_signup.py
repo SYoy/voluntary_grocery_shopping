@@ -2,11 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-LOCATION_CHOICES = (
-    ('MBG','Malschenberg'),
-    ('RBG','Rauenberg'),
-    ('ROTBG','Rotenberg'),
-)
+from .choices import LOCATION_CHOICES
+
 
 class SignUpForm(UserCreationForm):
     firstname = forms.CharField(max_length=30, required=True, help_text='Bitte ausfüllen. Ihr Name und ihre Email wird nicht veröffentlicht. ')

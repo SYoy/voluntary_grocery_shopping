@@ -1,19 +1,7 @@
 from django import forms
 from django.db import models
 
-STATUS_CHOICES = (
-    ("AKT", "aktiv"),
-    ("ANG", "angenommen"),
-    ("DEF", "default"),
-    ("ABG", "abgeschlossen")
-)
-
-LOCATION_CHOICES = (
-    ('ALL', 'Alle Ortsteile'),
-    ('MBG', 'Malschenberg'),
-    ('RBG', 'Rauenberg'),
-    ('ROTBG', 'Rotenberg'),
-)
+from .choices import STATUS_CHOICES, LOCATION_CHOICES
 
 
 class SelectionForm(forms.Form):

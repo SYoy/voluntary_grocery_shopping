@@ -17,11 +17,10 @@ GROUP_CHOICES = (
 )
 
 STATUS_CHOICES = (
-    ("aktiv", "akt"),
-    ("angenommen", "ang"),
-    ("default", "def"),
-    ("abgeschlossen", "abg"),
-    ("archiv", "arch")
+    ("AKT", "aktiv"),
+    ("ANG", "angenommen"),
+    ("DEF", "default"),
+    ("ABG", "abgeschlossen")
 )
 
 class Person(models.Model):

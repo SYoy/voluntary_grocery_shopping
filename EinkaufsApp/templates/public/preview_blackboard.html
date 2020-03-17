@@ -46,14 +46,8 @@
         </div>
        {% endfor %}
 
-        <div class="col-lg-12 img-rounded" style="color:#ffffff; width: 100%; height: 100%; margin-top: 5px; margin-left:-15px"> <!-- ; background: #B5C9C3"> -->
-        <table class="table table-bordered img-rounded" id="dynamictable" style="font-size: 25px; color:#ffffff; width: 100%; background: #74a4b5;">
-            <tr>
-              <th colspan="2" style="font-size: 42px; text-align: center">Aktuelle Einkaufsaufträge</th>
-            </tr>
-        </table>
-
-    </table>-->
+        <div class="col-lg-12 img-rounded" id="blackboard" style="color:#ffffff; width: 100%; height: 100%; margin-top: 5px; margin-left:-15px"> <!-- ; background: #B5C9C3"> -->
+        <p colspan="2" style="font-size: 42px; text-align: center">Aktuelle Einkaufsaufträge</p>
 
         <div id="txtHint"><b>Einkaufsaufträge hier gelistet</b>
             TODO
@@ -90,8 +84,8 @@
                 success: function (response) {
                     // if not valid user, alert the user
                     if(response["valid"]){
-                        alert("You selected location:" + response["selected_loc"]);
-                        // TODO
+                        console.log("You selected location:" + response["selected_loc"]);
+                        console.log(response["data"])
                     }
                 },
                 error: function (response) {
@@ -116,8 +110,8 @@
                 success: function (response) {
                     // if not valid user, alert the user
                     if(response["valid"]){
-                        alert("You selected status:" + response["selected_status"]);
-                        // TODO
+                        console.log("You selected status:" + response["selected_status"]);
+                        console.log(response["data"])
                     }
                 },
                 error: function (response) {

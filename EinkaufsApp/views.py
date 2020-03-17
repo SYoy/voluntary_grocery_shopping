@@ -16,8 +16,9 @@ from EinkaufsApp.backend_forms.forms_signup import SignUpForm
 from EinkaufsApp.backend_forms.forms_einkaufliste import EinkaufsauftragForm
 from EinkaufsApp.backend_forms.forms_blackboard import SelectionForm
 
-# Models for Queries
+# Queries
 from EinkaufsApp.models import Einkaufsauftrag
+import json
 
 def start(request):
     return render(request, 'public/start.html')
@@ -119,14 +120,11 @@ def listings(request):
 
         if not location is None and not status is None:
             query = Einkaufsauftrag.objects.filter(user__person__location=location, status=status)
-            data = serializers.serialize("json", query, status=200)
-            data["valid"] = True
-            data["status"] = 200
-
-            data["selected_loc´"] = location
-            data["selected_status"] = status
-
-            return data
+            data = serializers.serialize("json", query)
+            # TODO - render aufträge
+            return JsonResponse({"data": data, "valid": True,
+                                 "selected_loc": location,
+                                 "selected_status": status}, status=200, safe=False)
 
     return JsonResponse({}, status=400)
 

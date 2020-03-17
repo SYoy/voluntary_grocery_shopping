@@ -1,13 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
+
+from .choices import STATUS_CHOICES
 from EinkaufsApp.models import Einkaufsauftrag
 
-STATUS_CHOICES = (
-    ("aktiv", "akt"),
-    ("angenommen", "ang"),
-    ("default", "def"),
-    ("abgeschlossen", "abg")
-)
 
 class EinkaufsauftragForm(forms.ModelForm):
     nachricht = forms.CharField(widget=forms.Textarea(attrs={"rows": 3, "cols": 100}), required=True,
