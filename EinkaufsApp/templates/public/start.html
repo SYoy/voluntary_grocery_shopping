@@ -1,21 +1,81 @@
-{# Load the tag library #}
-{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Corona Einkaufshelfer">
+  <meta name="author" content="Marius Steger">
+  <meta http-equiv="refresh" content="600" >
+  <title>Einkaufshelfer - Startseite</title>
 
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
+  <!-- Bootstrap -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/style.css" rel="stylesheet">
+  <link href="static/css/themify-icons.css" rel="stylesheet">
+  <link href='static/css/dosis-font.css' rel='stylesheet' type='text/css'>
 
-{% block content %}
-    <a href="registrieren_helfender">Registrieren als Helfender</a>
-        <br>
-    <a href="registrieren_empfaenger">Registrieren um Lebensmittel zu erhalten</a>
-        <br>
-    <a href="schwarzes_brett">Aktuelle Aufträge</a>
-        <br>
-    <a href="anmelden">Anmelden</a>
-        <br>
-    <a href="{% url 'logout' %}">Abmelden</a>
-{% endblock %}
+</head>
+<body id="page-top" data-spy="scroll" data-target=".side-menu">
+    {% load widget_tweaks %}
+    <div class="row hero-header" style="padding-top: 15px; padding-bottom: 20px; height: 8em">
+    {% if user.is_authenticated %}
+    <ul class="nav navbar-nav navbar-right">
+        <a href="{% url "logout" %}">
+            <p>Angemeldet als {{ user.username }}</p>
+            <button type="submit" class="btn btn-warning">Abmelden</button>
+        </a>
+      </li>
+    </ul>
+    {% else %}
+    <form class="navbar-form navbar-right" role="form" action="{% url "login" %}"
+        method="post" accept-charset="utf-8">
+      <div class="form-group">
+        <input type="text" placeholder="Username" class="form-control" name="username">
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Password" class="form-control" name="password">
+      </div>
+      {% csrf_token %}
+      <button type="submit" class="btn btn-success">Sign in</button>
+    </form>
+    {% endif %}
+    </div>
+
+  <div class="container-fluid" style="background: #99aeb5;">
+    <!-- Start: Schwarzes Brett -->
+    <div class="row content-ct" style="padding-bottom: 20px; width: 100%">
+        <a href="registrieren_empfaenger">
+            <div class="col-sm-6" style="background: #5cb0b0; height: 600px; font-size: xx-large">
+                <br> <br>Registrieren um Lebensmittel zu erhalten
+            </div>
+        </a>
+        <a href="registrieren_helfender">
+            <div class="col-sm-6" style="background: #63b58c; height: 600px; font-size: xx-large">
+            <br> <br> Registrieren als Helfender
+            </div>
+        </a>
+
+    </div>
+    <div class="row content-ct" style="width: 100%;">
+        <a href="schwarzes_brett">
+            <div class="col-auto content-ct" style="font-size: xx-large; height: 5.5em">
+                <p>Aktuelle Aufträge</p>
+                <p style="font-size: x-large">Einkaufswünsche auf dem schwarzen Brett ansehen</p>
+            </div>
+        </a>
+    </div>
+
+
+  <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/bootstrap.js"></script>
+  <script src="static/js/jquery.easing.min.js"></script>
+  <script src="static/js/scrolling-nav.js"></script>
+</body>
+
