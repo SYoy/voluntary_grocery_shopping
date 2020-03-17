@@ -21,7 +21,9 @@ from . import views
 
 urlpatterns = [
     path('', views.start, name='start'),
+
     path('schwarzes_brett', views.helfen_voransicht, name='public_blackboard'),
+    path('get/ajax/listings', views.listings, name="query_listings_blackboard"),
 
     path('registrieren_helfender/', views.signupHelper, name='signup_helper'),
     path('registrieren_empfaenger/', views.signupInNeed, name='signup_inneed'),

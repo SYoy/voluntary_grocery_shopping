@@ -1,3 +1,4 @@
+# Core
 from django.http import HttpResponse
 from django.utils import timezone
 from django.contrib.auth import login, authenticate, logout
@@ -6,8 +7,17 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+# AJAX
+from django.http import JsonResponse
+from django.core import serializers
+
+# Forms
 from EinkaufsApp.backend_forms.forms_signup import SignUpForm
 from EinkaufsApp.backend_forms.forms_einkaufliste import EinkaufsauftragForm
+from EinkaufsApp.backend_forms.forms_blackboard import SelectionForm
+
+# Models for Queries
+from EinkaufsApp.models import Einkaufsauftrag
 
 def start(request):
     return render(request, 'public/start.html')
@@ -92,7 +102,7 @@ def einkaufsliste(request):
 @login_required
 def helfen(request):
     if request.user.is_authenticated and request.user.person.group == "H":
-        # TODO
+        # TODO siehe public blackboard
         return render(request, 'app/app_inneed.html')
 
     elif request.user.is_authenticated and request.user.person.group == "E":
@@ -102,8 +112,28 @@ def helfen(request):
     else:
         return HttpResponse("Sie sind nicht angemeldet")
 
+def listings(request):
+    if request.is_ajax and request.method == "GET":
+        location = request.GET.get("location", None)
+        status = request.GET.get("status", None)
+
+        if not location is None and not status is None:
+            query = Einkaufsauftrag.objects.filter(user__person__location=location, status=status)
+            data = serializers.serialize("json", query, status=200)
+            data["valid"] = True
+            data["status"] = 200
+
+            data["selected_loc´"] = location
+            data["selected_status"] = status
+
+            return data
+
+    return JsonResponse({}, status=400)
+
+
 def helfen_voransicht(request):
-    return render(request, 'public/preview_blackboard.html')
+    form = SelectionForm
+    return render(request, 'public/preview_blackboard.html', {'form': form})
 
 def faq(request):
     return HttpResponse("FAQ Todo")

@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_blackboard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_einkaufliste.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_einkaufliste.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_signup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/migrations/0004_auto_20200316_1414.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registration_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registration_done.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
@@ -42,8 +39,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -137,7 +134,8 @@
       <updated>1584344312042</updated>
       <workItem from="1584344314829" duration="829000" />
       <workItem from="1584345528785" duration="9456000" />
-      <workItem from="1584355007355" duration="23694000" />
+      <workItem from="1584355007355" duration="23994000" />
+      <workItem from="1584434098935" duration="8893000" />
     </task>
     <servers />
   </component>

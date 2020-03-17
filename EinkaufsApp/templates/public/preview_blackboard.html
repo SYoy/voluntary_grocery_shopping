@@ -15,36 +15,115 @@
   <link href="static/css/style.css" rel="stylesheet">
   <link href="static/css/themify-icons.css" rel="stylesheet">
   <link href='static/css/dosis-font.css' rel='stylesheet' type='text/css'>
-
+    <!--<style>
+        html,
+        body
+        ::selection {
+          background-color: #42dca3;
+          color: #ffffff;
+        }
+        #textcolor {
+          color: #000;
+        }
+    </style>
+    -->
 </head>
 <body id="page-top" data-spy="scroll" data-target=".side-menu">
   <div class="container-fluid" style="background: #99aeb5; position:relative;">
     <!-- Start: Schwarzes Brett -->
     <div class="row hero-header content-ct" style="padding-top: 15px; padding-bottom: 20px;">
         <a href="/">
-            <div class="col-lg-2 img-rounded" style="font-size: 25px; color:#ffffff; background: #63b58c;">
+            <div class="col-md-2 img-rounded" style="font-size: 25px; color:#ffffff; background: #99aeb5;">
                 <p style="padding-top: 3px">Zurück zur Anmeldung</p>
             </div>
         </a>
 
-        <div class="col-lg-12 img-rounded" style="color:#ffffff; width: 100%; height: 100%; margin-top: 5px; margin-left:-15px; margin-right: -15px"> <!-- ; background: #B5C9C3"> -->
+       {% for field in form %}
+        <div class="col-md-3 img-rounded" style="font-size: 25px; color:#000000; background: #63b58c; margin-left: 10px;">
+          <div class="fieldWrapper form-group">
+            {{ field }}
+          </div>
+        </div>
+       {% endfor %}
+
+        <div class="col-lg-12 img-rounded" style="color:#ffffff; width: 100%; height: 100%; margin-top: 5px; margin-left:-15px"> <!-- ; background: #B5C9C3"> -->
         <table class="table table-bordered img-rounded" id="dynamictable" style="font-size: 25px; color:#ffffff; width: 100%; background: #74a4b5;">
             <tr>
               <th colspan="2" style="font-size: 42px; text-align: center">Aktuelle Einkaufsaufträge</th>
             </tr>
         </table>
-         <!-- <pre id="output" style="display: none; font-size: 20px; color:#ffffff; width: 854px; max-height: 480px; background: #B5C9C3;"></pre> -->
+
+    </table>-->
+
+        <div id="txtHint"><b>Einkaufsaufträge hier gelistet</b>
+            TODO
+        </div>
+
         </div>
     </div>
   </div>
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="static/js/jquery.min.js"></script>
+  <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="static/js/jquery.min.js"></script>
   <script src="static/js/bootstrap.min.js"></script>
   <script src="static/js/bootstrap.js"></script>
   <script src="static/js/jquery.easing.min.js"></script>
   <script src="static/js/scrolling-nav.js"></script>
   <script src="static/js/validator.js"></script>
 
+  <script>
+      /* query slected location listing*/
+        $("#location").change(function (e) {
+            e.preventDefault();
+            // get the nickname
+            var location = $(this).val();
+            // GET AJAX request
+            $.ajax({
+                type: 'GET',
+                url: "{% url 'query_listings_blackboard' %}",
+                data: {"location": location,
+                        "status": $("#status").val()},
+
+                success: function (response) {
+                    // if not valid user, alert the user
+                    if(response["valid"]){
+                        alert("You selected location:" + response["selected_loc"]);
+                        // TODO
+                    }
+                },
+                error: function (response) {
+                    console.log(response)
+                }
+            })
+        })
+  </script>
+  <script>
+      /* query slected location listing*/
+        $("#status").change(function (e) {
+            e.preventDefault();
+            // get the nickname
+            var status = $(this).val();
+            // GET AJAX request
+            $.ajax({
+                type: 'GET',
+                url: "{% url 'query_listings_blackboard' %}",
+                data: {"location": $("#location").val(),
+                        "status": status},
+
+                success: function (response) {
+                    // if not valid user, alert the user
+                    if(response["valid"]){
+                        alert("You selected status:" + response["selected_status"]);
+                        // TODO
+                    }
+                },
+                error: function (response) {
+                    console.log(response)
+                }
+            })
+        })
+  </script>
 </body>
