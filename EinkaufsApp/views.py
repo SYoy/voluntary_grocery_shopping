@@ -136,27 +136,3 @@ def helfen_voransicht(request):
 def faq(request):
     return HttpResponse("FAQ Todo")
 
-
-# def custom_login(request):
-#     if request.method == 'POST':
-#         form = AuthenticationForm(request.POST)
-#         if form.is_valid():
-#             # form.save()
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password')
-#             user = authenticate(username=username, password=raw_password)
-#             login(request, user)
-#
-#             # check user group
-#             if user is not None:
-#                 user.refresh_from_db()
-#                 if user.person.group == 'E':
-#                     return redirect('home', {'group': 'Empfaenger'})
-#                 elif user.person.group == 'H':
-#                     return redirect('home', {'group': 'Helfender'})
-#             else:
-#                 form = AuthenticationForm()
-#                 return render(request, 'accounts/login.html', {'form': form})
-#     else:
-#         form = AuthenticationForm()
-#     return render(request, 'accounts/login.html', {'form': form})
