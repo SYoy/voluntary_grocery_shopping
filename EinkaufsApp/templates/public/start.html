@@ -21,12 +21,19 @@
     {% load widget_tweaks %}
     <div class="row hero-header" style="padding-top: 15px; padding-bottom: 20px; height: 8em">
     {% if user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-left">
+    <a href="{% url 'home' %}">
+        <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
+            <p style="padding-top: 5px">Klicken Sie hier um zu Ihrem persönlichen Bereich zu gelangen</p>
+        </div>
+    </a>
+
+    </ul>
     <ul class="nav navbar-nav navbar-right">
         <a href="{% url "logout" %}">
             <p>Angemeldet als {{ user.username }}</p>
             <button type="submit" class="btn btn-warning">Abmelden</button>
         </a>
-      </li>
     </ul>
     {% else %}
     <form class="navbar-form navbar-right" role="form" action="{% url "login" %}"
@@ -59,10 +66,10 @@
 
     </div>
     <div class="row content-ct" style="width: 100%;">
-        <a href="schwarzes_brett">
+        <a href="schwarzes_brett_public">
             <div class="col-auto content-ct" style="font-size: xx-large; height: 5.5em">
                 <p>Aktuelle Aufträge</p>
-                <p style="font-size: x-large">Einkaufswünsche auf dem schwarzen Brett ansehen</p>
+                <p style="font-size: x-large">Einkaufswünsche auf dem schwarzen Brett ansehen.</p>
             </div>
         </a>
     </div>

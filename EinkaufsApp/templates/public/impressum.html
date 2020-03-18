@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+
 {# Load the tag library #}
 {% load bootstrap4 %}
 
@@ -9,12 +11,14 @@
 {% bootstrap_messages %}
 
 {% block content %}
-    <h2>FAQ</h2>
-    <p>Ist in Arbeit</p>
+    <h2>Impressum</h2><br>
+    <p> Betreiber Marius Steger<p>
+    <p> Email: helfer@uber.space</p>
 
     <a href="{% url 'start' %}">
         <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
             <p style="padding-top: 5px">Zurück zur Startseite</p>
         </div>
     </a>
+
 {% endblock %}

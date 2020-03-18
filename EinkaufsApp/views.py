@@ -28,9 +28,13 @@ def start(request):
 
 
 ## PUBLIC
+def impressum(request):
+    return render(request, 'public/impressum.html')
+
+
+## PUBLIC
 def faq(request):
-    #TODO
-    return HttpResponse("FAQ Todo")
+    return render(request, 'public/faq.html')
 
 
 ## PUBLIC - BLACKBOARD
@@ -112,7 +116,7 @@ def signupInNeed(request):
 @login_required
 def home(request):
     if request.user.is_authenticated:
-        return render(request, 'public/home.html', {'group': request.user.person.group, 'username': request.user.username})
+        return render(request, 'app/home.html', {'group': request.user.person.group, 'username': request.user.username})
     else:
         return HttpResponse("Sie sind nicht angemeldet")
 
@@ -185,8 +189,7 @@ def setInactive(request):
         auftrag = Einkaufsauftrag.objects.filter(id=ID_auftrag, user_id=ID_user)
 
         if int(ID_user) == request.user.id and len(auftrag) == 1:
-            auftrag.update(status="inaktiv")
-            auftrag.update(date_done=timezone.now())
+            auftrag.update(status="inaktiv", date_done=timezone.now())
 
             return JsonResponse({"valid": True}, status=200)
         else:
@@ -203,8 +206,7 @@ def setDone(request):
 
 
         if int(ID_user) == request.user.id and len(auftrag) == 1:
-            auftrag.update(status="abgeschlossen")
-            auftrag.update(date_done=timezone.now())
+            auftrag.update(status="abgeschlossen", date_done=timezone.now())
 
             return JsonResponse({"valid": True}, status=200)
         else:
@@ -214,20 +216,51 @@ def setDone(request):
 ## HELFER
 @login_required
 def helfen(request):
-    if request.user.is_authenticated and request.user.person.group == "H":
-        # TODO siehe public blackboard
-        return render(request, 'app/app_inneed.html')
-
-    elif request.user.is_authenticated and request.user.person.group == "E":
-        messages.add_message(request, messages.INFO,
-                             'Sie sind als Einkaufssuchender angemeldet und wurden deshalb auf zu Ihrer Einkaufsliste umgeleitet.')
-        return redirect("einkaufsliste")
-    else:
-        return HttpResponse("Sie sind nicht angemeldet")
+    form = SelectionForm
+    return render(request, 'app/app_helper.html', {'form': form})
 
 
 ## HELFER
+@login_required
 def helfer_einkaufslisten(request):
-    #TODO
-    return HttpResponse("Einkaufslisten anzeigen Todo")
+    return render(request, 'app/inWork.html', {'group': request.user.person.group, 'username': request.user.username})
 
+
+## HELFER
+@login_required
+def setInWork(request):
+    if request.user.is_authenticated and request.user.person.group in ["H", "S"]:
+        if request.is_ajax and request.method == "POST":
+            auftrag_id = request.POST.get("id_listing", None)
+            auftrag = Einkaufsauftrag.objects.filter(id=int(auftrag_id), status="aktiv")
+
+            if len(auftrag) == 1:
+                auftrag.update(status="angenommen", working_on_user_id=request.user.id)
+
+                return JsonResponse({"valid": True}, status=200)
+
+    return JsonResponse({}, status=400)
+
+## HELFER
+@login_required
+def getAccepted(request):
+    if request.user.is_authenticated and request.user.person.group in ["H", "S"]:
+        if request.is_ajax and request.method == "GET":
+            user_id = request.user.id
+            query_ang = Einkaufsauftrag.objects.filter(working_on_user_id=user_id, status="angenommen").order_by("-date_added")
+            query_closed = Einkaufsauftrag.objects.filter(working_on_user_id=user_id, status="abgeschlossen").order_by("date_added")
+
+            users = User.objects.all()
+            map = {}
+            for user in users:
+                map[user.id] = user.person.location
+
+            data_ang = serializers.serialize("json", query_ang)
+            data_closed = serializers.serialize("json", query_closed)
+
+            return JsonResponse({"data_a": data_ang, "data_closed": data_closed,
+                                 "valid": True, "map": map}, status=200, safe=False)
+
+        return JsonResponse({}, status=400)
+    else:
+        return redirect("home")

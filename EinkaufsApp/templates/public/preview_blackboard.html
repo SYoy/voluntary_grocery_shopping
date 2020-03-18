@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Corona Einkaufshelfer">
   <meta name="author" content="Marius Steger">
-  <meta http-equiv="refresh" content="180" >
+  <meta http-equiv="refresh" content="600" >
   <title>Einkaufshelfer - offene Aufträge</title>
 
     <!-- Bootstrap -->
@@ -46,7 +46,6 @@
 
             </div>
         </div>
-
   </div>
 
   <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
@@ -63,6 +62,34 @@
   <script src="static/js/validator.js"></script>
   <script src="static/js/blackboard.js"></script>
     -->
+    <script>
+        function onClickAuftrag(e) {
+            var element = document.getElementById(e.id);
+            if (confirm("Möchten Sie den Einkauf übernehmen? \nEr wird ihren aktiven Aufträgen hinzugefügt und Sie erhalten die Telefonnumer der HilfsempfängerIn.\n" +
+                "Bitte konktaktieren Sie anschließend Ihren Einkaufsauftraggeber."
+                //element.innerHTML
+                )) {
+
+                $.ajax({
+                type: 'POST',
+                url: "{% url 'setInWork' %}",
+                data: {"id_listing": e.id,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'},
+
+                success: function (response) {
+                    alert("Ihr Einkaufswunsch wurde erfolgreich hinzugefügt!");
+                    window.location.replace("/home/");
+
+                },
+                error: function (response) {
+                    alert("Ihre Anfrage den Einkaufswunsch zu bearbeiten ist fehlgeschlagen, " +
+                        "bitte versuchen Sie es in ein paar Minuten erneut oder wenden Sie \n" +
+                        "sich an unsere Service-Email: helfer@uber.space")
+                }
+            })
+            }
+        }
+    </script>
 
   <script>
     function addElement(elementTag, elementId, dict, map) {
@@ -80,7 +107,10 @@
 
         // Css styling
         newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
-            "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px");
+            "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;" +
+            "cursor: pointer");
+        newElement.setAttribute("id", elementId);
+        newElement.setAttribute("onclick","onClickAuftrag(this)");
 
         p.appendChild(newElement);
     }

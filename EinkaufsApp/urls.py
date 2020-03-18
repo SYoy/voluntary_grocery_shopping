@@ -22,7 +22,8 @@ from . import views
 urlpatterns = [
     # public urls
     path('', views.start, name='start'),
-    path('schwarzes_brett/', views.helfen_voransicht, name='public_blackboard'),
+    path('impressum', views.impressum, name='impressum'),
+    path('schwarzes_brett_public/', views.helfen_voransicht, name='public_blackboard'),
     path('get/ajax/listings', views.listings, name="query_listings_blackboard"),
 
     # account related urls
@@ -41,8 +42,10 @@ urlpatterns = [
     path('post/ajax/setDone', views.setDone, name="setDone"),
 
     # app Helper
-    path('helfen/', views.helfen, name='helfen'),
+    path('schwarzes_brett/', views.helfen, name='blackboard'),
     path('helfer_einkaufslisten/', views.helfer_einkaufslisten, name='helfer_einkaufslisten'),
+    path('post/ajax/setInWork', views.setInWork, name="setInWork"),
+    path('post/ajax/getAccepted', views.getAccepted, name="getAccepted"),
 
     # admin
     path('admin/', admin.site.urls),
