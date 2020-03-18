@@ -79,6 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             'read_default_file': '/home/helfer/mysql/my.cnf',
         },
     }

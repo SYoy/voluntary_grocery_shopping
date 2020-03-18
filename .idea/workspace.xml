@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/EinkaufsApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EinkaufsApp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -138,7 +141,7 @@
       <workItem from="1584458994416" duration="8772000" />
       <workItem from="1584515700820" duration="13402000" />
       <workItem from="1584533319136" duration="9316000" />
-      <workItem from="1584546698423" duration="4590000" />
+      <workItem from="1584546698423" duration="5774000" />
     </task>
     <servers />
   </component>
