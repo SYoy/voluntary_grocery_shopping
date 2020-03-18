@@ -2,93 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/EinkaufsApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EinkaufsApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/.browserslistrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/401.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/assets/demo/chart-area-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/assets/demo/chart-bar-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/assets/demo/chart-pie-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/assets/demo/datatables-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/assets/img/error-404-monochrome.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/charts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/js/scripts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/layout-sidenav-light.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/layout-static.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/password.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/dist/tables.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/build-assets.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/build-pug.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/build-scripts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/build-scss.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/clean.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/render-assets.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/render-pug.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/render-scripts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/render-scss.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/sb-watch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/start-debug.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/scripts/start.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/assets/demo/chart-area-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/assets/demo/chart-bar-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/assets/demo/chart-pie-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/assets/demo/datatables-demo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/assets/img/error-404-monochrome.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/js/scripts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/authentication.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/dashboard.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/error.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/includes/footer.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/includes/head/css.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/includes/head/icons.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/includes/head/meta.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/includes/head/title.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/includes/navigation/sidenav.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/includes/navigation/topnav.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/layouts/includes/scripts.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/401.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/404.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/500.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/charts.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/includes/datatable.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/includes/page-header.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/index.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/layout-sidenav-light.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/layout-static.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/login.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/password.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/register.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/pug/pages/tables.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/_global.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/layout/_authentication.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/layout/_dashboard-default.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/layout/_dashboard-fixed.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/layout/_error.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/navigation/_nav.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/navigation/_topnav.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/navigation/sidenav/_sidenav-dark.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/navigation/sidenav/_sidenav-light.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/navigation/sidenav/_sidenav.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/styles.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/variables/_navigation.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/src/scss/variables/_spacing.scss" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +139,7 @@
       <workItem from="1584458994416" duration="8772000" />
       <workItem from="1584515700820" duration="13402000" />
       <workItem from="1584533319136" duration="9316000" />
-      <workItem from="1584546698423" duration="648000" />
+      <workItem from="1584546698423" duration="2193000" />
     </task>
     <servers />
   </component>
