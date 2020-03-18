@@ -58,8 +58,36 @@
 
         <div class="col-lg-6 img-rounded" style="color:#ffffff; background: #3ec6eb; margin-top: 5px; margin-left: 10px; margin-right: -10px">
             <h2><b>Ihr aktueller Einkaufswunsch</b></h2>
-            <p>todo - auslesen und anzeigen</p>
+            {% block content_akt_auftrag %}
+                <div class="col-md-auto">
+                    {% if akt_auftrag %}
+                        <p style="text-align: center">STATUS: {{ akt_auftrag.status }}</p><br>
+                        <p style="text-align: left">Nachricht: <br>{{ akt_auftrag.nachricht }}</p><br>
+                        <p style="text-align: left">Einkaufsliste: <br>{{ akt_auftrag.liste_text }}</p><br>
+                        <p style="text-align: left">Budget: {{ akt_auftrag.budget }}</p>
 
+                        <div class="row">
+                            <div class="col-md-1">
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" id="abschließen">
+                                    <p style="padding-top: 5px">Auftrag als abgeschlossen markieren</p>
+                                </button>
+                            </div>
+                            <div class="col-md-3">
+                            </div>
+
+                            <div class="col-md-2">
+                                <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;" id="widerrufen">
+                                    <p style="padding-top: 5px">Auftrag widerrufen</p>
+                                </button>
+                            </div>
+                            <div class="col-md-1">
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endblock %}
         </div>
 
          <!-- <pre id="output" style="display: none; font-size: 20px; color:#ffffff; width: 854px; max-height: 480px; background: #B5C9C3;"></pre> -->
@@ -74,5 +102,31 @@
   <script src="static/js/jquery.easing.min.js"></script>
   <script src="static/js/scrolling-nav.js"></script>
   <script src="static/js/validator.js"></script>
+  <script>
+      $("#widerrufen").click(function (e) {
+          if (confirm('Sind Sie sicher, dass Sie ihren aktuellen Einkaufswunsch widerrufen möchten?')) {
+            var ID_auftrag = "{{ akt_auftrag.id }}";
+            removeListing(e, ID_auftrag)
+          } else {
+              //do nothing
+          }
+        })
+      $("#abschließen").click(function (e) {
+          if (confirm('Ist Ihr Auftrag erfolgreich abgeschlossen worden?')) {
+            var ID_auftrag = "{{ akt_auftrag.id }}";
+            closeListing(e, ID_auftrag)
+          } else {
+              //do nothing
+          }
+        })
+  </script>
+  <script>
+      function removeListing(e, ID) {
+        console.log(ID)
+      }
+      function closeListing(e, ID) {
+        console.log(ID)
+      }
+  </script>
 
 </body>

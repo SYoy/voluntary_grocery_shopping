@@ -18,7 +18,7 @@ from EinkaufsApp.backend_forms.forms_blackboard import SelectionForm
 
 # Queries
 from EinkaufsApp.models import Einkaufsauftrag
-import json
+from django.contrib.auth.models import User
 
 def start(request):
     return render(request, 'public/start.html')
@@ -70,6 +70,20 @@ def home(request):
 @login_required
 def einkaufsliste(request):
     if request.user.is_authenticated and request.user.person.group in ["E", "D", "S"]:
+        auftraege = Einkaufsauftrag.objects.filter(user_id=request.user.id).order_by("date_added").values()
+        most_recent = None
+
+        if auftraege.count() > 0:
+            for ob in auftraege:
+                if ob["status"] == "aktiv":
+                    most_recent = ob
+                    break
+                elif ob["status"] == "angenommen" and most_recent is None:
+                    most_recent = ob
+                    break
+            if most_recent is None:
+                most_recent = auftraege[0]
+
         if request.method == 'POST':
             form = EinkaufsauftragForm(request.POST)
             if form.is_valid():
@@ -89,10 +103,10 @@ def einkaufsliste(request):
 
                 auftrag.save()
                 # message - bzw. Auftrag bestätigen
-                return render(request, 'app/app_inneed.html', {'form': form})
+                return render(request, 'app/app_inneed.html', {'form': form, "akt_auftrag": most_recent})
         else:
             form = EinkaufsauftragForm(request.POST)
-        return render(request, 'app/app_inneed.html', {'form': form})
+        return render(request, 'app/app_inneed.html', {'form': form, "akt_auftrag": most_recent})
 
     elif request.user.is_authenticated and request.user.person.group == "H":
         messages.add_message(request, messages.INFO, 'Sie sind als Helfer angemeldet und werden deshalb auf das schwarze Brett umgeleitet.')
@@ -119,10 +133,20 @@ def listings(request):
         status = request.GET.get("status", None)
 
         if not location is None and not status is None:
-            query = Einkaufsauftrag.objects.filter(user__person__location=location, status=status)
+            if location == "ALL":
+                query = Einkaufsauftrag.objects.filter(status=status).order_by("date_added")
+            else:
+                query = Einkaufsauftrag.objects.filter(user__person__location=location, status=status).order_by("date_added")
+
+            users = User.objects.all()
+            map = {}
+            for user in users:
+                map[user.id] = user.person.location
+
             data = serializers.serialize("json", query)
-            # TODO sort query
+
             return JsonResponse({"data": data, "valid": True,
+                                 "map": map,
                                  "selected_loc": location,
                                  "selected_status": status}, status=200, safe=False)
 

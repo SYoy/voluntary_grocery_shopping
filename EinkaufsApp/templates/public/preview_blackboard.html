@@ -62,7 +62,7 @@
   <script src="static/js/blackboard.js"></script>
     -->
   <script>
-    function addElement(elementTag, elementId, dict) {
+    function addElement(elementTag, elementId, dict, map) {
         // Adds an element to the document
         var p = document.getElementById("blackboard_elements");
         var newElement = document.createElement(elementTag);
@@ -73,10 +73,7 @@
         newElement.innerHTML = '<p>Nachricht:<br>'+dict["nachricht"]+'<br></p>'+
                 '<div class"col-xs-auto img-rounded" style="background: #99aeb5">'+
                 '<p>Einkaufswunsch:</p>'+ dict["liste_text"]+'</div> <br>'+
-                //TODO : Ort
-                // '<p>Budget: '+ dict["budget"]+'€ Ort:'+ dict["location"] +'</p>';
-
-                '<p>Budget: '+ dict["budget"]+'€ </p>';
+                 '<p>Budget: '+ dict["budget"]+'€ Ort:'+ map[dict["user"]] +'</p>';
 
         // Css styling
         newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
@@ -122,7 +119,7 @@
                         if (auftraege.length > 0) {
                             clearElements();
                             auftraege.forEach(function(element) {
-                                addElement("div", element["pk"], element["fields"]);
+                                addElement("div", element["pk"], element["fields"], response["map"]);
                             });
                         } else {
                             clearElements();

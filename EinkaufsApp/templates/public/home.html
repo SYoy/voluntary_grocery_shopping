@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+
 {# Load the tag library #}
 {% load bootstrap4 %}
 
@@ -9,8 +11,33 @@
 {% bootstrap_messages %}
 
 {% block content %}
-    <h2>home</h2>
-    <p>angemeldet als {{ username }}, Gruppe: {{ group }}</p>
+    <h2>Herzlich Willkommen!</h2><br>
+    <p>Sie sind angemeldet als {{ username }},
+        Gruppe: {% if group == "E" %}
+            Empfänger der Einkaufshilfe.
+            {% elif group == "H" %}
+            Einkaufshelfer.
+        {% endif %}
+    </p>
+    <br>
+    {% if group == "E" %}
+        <a href="{% url 'einkaufsliste' %}">
+            <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
+                <p style="padding-top: 5px">Klicken Sie hier um einen Einkaufswunsch abzusetzen!</p>
+            </div>
+        </a>
+    {% elif group == "H" %}
+        <a href="{% url 'public_blackboard' %}">
+            <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
+                <p style="padding-top: 5px">Klicken Sie hier um aktuelle Einkaufswünsche zu sehen!</p>
+            </div>
+        </a>
+    {% endif %}
+
         <br>
-    <a href="{% url 'logout' %}">Abmelden</a>
+    <a href="{% url 'logout' %}">
+        <div class="col-md-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #a3352f;">
+            <p style="padding-top: 5px">Abmelden</p>
+        </div>
+    </a>
 {% endblock %}
