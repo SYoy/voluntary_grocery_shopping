@@ -19,6 +19,7 @@ GROUP_CHOICES = (
 STATUS_CHOICES = (
     ("AKT", "aktiv"),
     ("ANG", "angenommen"),
+    ("INA", "inaktiv"),
     ("DEF", "default"),
     ("ABG", "abgeschlossen")
 )

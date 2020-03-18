@@ -1,7 +1,7 @@
 STATUS_CHOICES = (
     ("aktiv", "aktiv"),
     ("angenommen", "angenommen"),
-    ("default", "default"),
+    ("inaktiv", "inaktiv"),
     ("abgeschlossen", "abgeschlossen")
 )
 

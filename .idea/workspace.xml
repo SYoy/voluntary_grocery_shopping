@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/backend_forms/choices.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/choices.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registration_done.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
@@ -136,7 +141,7 @@
       <workItem from="1584355007355" duration="23994000" />
       <workItem from="1584434098935" duration="15860000" />
       <workItem from="1584458994416" duration="8772000" />
-      <workItem from="1584515700820" duration="5505000" />
+      <workItem from="1584515700820" duration="12012000" />
     </task>
     <servers />
   </component>
@@ -157,9 +162,20 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html</url>
+          <line>112</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Python.DjangoServer">
         <watch expression="user" />
+        <watch expression="request" />
       </configuration>
     </watches-manager>
   </component>

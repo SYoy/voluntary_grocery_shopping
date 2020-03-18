@@ -69,19 +69,22 @@
                         <div class="row">
                             <div class="col-md-1">
                             </div>
+                            {% if akt_auftrag.status == "aktiv" or akt_auftrag.status == "angenommen" %}
+                                <div class="col-md-3">
+                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" id="abschließen">
+                                        <p style="padding-top: 5px">Auftrag als abgeschlossen markieren</p>
+                                    </button>
+                                </div>
+                            {% endif %}
                             <div class="col-md-3">
-                                <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" id="abschließen">
-                                    <p style="padding-top: 5px">Auftrag als abgeschlossen markieren</p>
-                                </button>
                             </div>
-                            <div class="col-md-3">
-                            </div>
-
-                            <div class="col-md-2">
-                                <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;" id="widerrufen">
-                                    <p style="padding-top: 5px">Auftrag widerrufen</p>
-                                </button>
-                            </div>
+                            {% if akt_auftrag.status == "aktiv" %}
+                                <div class="col-md-2">
+                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;" id="widerrufen">
+                                        <p style="padding-top: 5px">Auftrag widerrufen</p>
+                                    </button>
+                                </div>
+                            {% endif %}
                             <div class="col-md-1">
                             </div>
                         </div>
@@ -106,7 +109,8 @@
       $("#widerrufen").click(function (e) {
           if (confirm('Sind Sie sicher, dass Sie ihren aktuellen Einkaufswunsch widerrufen möchten?')) {
             var ID_auftrag = "{{ akt_auftrag.id }}";
-            removeListing(e, ID_auftrag)
+            var ID_user_auftrag = "{{ akt_auftrag.user_id }}";
+            removeListing(e, ID_auftrag, ID_user_auftrag)
           } else {
               //do nothing
           }
@@ -114,18 +118,51 @@
       $("#abschließen").click(function (e) {
           if (confirm('Ist Ihr Auftrag erfolgreich abgeschlossen worden?')) {
             var ID_auftrag = "{{ akt_auftrag.id }}";
-            closeListing(e, ID_auftrag)
+            var ID_user_auftrag = "{{ akt_auftrag.user_id }}";
+            closeListing(e, ID_auftrag, ID_user_auftrag)
           } else {
               //do nothing
           }
         })
   </script>
   <script>
-      function removeListing(e, ID) {
-        console.log(ID)
+      function removeListing(e, ID, ID_user) {
+          // e.preventDefault()
+          $.ajax({
+                type: 'POST',
+                url: "{% url 'setInactive' %}",
+                data: {"id_listing": ID,
+                        "user_id": ID_user,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'},
+
+                success: function (response) {
+                    location.reload()
+                    alert("Ihre Anfrage den Einkaufswunsch zu entfernen  war erfolgreich!")
+
+                },
+                error: function (response) {
+                    alert("Ihre Anfrage den Einkaufswunsch zu entfernen ist fehlgeschlagen, " +
+                        "bitte versuchen Sie es in ein paar Minuten erneut oder wenden Sie sich an unsere Service-Email: ?")
+                }
+            })
       }
-      function closeListing(e, ID) {
-        console.log(ID)
+      function closeListing(e, ID, ID_user) {
+        $.ajax({
+                type: 'POST',
+                url: "{% url 'setDone' %}",
+                data: {"id_listing": ID,
+                        "user_id": ID_user,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'},
+
+                success: function (response) {
+                    location.reload()
+                    alert("Ihre Anfrage den Einkaufswunsch abzuschließen war erfolgreich!")
+                },
+                error: function (response) {
+                    alert("Ihre Anfrage den Einkaufswunsch abzuschließen ist fehlgeschlagen, " +
+                        "bitte versuchen Sie es in ein paar Minuten erneut oder wenden Sie sich an unsere Service-Email: ?")
+                }
+            })
       }
   </script>
 
