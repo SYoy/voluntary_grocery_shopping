@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
 
@@ -10,11 +11,11 @@
   <meta http-equiv="refresh" content="600" >
   <title>Einkaufshilfe erhalten</title>
 
-  <!-- Bootstrap -->
-  <link href="static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="static/css/style.css" rel="stylesheet">
-  <link href="static/css/themify-icons.css" rel="stylesheet">
-  <link href='static/css/dosis-font.css' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/dosis-font.css' %}" rel="stylesheet" type='text/css'>
 
 </head>
 <body id="page-top" data-spy="scroll" data-target=".side-menu">
@@ -58,21 +59,114 @@
 
         <div class="col-lg-6 img-rounded" style="color:#ffffff; background: #3ec6eb; margin-top: 5px; margin-left: 10px; margin-right: -10px">
             <h2><b>Ihr aktueller Einkaufswunsch</b></h2>
-            <p>todo - auslesen und anzeigen</p>
+            {% block content_akt_auftrag %}
+                <div class="col-md-auto">
+                    {% if akt_auftrag %}
+                        <p style="text-align: center">STATUS: {{ akt_auftrag.status }}</p><br>
+                        <p style="text-align: left">Nachricht: <br>{{ akt_auftrag.nachricht }}</p><br>
+                        <p style="text-align: left">Einkaufsliste: <br>{{ akt_auftrag.liste_text }}</p><br>
+                        <p style="text-align: left">Budget: {{ akt_auftrag.budget }}</p>
 
+                        <div class="row">
+                            <div class="col-md-1">
+                            </div>
+                            {% if akt_auftrag.status == "aktiv" or akt_auftrag.status == "angenommen" %}
+                                <div class="col-md-3">
+                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" id="abschließen">
+                                        <p style="padding-top: 5px">Auftrag als abgeschlossen markieren</p>
+                                    </button>
+                                </div>
+                            {% endif %}
+                            <div class="col-md-3">
+                            </div>
+                            {% if akt_auftrag.status == "aktiv" %}
+                                <div class="col-md-2">
+                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;" id="widerrufen">
+                                        <p style="padding-top: 5px">Auftrag widerrufen</p>
+                                    </button>
+                                </div>
+                            {% endif %}
+                            <div class="col-md-1">
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endblock %}
         </div>
 
          <!-- <pre id="output" style="display: none; font-size: 20px; color:#ffffff; width: 854px; max-height: 480px; background: #B5C9C3;"></pre> -->
         </div>
     </div>
 
+  <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="static/js/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="static/js/bootstrap.min.js"></script>
-  <script src="static/js/bootstrap.js"></script>
-  <script src="static/js/jquery.easing.min.js"></script>
-  <script src="static/js/scrolling-nav.js"></script>
-  <script src="static/js/validator.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/scrolling-nav.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+
+  <script>
+      $("#widerrufen").click(function (e) {
+          if (confirm('Sind Sie sicher, dass Sie ihren aktuellen Einkaufswunsch widerrufen möchten?')) {
+            var ID_auftrag = "{{ akt_auftrag.id }}";
+            var ID_user_auftrag = "{{ akt_auftrag.user_id }}";
+            removeListing(e, ID_auftrag, ID_user_auftrag)
+          } else {
+              //do nothing
+          }
+        })
+      $("#abschließen").click(function (e) {
+          if (confirm('Ist Ihr Auftrag erfolgreich abgeschlossen worden?')) {
+            var ID_auftrag = "{{ akt_auftrag.id }}";
+            var ID_user_auftrag = "{{ akt_auftrag.user_id }}";
+            closeListing(e, ID_auftrag, ID_user_auftrag)
+          } else {
+              //do nothing
+          }
+        })
+  </script>
+  <script>
+      function removeListing(e, ID, ID_user) {
+          // e.preventDefault()
+          $.ajax({
+                type: 'POST',
+                url: "{% url 'setInactive' %}",
+                data: {"id_listing": ID,
+                        "user_id": ID_user,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'},
+
+                success: function (response) {
+                    location.reload()
+                    alert("Ihre Anfrage den Einkaufswunsch zu entfernen  war erfolgreich!")
+
+                },
+                error: function (response) {
+                    alert("Ihre Anfrage den Einkaufswunsch zu entfernen ist fehlgeschlagen, " +
+                        "bitte versuchen Sie es in ein paar Minuten erneut oder wenden Sie sich an unsere Service-Email: ?")
+                }
+            })
+      }
+      function closeListing(e, ID, ID_user) {
+        $.ajax({
+                type: 'POST',
+                url: "{% url 'setDone' %}",
+                data: {"id_listing": ID,
+                        "user_id": ID_user,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'},
+
+                success: function (response) {
+                    location.reload()
+                    alert("Ihre Anfrage den Einkaufswunsch abzuschließen war erfolgreich!")
+                },
+                error: function (response) {
+                    alert("Ihre Anfrage den Einkaufswunsch abzuschließen ist fehlgeschlagen, " +
+                        "bitte versuchen Sie es in ein paar Minuten erneut oder wenden Sie sich an unsere Service-Email: ?")
+                }
+            })
+      }
+  </script>
 
 </body>

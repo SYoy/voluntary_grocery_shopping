@@ -19,6 +19,7 @@ GROUP_CHOICES = (
 STATUS_CHOICES = (
     ("AKT", "aktiv"),
     ("ANG", "angenommen"),
+    ("INA", "inaktiv"),
     ("DEF", "default"),
     ("ABG", "abgeschlossen")
 )
@@ -46,3 +47,4 @@ class Einkaufsauftrag(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     date_done = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=13, choices=STATUS_CHOICES, default='default')
+    working_on_user = models.ForeignKey(to=User, related_name="angenommene_auftraege", null=True, blank=True, on_delete=models.CASCADE)

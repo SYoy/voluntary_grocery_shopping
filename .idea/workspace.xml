@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/inWork.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/impressum.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationHelper.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationHelper.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationInNeed.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/registrationInNeed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/migrations/0004_auto_20200317_1242.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/faq.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/faq.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +33,12 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" module-name="EinkaufsApp" is-module-sdk="true">
@@ -40,9 +49,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -67,23 +76,23 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\app" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\public" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\accounts" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\app1" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked\dist" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked" />
       <recent name="D:\voluntary_grocery_shopping\templates" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\public" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\accounts" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\app1" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -139,6 +148,8 @@
       <workItem from="1584355007355" duration="23994000" />
       <workItem from="1584434098935" duration="15860000" />
       <workItem from="1584458994416" duration="8772000" />
+      <workItem from="1584515700820" duration="13402000" />
+      <workItem from="1584533319136" duration="9316000" />
     </task>
     <servers />
   </component>
@@ -157,5 +168,13 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Python.DjangoServer">
+        <watch expression="user" />
+        <watch expression="request" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

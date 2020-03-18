@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
 
@@ -8,42 +9,169 @@
   <meta name="description" content="Corona Einkaufshelfer">
   <meta name="author" content="Marius Steger">
   <meta http-equiv="refresh" content="180" >
-  <title>Einkaufshelfer - offene Auftraege</title>
+  <title>Einkaufshelfer - offene Aufträge</title>
 
-  <!-- Bootstrap -->
-  <link href="static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="static/css/style.css" rel="stylesheet">
-  <link href="static/css/themify-icons.css" rel="stylesheet">
-  <link href='static/css/dosis-font.css' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/dosis-font.css' %}" rel="stylesheet" type='text/css'>
 
 </head>
 <body id="page-top" data-spy="scroll" data-target=".side-menu">
+    {% load widget_tweaks %}
   <div class="container-fluid" style="background: #99aeb5; position:relative;">
     <!-- Start: Schwarzes Brett -->
     <div class="row hero-header content-ct" style="padding-top: 15px; padding-bottom: 20px;">
         <a href="/">
-            <div class="col-lg-2 img-rounded" style="font-size: 25px; color:#ffffff; background: #63b58c;">
-                <p style="padding-top: 3px">Zurück zur Anmeldung</p>
+            <div class="col-md-2 img-rounded" style="font-size: 25px; color:#ffffff; background: #99aeb5;">
+                <p style="padding-top: 3px">Zurück zur Startseite</p>
             </div>
         </a>
-
-        <div class="col-lg-12 img-rounded" style="color:#ffffff; width: 100%; height: 100%; margin-top: 5px; margin-left:-15px; margin-right: -15px"> <!-- ; background: #B5C9C3"> -->
-        <table class="table table-bordered img-rounded" id="dynamictable" style="font-size: 25px; color:#ffffff; width: 100%; background: #74a4b5;">
-            <tr>
-              <th colspan="2" style="font-size: 42px; text-align: center">Aktuelle Einkaufsaufträge</th>
-            </tr>
-        </table>
-         <!-- <pre id="output" style="display: none; font-size: 20px; color:#ffffff; width: 854px; max-height: 480px; background: #B5C9C3;"></pre> -->
+    <div class="col-md-3" style="margin-right: 80px"></div>
+        <div class="col-md-5 img-rounded" style="font-size: 25px; color:#ffffff; background: #129ba9; margin-left: 10px; padding-top: 4px;">
+          <!-- TODO: visibility of text  -->
+            <div class="form-group" style="margin: auto; margin-bottom: 4px">
+                Treffen Sie eine Ortsauswahl: {{ form.location|add_class:'form-control' }}
+            </div>
         </div>
     </div>
+        <div class="col-lg-12 img-rounded" id="blackboard" style="background:#99aeb5; color: #ffffff; width: 100%; height: 100%; margin-top: 5px;">
+            <div class="row content-ct">
+                <div class="col-md-auto img-rounded" style="background: #0f6674; font-size: 45px; text-align: center; margin-top: 10px; margin-bottom: 10px">Aktuelle Einkaufsaufträge</div>
+            </div>
+            <div class="row content-ct" id="blackboard_elements">
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="static/js/jquery.min.js"></script>
+            </div>
+        </div>
+  </div>
+
+  <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="static/js/bootstrap.min.js"></script>
-  <script src="static/js/bootstrap.js"></script>
-  <script src="static/js/jquery.easing.min.js"></script>
-  <script src="static/js/scrolling-nav.js"></script>
-  <script src="static/js/validator.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/scrolling-nav.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
 
+  <!-- TODO js outsourcen
+  <script src="static/js/validator.js"></script>
+  <script src="static/js/blackboard.js"></script>
+    -->
+    <script>
+        function onClickAuftrag(e) {
+            var element = document.getElementById(e.id);
+            if (confirm("Möchten Sie den Einkauf übernehmen? \nEr wird ihren aktiven Aufträgen hinzugefügt und Sie erhalten die Telefonnumer der HilfsempfängerIn.\n" +
+                "Bitte konktaktieren Sie anschließend Ihren Einkaufsauftraggeber."
+                //element.innerHTML
+                )) {
+
+                $.ajax({
+                type: 'POST',
+                url: "{% url 'setInWork' %}",
+                data: {"id_listing": e.id,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'},
+
+                success: function (response) {
+                    alert("Ihr Einkaufswunsch wurde erfolgreich hinzugefügt!");
+                    window.location.replace("/home/");
+
+                },
+                error: function (response) {
+                    alert("Ihre Anfrage den Einkaufswunsch zu bearbeiten ist fehlgeschlagen, " +
+                        "bitte versuchen Sie es in ein paar Minuten erneut oder wenden Sie \n" +
+                        "sich an unsere Service-Email: helfer@uber.space")
+                }
+            })
+            }
+        }
+    </script>
+
+  <script>
+    function addElement(elementTag, elementId, dict, map) {
+        // Adds an element to the document
+        var p = document.getElementById("blackboard_elements");
+        var newElement = document.createElement(elementTag);
+        newElement.setAttribute('id', elementId);
+        newElement.innerHTML = dict["nachricht"];
+
+        newElement.className = 'col-md-auto img-rounded';
+        newElement.innerHTML = '<p>Nachricht:<br>'+dict["nachricht"]+'<br></p>'+
+                '<div class"col-xs-auto img-rounded" style="background: #99aeb5">'+
+                '<p>Einkaufswunsch:</p>'+ dict["liste_text"]+'</div> <br>'+
+                '<p>Budget: '+ dict["budget"]+'€ Ort:'+ map[dict["user"]] +'</p>';
+
+        // Css styling
+        newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
+            "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;" +
+            "cursor: pointer");
+        newElement.setAttribute("id", elementId);
+        newElement.setAttribute("onclick","onClickAuftrag(this)");
+
+        p.appendChild(newElement);
+    }
+
+    function clearElements(){
+        var element = document.getElementById("blackboard_elements");
+        while (element.firstChild) {
+          element.removeChild(element.firstChild);
+        }
+    }
+    function addNoElementsMessage(){
+        var p = document.getElementById("blackboard_elements");
+        var newElement = document.createElement("div");
+        newElement.setAttribute('id', "NoElementsMessage");
+        newElement.innerHTML = "Für Ihre Auswahl wurden keine Treffer gefunden, bitte vergrößern Sie Ihren Suchraum.";
+
+        p.appendChild(newElement);
+    }
+
+  </script>
+    <script>
+        function updateBlockboard(e, location, status) {
+            e.preventDefault();
+            // get the nickname
+            // GET AJAX request
+            $.ajax({
+                type: 'GET',
+                url: "{% url 'query_listings_blackboard' %}",
+                data: {"location": location,
+                        "status": status},
+
+                success: function (response) {
+                    // if not valid user, alert the user
+                    if(response["valid"]){
+                        console.log("You selected location:" + response["selected_loc"]);
+                        console.log(response["data"]);
+
+                        var auftraege = JSON.parse(response["data"]);
+                        if (auftraege.length > 0) {
+                            clearElements();
+                            auftraege.forEach(function(element) {
+                                addElement("div", element["pk"], element["fields"], response["map"]);
+                            });
+                        } else {
+                            clearElements();
+                            addNoElementsMessage();
+                        }
+                    }
+                },
+                error: function (response) {
+                    console.log(response)
+                }
+            })
+        }
+    </script>
+  <script>
+      /* query slected location listing*/
+        $("#location").change(function (e) {
+            var location = $(this).val();
+            var status = $("#status").val();
+
+            updateBlockboard(e, location, "aktiv")
+
+        })
+  </script>
 </body>
