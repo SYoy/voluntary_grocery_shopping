@@ -46,20 +46,22 @@
         <div class="col-lg-6 img-rounded" style="color:#ffffff; background: #ebac52; margin-top: 5px;">
             <h2><b>Einkaufsauftrag erstellen</b></h2>
             <h3><b>Achtung! Sobald Sie einen neuen Einkaufswunsch tätigen wird Ihr alter Einkaufsauftrag nicht mehr für die Helfer sichtbar sein.</b></h3>
+            <div class="form-group" style="color:#000000; font-size: larger">
             {% block content %}
                 <form method="post">
                     {% csrf_token %}
                     {% for field in form %}
-                      <p>
+                      <div class="col-md-auto">
                         {% if field.help_text %}
                         {{ field.help_text }}<br>
                         {% endif %}
                         {{ field }}
-                      </p>
+                      </div>
                     {% endfor %}
                     <button type="submit">Auftrag erstellen</button>
-                  </form>
+                </form>
             {% endblock %}
+            </div>
         </div>
 
         <div class="col-lg-6 img-rounded" style="color:#ffffff; background: #3ec6eb; margin-top: 5px; margin-left: 10px; margin-right: -10px">

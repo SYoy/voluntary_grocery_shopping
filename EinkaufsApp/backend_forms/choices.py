@@ -11,3 +11,9 @@ LOCATION_CHOICES = (
     ('RBG', 'Rauenberg'),
     ('ROTBG', 'Rotenberg'),
 )
+
+LOCATION_CHOICES_FORM = (
+    ('MBG', 'Malschenberg'),
+    ('RBG', 'Rauenberg'),
+    ('ROTBG', 'Rotenberg'),
+)
