@@ -8,8 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Corona Einkaufshelfer">
   <meta name="author" content="Marius Steger">
-  <meta http-equiv="refresh" content="180" >
+  <meta http-equiv="refresh" content="300" >
   <title>Einkaufshelfer - offene Aufträge</title>
+
+
+    <!-- Dialog Plugin -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{% static 'js/build_dialog/jquery.dialog.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'js/build_dialog/jquery.dialog.css' %}">
 
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -75,12 +81,12 @@
                         'csrfmiddlewaretoken': '{{ csrf_token }}'},
 
                 success: function (response) {
-                    alert("Ihr Einkaufswunsch wurde erfolgreich hinzugefügt!");
+                    dialog.alert("Ihr Einkaufswunsch wurde erfolgreich hinzugefügt!");
                     window.location.replace("/home/");
 
                 },
                 error: function (response) {
-                    alert("Ihre Anfrage den Einkaufswunsch zu bearbeiten ist fehlgeschlagen, " +
+                    dialog.alert("Ihre Anfrage den Einkaufswunsch zu bearbeiten ist fehlgeschlagen, " +
                         "bitte versuchen Sie es in ein paar Minuten erneut oder wenden Sie \n" +
                         "sich an unsere Service-Email: helfer@uber.space")
                 }
