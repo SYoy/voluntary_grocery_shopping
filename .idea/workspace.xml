@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +66,8 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" />
   </component>

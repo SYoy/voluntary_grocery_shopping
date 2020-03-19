@@ -24,7 +24,8 @@ from django.utils import timezone
 
 ## PUBLIC
 def start(request):
-    return render(request, 'public/start.html')
+    query = User.objects.filter(person__group="H")
+    return render(request, 'public/start.html', {"helfer_count": len(query)})
 
 
 ## PUBLIC

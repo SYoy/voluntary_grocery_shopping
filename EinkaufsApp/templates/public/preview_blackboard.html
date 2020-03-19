@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
+{% load static %}
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
+      gtag('config', 'UA-161194303-1');
+    </script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +18,12 @@
   <meta name="author" content="Marius Steger">
   <meta http-equiv="refresh" content="600" >
   <title>Einkaufshelfer - offene Aufträge</title>
+
+
+    <!-- Dialog Plugin -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{% static 'js/build_dialog/jquery.dialog.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'js/build_dialog/jquery.dialog.css' %}">
 
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -20,35 +34,46 @@
 </head>
 <body id="page-top" data-spy="scroll" data-target=".side-menu"">
     {% load widget_tweaks %}
-  <div class="container-fluid" style="background: #99aeb5; position:relative;">
-    <!-- Start: Schwarzes Brett -->
-    <div class="row hero-header content-ct" style="padding-top: 15px; padding-bottom: 20px;">
+  <div class="container-fluid" style="background: #99aeb5;">
+    <!-- HEADER -->
+    <div class="row hero-header " style="padding-top: 15px; padding-bottom: 20px;">
+
         <a href="/">
-            <div class="col-md-2 img-rounded" style="font-size: 25px; color:#ffffff; background: #99aeb5;">
+            <div class="col-md-2 img-rounded content-ct" style="font-size: 25px; color:#ffffff; background: #99aeb5;">
                 <p style="padding-top: 3px">Zurück zur Startseite</p>
             </div>
         </a>
-    <div class="col-md-3" style="margin-right: 80px"></div>
+
+    <div class="col-md-6">
+
+    </div>
+
+    <div class="col-md-4">
        {% for field in form %}
-        <div class="col-md-3 img-rounded" style="font-size: 25px; color:#000000; background: #129ba9; margin-left: 10px; padding-top: 4px;">
-          <!-- TODO: visibility of text  -->
-            <div class="form-group" style="margin: auto; margin-bottom: 4px">
-            {{ field|add_class:'form-control' }}
+        <div class="col-md-4 img-rounded" style="font-size: 20px; background: #129ba9; margin-left: 10px; padding-top: 4px;">
+            <div class="form-group" style="margin: auto; margin-bottom: 4px; color:#000000; font-size: larger;">
+                {{ field }}
             </div>
         </div>
        {% endfor %}
     </div>
-        <div class="col-lg-12 img-rounded" id="blackboard" style="background:#99AEB5; color: #ffffff; width: 100%; height: 100%; margin-top: 5px;">
-            <div class="row content-ct">
-                <div class="col-md-auto img-rounded" style="background: #0f6674; font-size: 45px; text-align: center; margin-top: 10px; margin-bottom: 10px">Aktuelle Einkaufsaufträge</div>
-            </div>
-            <div class="row content-ct" id="blackboard_elements">
 
-            </div>
+    </div>
+
+    <!-- BLACKBOARD -->
+    <div class="col-lg-12 img-rounded" id="blackboard" style="background:#99AEB5; color: #ffffff; width: 100%; height: 100%; margin-top: 5px;">
+        <div class="row content-ct">
+            <div class="col-md-auto img-rounded" style="background: #0f6674; font-size: 45px; text-align: center; margin-top: 10px; margin-bottom: 10px">Aktuelle Einkaufsaufträge / Hilfsdienste</div>
         </div>
+
+        <div class="row content-ct" id="blackboard_elements">
+
+        </div>
+
+    </div>
   </div>
 
-  <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) 99AEB5-->
+  <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -58,38 +83,6 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
 
-  <!-- TODO js outsourcen
-  <script src="static/js/validator.js"></script>
-  <script src="static/js/blackboard.js"></script>
-    -->
-    <script>
-        function onClickAuftrag(e) {
-            var element = document.getElementById(e.id);
-            if (confirm("Möchten Sie den Einkauf übernehmen? \nEr wird ihren aktiven Aufträgen hinzugefügt und Sie erhalten die Telefonnumer der HilfsempfängerIn.\n" +
-                "Bitte konktaktieren Sie anschließend Ihren Einkaufsauftraggeber."
-                //element.innerHTML
-                )) {
-
-                $.ajax({
-                type: 'POST',
-                url: "{% url 'setInWork' %}",
-                data: {"id_listing": e.id,
-                        'csrfmiddlewaretoken': '{{ csrf_token }}'},
-
-                success: function (response) {
-                    alert("Ihr Einkaufswunsch wurde erfolgreich hinzugefügt!");
-                    window.location.replace("/home/");
-
-                },
-                error: function (response) {
-                    alert("Ihre Anfrage den Einkaufswunsch zu bearbeiten ist fehlgeschlagen, " +
-                        "bitte versuchen Sie es in ein paar Minuten erneut oder wenden Sie \n" +
-                        "sich an unsere Service-Email: helfer@uber.space")
-                }
-            })
-            }
-        }
-    </script>
 
 <script>
 function addElement(elementTag, elementId, dict, map) {
@@ -114,10 +107,9 @@ function addElement(elementTag, elementId, dict, map) {
 
     // Css styling
     newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
-        "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;" +
-        "cursor: pointer; padding-bottom: 5px");
+        "left; margin-right: 10px; min-width: 10%; max-width: 25%; padding: 5px; margin-bottom: 10px;" +
+        "padding-bottom: 5px");
     newElement.setAttribute("id", elementId);
-    newElement.setAttribute("onclick","onClickAuftrag(this)");
 
     p.appendChild(newElement);
 }
@@ -193,3 +185,4 @@ function addNoElementsMessage(){
     })
 </script>
 </body>
+</html>

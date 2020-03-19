@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
+      gtag('config', 'UA-161194303-1');
+    </script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +27,7 @@
 </head>
 <body id="page-top" data-spy="scroll" data-target=".side-menu">
 {% load widget_tweaks %}
-    <div class="row hero-header" style="padding-top: 15px; padding-bottom: 20px; height: 20%">
+<div class="row hero-header" style="padding-top: 15px; padding-bottom: 20px; height: 20%">
     {% if user.is_authenticated %}
 
     <div class="col-md-4 nav float-left">
@@ -45,6 +53,12 @@
     </ul>
 
     {% else %}
+    <div class="col-md-2 float-left">
+        <div class="col-md-auto img-rounded content-ct" style="font-size: xx-large; color: black">
+            Angemeldete Helfer: {{ helfer_count }}
+        </div>
+    </div>
+
     <form class="navbar-form navbar-right" role="form" action="{% url "login" %}"
         method="post" accept-charset="utf-8">
       <div class="form-group">
@@ -66,7 +80,7 @@
         <a href="registrieren_empfaenger">
             <div class="col-sm-6" style="background: #5cb0b0; min-height: 8em; font-size: xx-large;
             text-decoration: none; color: white">
-                <div class="col-auto" style="margin-top: 3em;">Registrieren um Lebensmittel zu erhalten
+                <div class="col-auto" style="padding-top: 3em;">Registrieren um Lebensmittel und andere Dienste zu erhalten
                     <p style="font-size: x-large">(Im blauen Bereich klicken)</p>
                 </div>
             </div>
@@ -75,7 +89,7 @@
         <a href="registrieren_helfender">
             <div class="col-md-6" style="background: #63b58c; min-height: 8em; font-size: xx-large;
             text-decoration: none; color: white">
-                <div class="col-auto" style="margin-top: 3em;">Registrieren als Helfender
+                <div class="col-auto" style="padding-top: 3em;">Registrieren als HelferIn
                 <p style="font-size: x-large">(Im grünen Bereich klicken)</p>
                 </div>
 
@@ -99,8 +113,8 @@
         <a href="{% url 'faq' %}">
             <div class="col-md-4 content-ct img-rounded col-md-offset-4" style="font-size: xx-large; background: #bfd5dc;
             text-decoration: none; color: #000000">
-                <p>FAQ</p>
-                <p style="font-size: x-large">Anleitung</p>
+                <p>Anleitung</p>
+                <p style="font-size: x-large">FAQ</p>
             </div>
         </a>
     </div>
