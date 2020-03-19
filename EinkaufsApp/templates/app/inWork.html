@@ -22,19 +22,25 @@
             var p = document.getElementById(id);
             var newElement = document.createElement(elementTag);
             newElement.setAttribute('id', elementId);
-            newElement.innerHTML = dict["nachricht"];
 
             newElement.className = 'col-md-auto img-rounded';
-            newElement.innerHTML = '<p>Nachricht:<br>'+dict["nachricht"]+'<br></p>'+
-                    '<div class"col-xs-auto img-rounded" style="background: #99aeb5">'+
-                    '<p>Einkaufswunsch:</p>'+ dict["liste_text"]+'</div> <br>'+
-                    '<p>Budget: '+ dict["budget"]+'€ Ort:'+ map[dict["user"]] +'</p>'+
-                    '<p>Telefonnumer: '+ dict["telefonnummer"]+'</p>';
+            newElement.innerHTML = '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
+            '<div class="col-md12 img-rounded" style="background: #798f96; padding-left: 3px; margin-bottom: 25px"> '+
+            dict["nachricht"]+'</div>'+
+            '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
+            '<div class="col-md12 img-rounded" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px"> '+
+            dict["liste_text"]+'</div>'+
+            '<div class="row-col-12">'+
+            '<div class="col-md-6">'+'Budget: '+ dict["budget"]+ '€</div>'+
+            '<div class="col-md-6">'+ 'Ort: '+ map[dict["user"]] +'</div>'+'</div>'+
+            '<div class="col-md-12" style="background: #BA2D0B; color: white">Telefonnumer: '+ dict["telefonnummer"]+'</div>';
+
 
             // Css styling
-            newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
-                "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;" +
-                "cursor: pointer");
+            newElement.setAttribute("style", "background: #0f6674; color: white; float: left; text-align: " +
+                "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;"
+            //   + "cursor: pointer"
+            );
             newElement.setAttribute("id", elementId);
             //newElement.setAttribute("onclick","onClickAuftrag(this)");
 
@@ -125,12 +131,12 @@
                         <p style="padding-top: 5px">Abmelden</p>
                     </div>
                 </a>
-                <div class="row-cols-6">
+                <div class="row-cols-8">
                     <h2 class="mt-2">Angenommene Aufträge (aktiv)</h2>
                     <div class="row content-ct" id="elements_active">
                 </div>
                 </div>
-                <div class="row-cols-6">
+                <div class="row-cols-8">
                     <h2 class="mt-2">Abgeschlossene Aufträge</h2>
                     <div class="row content-ct" id="elements_closed">
                 </div>

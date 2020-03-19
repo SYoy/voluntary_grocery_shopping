@@ -19,13 +19,13 @@
 </head>
 <body id="page-top" data-spy="scroll" data-target=".side-menu">
 {% load widget_tweaks %}
-    <div class="row hero-header" style="padding-top: 15px; padding-bottom: 20px; height: 30%">
+    <div class="row hero-header" style="padding-top: 15px; padding-bottom: 20px; height: 20%">
     {% if user.is_authenticated %}
 
-    <div class="col-md-4 nav navbar-nav navbar-left">
+    <div class="col-md-4 nav float-left">
         <a href="{% url 'home' %}">
-            <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
-                <p style="padding-top: 5px">Klicken Sie hier um zu Ihrem persönlichen Bereich zu gelangen</p>
+            <div class="col-md-auto img-rounded content-ct" style="font-size: 20px; color:#ffffff; background: #63b58c;font-size: xx-large;">
+                <div style="padding-top: 5px">Klicken Sie hier um zu Ihrem persönlichen Bereich zu gelangen</div>
             </div>
         </a>
     </div>
