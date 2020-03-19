@@ -65,7 +65,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/static/js/build_dialog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" />
   </component>
