@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/datenschutz.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/backend_forms/choices.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/choices.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_einkaufliste.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_einkaufliste.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_signup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/impressum.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/impressum.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,19 +70,19 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\js\build_dialog" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked\dist" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked" />
-      <recent name="D:\voluntary_grocery_shopping\templates" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\app" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\public" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\accounts" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\app1" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\js\build_dialog" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked\dist" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked" />
+      <recent name="D:\voluntary_grocery_shopping\templates" />
     </key>
   </component>
   <component name="RunDashboard">
