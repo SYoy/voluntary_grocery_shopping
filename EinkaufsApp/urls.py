@@ -22,9 +22,9 @@ from . import views
 urlpatterns = [
     # public urls
     path('', views.start, name='start'),
+    path('faq', views.faq, name='faq'),
     path('impressum', views.impressum, name='impressum'),
     path('datenschutz', views.datenschutz, name='datenschutz'),
-    path('faq', views.faq, name='faq'),
     path('schwarzes_brett_public/', views.helfen_voransicht, name='public_blackboard'),
     path('get/ajax/listings', views.listings, name="query_listings_blackboard"),
 

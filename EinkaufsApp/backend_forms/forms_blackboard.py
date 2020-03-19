@@ -12,10 +12,9 @@ class SelectionForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(SelectionForm, self).__init__(*args, **kwargs)
-        ## add a "form-control" class to each form input
-        ## for enabling bootstrap
+        ## add a "form-control" class to each form input for enabling bootstrap
         for name in self.fields.keys():
             self.fields[name].widget.attrs.update({
-                'class': 'form-control',
+                # 'class': 'form-control',
                 'id': name
             })
