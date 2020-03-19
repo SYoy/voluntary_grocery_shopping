@@ -131,12 +131,15 @@ def home(request):
 @login_required
 def einkaufsliste(request):
     if request.user.is_authenticated and request.user.person.group in ["E", "D", "S"]:
+        message_app = ""
+        # "Wenn Sie Hilfe beim Ausfüllen des Formular benötigen, schreiben Sie eine Mail an:" \
+        #                       "helfer@uber.space"
         if request.method == 'POST':
             form = EinkaufsauftragForm(request.POST)
             if form.is_valid():
                 query = Einkaufsauftrag.objects.filter(user__id=request.user.id)
 
-                if len(query.filterQ(status='aktiv')|Q(status='angenommen')) < 2:
+                if len(query.filter(Q(status='aktiv')|Q(status='angenommen'))) < 2:
                     auftrag = form.save()
                     auftrag.refresh_from_db()
 
@@ -154,7 +157,7 @@ def einkaufsliste(request):
                     auftrag.save()
                     return redirect("einkaufsliste")
                 else:
-                    message = "Sie haben schon 2 aktive/angenommene Aufträge, bitte schließen Sie diese ab oder widerrufen sie."
+                    message_app = "Sie haben schon 2 aktive/angenommene Aufträge, bitte schließen Sie diese ab oder widerrufen sie."
         else:
             form = EinkaufsauftragForm()
 
@@ -198,7 +201,7 @@ def einkaufsliste(request):
             elif set2.count() == 1:
                 most_recent = set2.values()[0]
 
-        return render(request, 'app/app_inneed.html', {'form': form, "akt_auftrag": most_recent, "akt_auftrag2": most_recent2})
+        return render(request, 'app/app_inneed.html', {'form': form, "akt_auftrag": most_recent, "akt_auftrag2": most_recent2, "message": message_app})
 
     elif request.user.is_authenticated and request.user.person.group == "H":
         messages.add_message(request, messages.INFO, 'Sie sind als Helfer angemeldet und werden deshalb auf das schwarze Brett umgeleitet.')

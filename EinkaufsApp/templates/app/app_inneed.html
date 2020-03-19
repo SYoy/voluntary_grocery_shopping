@@ -53,7 +53,7 @@
     <div class="row hero-header content-ct" style="padding-top: 15px; padding-bottom: 20px;">
         <div class="col-lg-6 img-rounded" style="color:#ffffff; background: #ebac52; margin-top: 5px;">
             <h2><b>Einkaufsauftrag erstellen</b></h2>
-            <h3><b>Achtung! Sobald Sie einen neuen Einkaufswunsch tätigen wird Ihr alter Einkaufsauftrag nicht mehr für die Helfer sichtbar sein.</b></h3>
+            <h3><b>{{ message }}</b></h3>
             <div class="form-group" style="color:#000000; font-size: larger">
             {% block content %}
                 <form method="post">
@@ -77,13 +77,20 @@
             {% block content_akt_auftrag %}
                 <div class="col-md-auto img-rounded" style="background: #0f6674">
                     {% if akt_auftrag %}
-                        <p style="text-align: center">STATUS: {{ akt_auftrag.status }}</p><br>
-                        <p style="text-align: left">Nachricht: <br>{{ akt_auftrag.nachricht }}</p><br>
-                        <p style="text-align: left">Einkaufsliste: <br>{{ akt_auftrag.liste_text }}</p><br>
-                        <p style="text-align: left">Budget: {{ akt_auftrag.budget }}</p>
-
                         <div class="row">
-                            <div class="col-md-1">
+                            <div class="col-md-10" style="margin-left: 10px">
+                                <div class="row content-ct">
+                                    <div class="img-rounded col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px">STATUS:</div>
+                                    <div class="img-rounded col-md-2" style="background: #9d9d9d; font-size: large; margin-top: 5px"> {{ akt_auftrag.status }}
+                                    </div>
+                                </div>
+                                <p style="text-align: left">Nachricht: <br>{{ akt_auftrag.nachricht }}</p>
+                                <p style="text-align: left">Einkaufsliste: <br>{{ akt_auftrag.liste_text }}</p>
+                                <p style="text-align: left">Budget: {{ akt_auftrag.budget }}</p>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-1">
                             </div>
                             {% if akt_auftrag.status == "aktiv" or akt_auftrag.status == "angenommen" %}
                                 <div class="col-md-3" style="margin-bottom: 5px">
@@ -111,11 +118,18 @@
             {% block content_akt_auftrag_2 %}
                 <div class="col-md-auto img-rounded" style="background: #798f96; margin-top: 10px; margin-bottom: 10px">
                     {% if akt_auftrag2 %}
-                        <p style="text-align: center">STATUS: {{ akt_auftrag2.status }}</p><br>
-                        <p style="text-align: left">Nachricht: <br>{{ akt_auftrag2.nachricht }}</p><br>
-                        <p style="text-align: left">Einkaufsliste: <br>{{ akt_auftrag2.liste_text }}</p><br>
-                        <p style="text-align: left">Budget: {{ akt_auftrag2.budget }}</p>
-
+                        <div class="row">
+                            <div class="col-md-10" style="margin-left: 10px">
+                                <div class="row content-ct">
+                                    <div class="img-rounded col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px">STATUS:</div>
+                                    <div class="img-rounded col-md-2" style="background: #9d9d9d; font-size: large; margin-top: 5px"> {{ akt_auftrag2.status }}
+                                    </div>
+                                </div>
+                                <p style="text-align: left">Nachricht: <br>{{ akt_auftrag2.nachricht }}</p>
+                                <p style="text-align: left">Einkaufsliste: <br>{{ akt_auftrag2.liste_text }}</p>
+                                <p style="text-align: left">Budget: {{ akt_auftrag2.budget }}</p>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-1">
                             </div>
