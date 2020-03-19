@@ -19,10 +19,11 @@
             Einkaufshelfer.
         {% endif %}
     </p>
-    <br>
+    <div class="row content-ct">
+
     {% if group == "E" %}
         <a href="{% url 'einkaufsliste' %}">
-            <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
+            <div class="col-md-8 img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
                 <p style="padding-top: 5px">Klicken Sie hier um einen Einkaufswunsch abzusetzen!</p>
             </div>
         </a>
@@ -39,10 +40,18 @@
         </a>
     {% endif %}
 
-        <br>
-    <a href="{% url 'logout' %}">
-        <div class="col-md-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #a3352f;">
-            <p style="padding-top: 5px">Abmelden</p>
-        </div>
-    </a>
+    <div class="row col-md-8">
+        <a href="{% url 'start' %}">
+            <div class="col-md-auto float-left" style="font-size: 20px; color:#ffffff; background: #73b56e;">
+                <p style="padding-top: 5px">Zurück zur Startseite</p>
+            </div>
+        </a>
+        <a href="{% url 'logout' %}">
+            <div class="col-md-auto float-right" style="font-size: 20px; color:#ffffff; background: #a3352f;">
+                <p style="padding-top: 5px">Abmelden</p>
+            </div>
+        </a>
+    </div>
+
+    </div>
 {% endblock %}

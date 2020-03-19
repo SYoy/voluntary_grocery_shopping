@@ -18,31 +18,40 @@
 
 </head>
 <body id="page-top" data-spy="scroll" data-target=".side-menu">
-    {% load widget_tweaks %}
-    <div class="row hero-header" style="padding-top: 15px; padding-bottom: 20px; height: 8em">
+{% load widget_tweaks %}
+    <div class="row hero-header" style="padding-top: 15px; padding-bottom: 20px; height: 30%">
     {% if user.is_authenticated %}
-        <ul class="nav navbar-nav navbar-left">
-    <a href="{% url 'home' %}">
-        <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
-            <p style="padding-top: 5px">Klicken Sie hier um zu Ihrem persönlichen Bereich zu gelangen</p>
-        </div>
-    </a>
 
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <a href="{% url "logout" %}">
-            <p>Angemeldet als {{ user.username }}</p>
-            <button type="submit" class="btn btn-warning">Abmelden</button>
+    <div class="col-md-4 nav navbar-nav navbar-left">
+        <a href="{% url 'home' %}">
+            <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
+                <p style="padding-top: 5px">Klicken Sie hier um zu Ihrem persönlichen Bereich zu gelangen</p>
+            </div>
         </a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+    <div class="row">
+        <div class="col-xs-6" style="margin-bottom: auto; margin-top: auto;">
+
+        <p style="font-size: x-large; color: black">Angemeldet als: {{ user.username }}</p>
+        </div>
+        <div class="col-xs-6" style="margin-bottom: auto; margin-top: auto;">
+            <a href="{% url "logout" %}">
+                <button type="submit" class="btn btn-warning">Abmelden</button>
+            </a>
+        </div>
+    </div>
     </ul>
+
     {% else %}
     <form class="navbar-form navbar-right" role="form" action="{% url "login" %}"
         method="post" accept-charset="utf-8">
       <div class="form-group">
-        <input type="text" placeholder="Username" class="form-control" name="username">
+        <input type="text" placeholder="Benutzername" class="form-control" name="username">
       </div>
       <div class="form-group">
-        <input type="password" placeholder="Password" class="form-control" name="password">
+        <input type="password" placeholder="Passwort" class="form-control" name="password">
       </div>
       {% csrf_token %}
       <button type="submit" class="btn btn-success">Sign in</button>
@@ -50,30 +59,60 @@
     {% endif %}
     </div>
 
-  <div class="container-fluid" style="background: #99aeb5;">
+  <div class="container-fluid" style="background: #99aeb5; min-height: 100%">
     <!-- Start: Schwarzes Brett -->
-    <div class="row content-ct" style="padding-bottom: 20px; width: 100%">
+    <div class="row content-ct" style="padding-bottom: 15px;">
+
         <a href="registrieren_empfaenger">
-            <div class="col-sm-6" style="background: #5cb0b0; height: 600px; font-size: xx-large">
-                <br> <br>Registrieren um Lebensmittel zu erhalten
+            <div class="col-sm-6" style="background: #5cb0b0; min-height: 8em; font-size: xx-large;
+            text-decoration: none; color: white">
+                <div class="col-auto" style="margin-top: 3em;">Registrieren um Lebensmittel zu erhalten
+                    <p style="font-size: x-large">(Im blauen Bereich klicken)</p>
+                </div>
             </div>
         </a>
+
         <a href="registrieren_helfender">
-            <div class="col-sm-6" style="background: #63b58c; height: 600px; font-size: xx-large">
-            <br> <br> Registrieren als Helfender
+            <div class="col-md-6" style="background: #63b58c; min-height: 8em; font-size: xx-large;
+            text-decoration: none; color: white">
+                <div class="col-auto" style="margin-top: 3em;">Registrieren als Helfender
+                <p style="font-size: x-large">(Im grünen Bereich klicken)</p>
+                </div>
+
             </div>
         </a>
 
     </div>
-    <div class="row content-ct" style="width: 100%;">
+
+    <div class="row content-ct" style="margin-top: 1em">
         <a href="schwarzes_brett_public">
-            <div class="col-auto content-ct" style="font-size: xx-large; height: 5.5em">
+            <div class="col-md-6 content-ct img-rounded col-md-offset-3" style="font-size: xx-large; min-height: 6em; background: #304385;
+            text-decoration: none; color: white">
+                <br>
                 <p>Aktuelle Aufträge</p>
                 <p style="font-size: x-large">Einkaufswünsche auf dem schwarzen Brett ansehen.</p>
             </div>
         </a>
     </div>
 
+   <div class="row content-ct" style="margin-top: 1em">
+        <a href="{% url 'faq' %}">
+            <div class="col-md-4 content-ct img-rounded col-md-offset-4" style="font-size: xx-large; background: #bfd5dc;
+            text-decoration: none; color: #000000">
+                <p>FAQ</p>
+                <p style="font-size: x-large">Anleitung</p>
+            </div>
+        </a>
+    </div>
+
+   <div class="row content-ct" style="margin-top: 1em; margin-bottom: 1em">
+        <a href="{% url 'impressum' %}">
+            <div class="col-md-4 content-ct img-rounded col-md-offset-4" style="font-size: xx-large; background: #a7bdc4;
+            text-decoration: none; color: #000000">
+                <p>Impressum</p>
+            </div>
+        </a>
+    </div>
 
   <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -84,5 +123,9 @@
   <script src="static/js/bootstrap.js"></script>
   <script src="static/js/jquery.easing.min.js"></script>
   <script src="static/js/scrolling-nav.js"></script>
+  <script type="text/javascript">
+    function myhref(web){
+      window.location.href = web;}
+  </script>
 </body>
 

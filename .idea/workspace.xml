@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/blackboard_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/EinkaufsApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EinkaufsApp.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/js/blackboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/faq.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/faq.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,8 +50,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -66,9 +76,9 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -105,6 +115,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="EinkaufsApp.settings" />
+        <env name="DEBUG" value="True" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\mariu\AppData\Local\Programs\Python\Python36\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
