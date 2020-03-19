@@ -20,7 +20,7 @@ from EinkaufsApp.backend_forms.forms_blackboard import SelectionForm
 from EinkaufsApp.models import Einkaufsauftrag
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+from django.db.models import Q
 
 ## PUBLIC
 def start(request):
@@ -131,57 +131,82 @@ def home(request):
 @login_required
 def einkaufsliste(request):
     if request.user.is_authenticated and request.user.person.group in ["E", "D", "S"]:
+        message_app = ""
+        # "Wenn Sie Hilfe beim Ausfüllen des Formular benötigen, schreiben Sie eine Mail an:" \
+        #                       "helfer@uber.space"
         if request.method == 'POST':
             form = EinkaufsauftragForm(request.POST)
             if form.is_valid():
-                # TODO check other active listings -> remove
-                auftrag = form.save()
-                auftrag.refresh_from_db()
+                query = Einkaufsauftrag.objects.filter(user__id=request.user.id)
 
-                # Aus Online Form uebernehmen
-                auftrag.nachricht = form.cleaned_data.get('nachricht')
-                auftrag.liste_text = form.cleaned_data.get('liste_text')
-                auftrag.telefonnummer = form.cleaned_data.get('telefonnummer')
-                auftrag.budget = form.cleaned_data.get('budget')
+                if len(query.filter(Q(status='aktiv')|Q(status='angenommen'))) < 2:
+                    auftrag = form.save()
+                    auftrag.refresh_from_db()
 
-                # Beim Erstellen hinzugefuegt
-                auftrag.status = "aktiv"
-                auftrag.auftragsdatum = timezone.now()
-                auftrag.user_id = request.user.id
+                    # Aus Online Form uebernehmen
+                    auftrag.nachricht = form.cleaned_data.get('nachricht')
+                    auftrag.liste_text = form.cleaned_data.get('liste_text')
+                    auftrag.telefonnummer = form.cleaned_data.get('telefonnummer')
+                    auftrag.budget = form.cleaned_data.get('budget')
 
-                auftrag.save()
-                return redirect("einkaufsliste")
+                    # Beim Erstellen hinzugefuegt
+                    auftrag.status = "aktiv"
+                    auftrag.auftragsdatum = timezone.now()
+                    auftrag.user_id = request.user.id
+
+                    auftrag.save()
+                    return redirect("einkaufsliste")
+                else:
+                    message_app = "Sie haben schon 2 aktive/angenommene Aufträge, bitte schließen Sie diese ab oder widerrufen sie."
         else:
             form = EinkaufsauftragForm()
 
-        auftraege = Einkaufsauftrag.objects.filter(user_id=request.user.id).order_by("-date_added").values()
+        # Angezeigte Aufträge (rechts)
         most_recent = None
+        most_recent2 = None
 
-        # TODO - refactor
-        if auftraege.count() > 0:
-            for ob in auftraege:
-                if ob["status"] == "aktiv":
-                    most_recent = ob
-                    break
-                elif ob["status"] == "angenommen" and most_recent is None:
-                    most_recent = ob
-                    break
-            if most_recent is None:
-                for ob in auftraege:
-                    if ob["status"] == "abgeschlossen":
-                        most_recent = ob
-                        break
-                if most_recent is None:
-                    for ob in auftraege:
-                        if ob["status"] == "inaktiv":
-                            most_recent = ob
-                            break
+        aktiv = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="aktiv").order_by("-date_added")
+        ang = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="angenommen").order_by("-date_added")
 
-        return render(request, 'app/app_inneed.html', {'form': form, "akt_auftrag": most_recent})
+        set = aktiv | ang
+        set = set.values()
+        if set.count() > 0 and set.count() < 3:
+            if set.count() == 2:
+                most_recent = set[0]
+                most_recent2 = set[1]
+            elif set.count() == 1:
+                most_recent = set.values()[0]
+
+                # fill with inaktiv/abgeschlossen
+                abgeschlossen = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="abgeschlossen").order_by("-date_added")
+                inaktiv = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="inaktiv").order_by("-date_added")
+                set2 = abgeschlossen | inaktiv
+                set2 = set2.values()
+                if set2.count() > 0:
+                    most_recent2 = set2.values()[0]
+
+        elif set.count() > 2:
+            print("ERROR IN DATABASE")# TODO
+
+        elif set.count() == 0:
+            # fill with inaktiv/abgeschlossen
+            abgeschlossen = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="abgeschlossen").order_by(
+                "-date_added")
+            inaktiv = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="inaktiv").order_by("-date_added")
+            set2 = abgeschlossen | inaktiv
+            set2 = set2.values()
+            if set2.count() == 2:
+                most_recent = set2.values()[0]
+                most_recent2 = set2.values()[1]
+            elif set2.count() == 1:
+                most_recent = set2.values()[0]
+
+        return render(request, 'app/app_inneed.html', {'form': form, "akt_auftrag": most_recent, "akt_auftrag2": most_recent2, "message": message_app})
 
     elif request.user.is_authenticated and request.user.person.group == "H":
         messages.add_message(request, messages.INFO, 'Sie sind als Helfer angemeldet und werden deshalb auf das schwarze Brett umgeleitet.')
         return redirect("helfen")
+
     else:
         return redirect("start")
 

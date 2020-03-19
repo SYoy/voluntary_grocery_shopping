@@ -9,6 +9,7 @@
 
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
+
 <html lang="en">
   <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -136,6 +137,11 @@
                         Einkaufshelfer.
                     {% endif %}
                 </p>
+                <a href="{% url 'home' %}">
+                    <div class="col-md-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
+                        <p style="padding-top: 5px">Zurück zur Übersicht</p>
+                    </div>
+                </a>
                 <a href="{% url 'logout' %}">
                     <div class="col-md-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #a3352f;">
                         <p style="padding-top: 5px">Abmelden</p>
