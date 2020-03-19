@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/wsgi.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,18 +69,18 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked\dist" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked" />
+      <recent name="D:\voluntary_grocery_shopping\templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\app" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\public" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\accounts" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\app1" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked\dist" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked" />
-      <recent name="D:\voluntary_grocery_shopping\templates" />
     </key>
   </component>
   <component name="RunDashboard">
