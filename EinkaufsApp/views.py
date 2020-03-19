@@ -33,6 +33,11 @@ def impressum(request):
 
 
 ## PUBLIC
+def datenschutz(request):
+    return render(request, 'public/datenschutz.html')
+
+
+## PUBLIC
 def faq(request):
     return render(request, 'public/faq.html')
 

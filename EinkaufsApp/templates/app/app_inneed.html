@@ -11,6 +11,11 @@
   <meta http-equiv="refresh" content="600" >
   <title>Einkaufshilfe erhalten</title>
 
+    <!-- Dialog Plugin -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{% static 'js/build_dialog/jquery.dialog.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'js/build_dialog/jquery.dialog.css' %}">
+
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -41,20 +46,22 @@
         <div class="col-lg-6 img-rounded" style="color:#ffffff; background: #ebac52; margin-top: 5px;">
             <h2><b>Einkaufsauftrag erstellen</b></h2>
             <h3><b>Achtung! Sobald Sie einen neuen Einkaufswunsch tätigen wird Ihr alter Einkaufsauftrag nicht mehr für die Helfer sichtbar sein.</b></h3>
+            <div class="form-group" style="color:#000000; font-size: larger">
             {% block content %}
                 <form method="post">
                     {% csrf_token %}
                     {% for field in form %}
-                      <p>
+                      <div class="col-md-auto">
                         {% if field.help_text %}
                         {{ field.help_text }}<br>
                         {% endif %}
                         {{ field }}
-                      </p>
+                      </div>
                     {% endfor %}
                     <button type="submit">Auftrag erstellen</button>
-                  </form>
+                </form>
             {% endblock %}
+            </div>
         </div>
 
         <div class="col-lg-6 img-rounded" style="color:#ffffff; background: #3ec6eb; margin-top: 5px; margin-left: 10px; margin-right: -10px">
@@ -108,26 +115,34 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
 
-  <script>
-      $("#widerrufen").click(function (e) {
-          if (confirm('Sind Sie sicher, dass Sie ihren aktuellen Einkaufswunsch widerrufen möchten?')) {
+<script>
+  $("#widerrufen").click(function (e) {
+      dialog.confirm({
+        message: 'Sind Sie sicher, dass Sie ihren aktuellen Einkaufswunsch widerrufen möchten?',
+        cancel: "Nein, den Aufrag gelistet lassen",
+        button: "Ja!",
+        required: true,
+        callback: function(response){
             var ID_auftrag = "{{ akt_auftrag.id }}";
             var ID_user_auftrag = "{{ akt_auftrag.user_id }}";
             removeListing(e, ID_auftrag, ID_user_auftrag)
-          } else {
-              //do nothing
-          }
-        })
-      $("#abschließen").click(function (e) {
-          if (confirm('Ist Ihr Auftrag erfolgreich abgeschlossen worden?')) {
+        }
+    });
+});
+$("#abschließen").click(function (e) {
+  dialog.confirm({
+        message: "Ist Ihr Auftrag erfolgreich abgeschlossen worden?",
+        cancel: "Nein, den Aufrag aktiv lassen",
+        button: "Ja!",
+        required: true,
+        callback: function(response){
             var ID_auftrag = "{{ akt_auftrag.id }}";
             var ID_user_auftrag = "{{ akt_auftrag.user_id }}";
             closeListing(e, ID_auftrag, ID_user_auftrag)
-          } else {
-              //do nothing
-          }
-        })
-  </script>
+        }
+    });
+});
+</script>
   <script>
       function removeListing(e, ID, ID_user) {
           // e.preventDefault()
@@ -140,12 +155,25 @@
 
                 success: function (response) {
                     location.reload()
-                    alert("Ihre Anfrage den Einkaufswunsch zu entfernen  war erfolgreich!")
-
+                    dialog.alert({
+                        title: "Bestätigung",
+                        message: "Ihre Anfrage den Einkaufswunsch zu entfernen  war erfolgreich!",
+                        button: "OK",
+                        animation: "fade",
+                    });
                 },
                 error: function (response) {
-                    alert("Ihre Anfrage den Einkaufswunsch zu entfernen ist fehlgeschlagen, " +
-                        "bitte versuchen Sie es in ein paar Minuten erneut oder wenden Sie sich an unsere Service-Email: ?")
+                    dialog.alert({
+                        title: "Leider nicht erfolgreich",
+                        message: "Ihre Anfrage den Einkaufswunsch zu entfernen ist fehlgeschlagen, " +
+                                    "bitte versuchen Sie es in ein paar Minuten erneut oder wenden " +
+                                    "Sie sich an unsere Service-Email: helfer@uber.space",
+                        button: "OK",
+                        animation: "fade",
+                        callback: function(value){
+                            location.reload()
+                        }
+                    });
                 }
             })
       }
@@ -158,12 +186,30 @@
                         'csrfmiddlewaretoken': '{{ csrf_token }}'},
 
                 success: function (response) {
+                    dialog.alert({
+                        title: "Bestätigung",
+                        message: "Ihre Anfrage den Einkaufswunsch abzuschließen war erfolgreich!",
+                        button: "OK",
+                        animation: "fade",
+                        callback: function(value){
+                            location.reload()
+                        }
+                    });
+
                     location.reload()
-                    alert("Ihre Anfrage den Einkaufswunsch abzuschließen war erfolgreich!")
                 },
                 error: function (response) {
-                    alert("Ihre Anfrage den Einkaufswunsch abzuschließen ist fehlgeschlagen, " +
-                        "bitte versuchen Sie es in ein paar Minuten erneut oder wenden Sie sich an unsere Service-Email: ?")
+                    dialog.alert({
+                        title: "Leider nicht erfolgreich",
+                        message: "Ihre Anfrage den Einkaufswunsch abzuschließen ist fehlgeschlagen, " +
+                                    "bitte versuchen Sie es in ein paar Minuten erneut oder wenden " +
+                                    "Sie sich an unsere Service-Email: helfer@uber.space",
+                        button: "OK",
+                        animation: "fade",
+                        callback: function(value){
+                            location.reload()
+                        }
+                    });
                 }
             })
       }

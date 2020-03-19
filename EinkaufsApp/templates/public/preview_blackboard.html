@@ -18,7 +18,7 @@
     <link href="{% static 'css/dosis-font.css' %}" rel="stylesheet" type='text/css'>
 
 </head>
-<body id="page-top" data-spy="scroll" data-target=".side-menu">
+<body id="page-top" data-spy="scroll" data-target=".side-menu"">
     {% load widget_tweaks %}
   <div class="container-fluid" style="background: #99aeb5; position:relative;">
     <!-- Start: Schwarzes Brett -->
@@ -38,7 +38,7 @@
         </div>
        {% endfor %}
     </div>
-        <div class="col-lg-12 img-rounded" id="blackboard" style="background:#99aeb5; color: #ffffff; width: 100%; height: 100%; margin-top: 5px;">
+        <div class="col-lg-12 img-rounded" id="blackboard" style="background:#99AEB5; color: #ffffff; width: 100%; height: 100%; margin-top: 5px;">
             <div class="row content-ct">
                 <div class="col-md-auto img-rounded" style="background: #0f6674; font-size: 45px; text-align: center; margin-top: 10px; margin-bottom: 10px">Aktuelle Einkaufsaufträge</div>
             </div>
@@ -48,7 +48,7 @@
         </div>
   </div>
 
-  <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
+  <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) 99AEB5-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -91,98 +91,105 @@
         }
     </script>
 
-  <script>
-    function addElement(elementTag, elementId, dict, map) {
-        // Adds an element to the document
-        var p = document.getElementById("blackboard_elements");
-        var newElement = document.createElement(elementTag);
-        newElement.setAttribute('id', elementId);
-        newElement.innerHTML = dict["nachricht"];
+<script>
+function addElement(elementTag, elementId, dict, map) {
+    // Adds an element to the document
+    var p = document.getElementById("blackboard_elements");
+    var newElement = document.createElement(elementTag);
+    newElement.setAttribute('id', elementId);
+    newElement.innerHTML = dict["nachricht"];
 
-        newElement.className = 'col-md-auto img-rounded';
-        newElement.innerHTML = '<p>Nachricht:<br>'+dict["nachricht"]+'<br></p>'+
-                '<div class"col-xs-auto img-rounded" style="background: #99aeb5">'+
-                '<p>Einkaufswunsch:</p>'+ dict["liste_text"]+'</div> <br>'+
-                '<p>Budget: '+ dict["budget"]+'€ Ort:'+ map[dict["user"]] +'</p>';
+    newElement.className = 'col-md-auto img-rounded';
+    newElement.innerHTML = '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
+            '<div class="col-md12 img-rounded" style="background: #798f96; padding-left: 3px; margin-bottom: 25px"> '+
+            dict["nachricht"]+'</div>'+
+            '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
+            '<div class="col-md12 img-rounded" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px"> '+
+            dict["liste_text"]+'</div>'+
+            //'<div class="row">'+
+            '<div class="col-md-6">'+'Budget: '+ dict["budget"]+ '€</div>'+
+            '<div class="col-md-6">'+ 'Ort: '+ map[dict["user"]] +
+            //'</div>'+
+            '</div>';
 
-        // Css styling
-        newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
-            "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;" +
-            "cursor: pointer");
-        newElement.setAttribute("id", elementId);
-        newElement.setAttribute("onclick","onClickAuftrag(this)");
+    // Css styling
+    newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
+        "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;" +
+        "cursor: pointer; padding-bottom: 5px");
+    newElement.setAttribute("id", elementId);
+    newElement.setAttribute("onclick","onClickAuftrag(this)");
 
-        p.appendChild(newElement);
+    p.appendChild(newElement);
+}
+
+function clearElements(){
+    var element = document.getElementById("blackboard_elements");
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
     }
+}
+function addNoElementsMessage(){
+    var p = document.getElementById("blackboard_elements");
+    var newElement = document.createElement("div");
+    newElement.setAttribute('id', "NoElementsMessage");
+    newElement.innerHTML = "Für Ihre Auswahl wurden keine Treffer gefunden, bitte vergrößern Sie Ihren Suchraum.";
 
-    function clearElements(){
-        var element = document.getElementById("blackboard_elements");
-        while (element.firstChild) {
-          element.removeChild(element.firstChild);
-        }
-    }
-    function addNoElementsMessage(){
-        var p = document.getElementById("blackboard_elements");
-        var newElement = document.createElement("div");
-        newElement.setAttribute('id', "NoElementsMessage");
-        newElement.innerHTML = "Für Ihre Auswahl wurden keine Treffer gefunden, bitte vergrößern Sie Ihren Suchraum.";
+    p.appendChild(newElement);
+}
 
-        p.appendChild(newElement);
-    }
+</script>
+<script>
+    function updateBlockboard(e, location, status) {
+        e.preventDefault();
+        // get the nickname
+        // GET AJAX request
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'query_listings_blackboard' %}",
+            data: {"location": location,
+                    "status": status},
 
-  </script>
-    <script>
-        function updateBlockboard(e, location, status) {
-            e.preventDefault();
-            // get the nickname
-            // GET AJAX request
-            $.ajax({
-                type: 'GET',
-                url: "{% url 'query_listings_blackboard' %}",
-                data: {"location": location,
-                        "status": status},
+            success: function (response) {
+                // if not valid user, alert the user
+                if(response["valid"]){
+                    console.log("You selected location:" + response["selected_loc"]);
+                    console.log(response["data"]);
 
-                success: function (response) {
-                    // if not valid user, alert the user
-                    if(response["valid"]){
-                        console.log("You selected location:" + response["selected_loc"]);
-                        console.log(response["data"]);
-
-                        var auftraege = JSON.parse(response["data"]);
-                        if (auftraege.length > 0) {
-                            clearElements();
-                            auftraege.forEach(function(element) {
-                                addElement("div", element["pk"], element["fields"], response["map"]);
-                            });
-                        } else {
-                            clearElements();
-                            addNoElementsMessage();
-                        }
+                    var auftraege = JSON.parse(response["data"]);
+                    if (auftraege.length > 0) {
+                        clearElements();
+                        auftraege.forEach(function(element) {
+                            addElement("div", element["pk"], element["fields"], response["map"]);
+                        });
+                    } else {
+                        clearElements();
+                        addNoElementsMessage();
                     }
-                },
-                error: function (response) {
-                    console.log(response)
                 }
-            })
-        }
-    </script>
-  <script>
-      /* query slected location listing*/
-        $("#location").change(function (e) {
-            var location = $(this).val();
-            var status = $("#status").val();
-
-            updateBlockboard(e, location, status)
-
+            },
+            error: function (response) {
+                console.log(response)
+            }
         })
-  </script>
-  <script>
-      /* query slected location listing*/
-        $("#status").change(function (e) {
-            var location = $("#location").val();
-            var status = $(this).val();
+    }
+</script>
+<script>
+  /* query slected location listing*/
+    $("#location").change(function (e) {
+        var location = $(this).val();
+        var status = $("#status").val();
 
-            updateBlockboard(e, location, status)
-        })
-  </script>
+        updateBlockboard(e, location, status)
+
+    })
+</script>
+<script>
+  /* query slected location listing*/
+    $("#status").change(function (e) {
+        var location = $("#location").val();
+        var status = $(this).val();
+
+        updateBlockboard(e, location, status)
+    })
+</script>
 </body>
