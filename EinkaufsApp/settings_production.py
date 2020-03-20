@@ -11,18 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from django.contrib.messages import constants as message_constants
-from django.contrib.messages import constants as messages
-
-# Django-Messages
-MESSAGE_TAGS = {
-    messages.DEBUG: 'alert-info',
-    messages.INFO: 'alert-info',
-    messages.SUCCESS: 'alert-success',
-    messages.WARNING: 'alert-warning',
-    messages.ERROR: 'alert-danger',
-}
-MESSAGE_LEVEL = message_constants.INFO
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['helfer.uber.space', 'www.rauenberg-hilft.de', 'rauenberg-hilft.de']
+ALLOWED_HOSTS = ['helfer.uber.space']
 
 # Application definition
 
@@ -132,18 +120,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-
-# REDIRECT
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = '/'
