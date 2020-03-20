@@ -23,18 +23,18 @@
         {% if group == "E" %}
             <a href="{% url 'einkaufsliste' %}">
                 <div class="col-md-auto img-rounded" style="font-size: x-large; color:#ffffff; background: #63b58c;">
-                    <p style="padding-top: 5px">Klicken Sie hier um einen Einkaufswunsch abzusetzen!</p>
+                    <p style="padding-top: 5px">Klicken Sie hier um einen Einkaufswunsch oder anderen Dienst auf dem schwarzen Brett zu veröffentlichen.</p>
                 </div>
             </a>
         {% elif group == "H" %}
             <a href="{% url 'blackboard' %}">
                 <div class="col-md-auto img-rounded" style="font-size: x-large; color:#ffffff; background: #63b58c;">
-                    <p style="padding-top: 5px">Klicken Sie hier um aktuelle Einkaufswünsche zu sehen!</p>
+                    <p style="padding-top: 5px">Klicken Sie hier um aktuelle Einkaufswünsche/Aufträge zu sehen!</p>
                 </div>
             </a>
             <a href="{% url 'helfer_einkaufslisten' %}">
                 <div class="col-md-auto img-rounded" style="font-size: x-large; color:#ffffff; background: #63b58c;">
-                        <p style="padding-top: 5px">Klicken Sie hier um Ihre angenommenen Einkaufsaufträge anzusehen!</p>
+                        <p style="padding-top: 5px">Klicken Sie hier um Ihre angenommenen Einkaufsaufträge/Aufträge anzusehen!</p>
                 </div>
             </a>
         {% endif %}
