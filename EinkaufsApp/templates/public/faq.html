@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+
 {# Load the tag library #}
 {% load bootstrap4 %}
 
@@ -9,12 +11,23 @@
 {% bootstrap_messages %}
 
 {% block content %}
-    <h2>FAQ</h2>
-    <p>Ist in Arbeit</p>
+    <h1>Anleitung</h1>
+    <p>FAQ ist noch in Arbeit</p>
+    <br>
 
-    <a href="{% url 'start' %}">
-        <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
-            <p style="padding-top: 5px">Zurück zur Startseite</p>
-        </div>
-    </a>
+    <h2>Wem soll diese Seite helfen?</h2>
+    <p>Todo</p>
+    <br>
+
+    <h2>Wie kann geholfen werden?</h2>
+    <p>Todo</p>
+    <br>
+
+    <h2>Ratschläge und Informationen zur Übergabe</h2>
+    <p>Liste</p>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+
 {% endblock %}

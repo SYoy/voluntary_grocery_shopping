@@ -11,15 +11,21 @@
 {% bootstrap_messages %}
 
 {% block content %}
-  <h2>Hier registrieren, um Hilfe zu erhalten</h2>
+  <h2>Hier registrieren, um Hilfe zu erhalten - <a href="{% url "start" %}">zurück</a></h2>
   <form method="post">
     {% csrf_token %}
     {% for field in form %}
       <p>
-        {{ field.label_tag }}<br>
+        {% if field.name == "datenschutz" %}
+            {{ field.label_tag }}
+            {{ field }}<a href="{% url "datenschutz" %}">
+            <p>(Datenschutzerklärung hier einsehen)</p></a>
+        {% else %}
+            <large style="color: black; font-size: larger">{{ field.label_tag }}</large><br>
         {{ field }}
+        {% endif %}
         {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
+          <large style="color: black">{{ field.help_text }}</large>
         {% endif %}
         {% for error in field.errors %}
           <p style="color: red">{{ error }}</p>

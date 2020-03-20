@@ -5,7 +5,12 @@ import sys
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EinkaufsApp.settings')
+    if os.environ.get('DEBUG'):
+        print("DEBUG-MODUS")
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EinkaufsApp.settings_development')
+    else:
+        print("PRODUCTION-MODUS")
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EinkaufsApp.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
