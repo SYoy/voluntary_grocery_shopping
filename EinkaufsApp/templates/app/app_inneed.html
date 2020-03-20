@@ -79,6 +79,15 @@
         </form>
      {% endif %}
 
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert" style="margin-top: 10px;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menü
         <i class="fas fa-bars"></i>
@@ -125,14 +134,6 @@
         <div class="col-lg-6 text-center" style="color:#ffffff; background: #9cc5ca; margin-top: 10px; border-radius: 20px">
             <h2 style="margin-top: 10px"><b>Einkaufsauftrag erstellen</b></h2>
 
-                {% for message in messages %}
-                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                        {{ message }}
-                    </div>
-                {% endfor %}
             <div class="form-group" style="color:#000000; font-size: larger">
                 <form method="post">
                     {% csrf_token %}
@@ -254,6 +255,11 @@
         </div>
     </div>
 </section>
+
+  <!-- Bootstrap CDN -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
   <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

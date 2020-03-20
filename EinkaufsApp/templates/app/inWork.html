@@ -40,23 +40,24 @@
         newElement.setAttribute('id', elementId);
 
 
-        newElement.className = 'col-md-auto';
+        newElement.className = 'col-sm-12 col-md-5 col-lg-3';
         newElement.innerHTML = '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
         '<div class="col-md12" style="background: #798f96; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
         dict["nachricht"]+'</div>'+
         '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
         '<div class="col-md12" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
         dict["liste_text"]+'</div>'+
-        '<div class="row-col-12">'+
-        '<div class="col-md-6">'+'Budget: '+ dict["budget"]+ '€</div>'+
-        '<div class="col-md-6">'+ 'Ort: '+ map[dict["user"]] +'</div>'+'</div>'+
+        '<div class="row justify-content-between">'+
+        '<div class="col-md-3">'+'Budget: '+ dict["budget"]+ '€</div>'+
+        '<div class="col-md-3">'+ 'Ort: '+ map[dict["user"]] +'</div>'+
+        '</div>'+
         '<div class="col-md-12" style="background: #BA2D0B; color: white; border-radius: 5px">Telefonnumer: '+ dict["telefonnummer"]+'</div>';
 
 
         // Css styling
         newElement.setAttribute("style", "background: #0f6674; color: white; float: left; text-align: " +
-            "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;" +
-            "border-radius: 15px; border: 2px solid #798f96;"
+            "left; margin-left: 10px; padding: 5px; margin-bottom: 10px;" +
+            "border-radius: 15px; border: 3px solid #798f96;"
         //   + "cursor: pointer"
         );
         newElement.setAttribute("id", elementId);
@@ -229,9 +230,7 @@ function showAccepted() {
     </div>
   </section>
 
-    <!-- Bootstrap CDN
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-   -->
+    <!-- Bootstrap CDN -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
