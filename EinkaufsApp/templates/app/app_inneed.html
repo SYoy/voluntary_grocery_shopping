@@ -48,6 +48,7 @@
 {% load widget_tweaks %}
   <!-- Navigation -->
 
+  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container-fluid">
      {% if user.is_authenticated %}
@@ -85,7 +86,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'start' %}">Starseite</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'start' %}">Starseite</a>
           </li>
             {% if user.is_authenticated %}
               <li class="nav-item mx-0 mx-lg-1">
@@ -96,14 +97,14 @@
               </li>
             {% else %}
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
               </li>
             {% endif %}
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'faq' %}">Anleitung/FAQ</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'faq' %}">Anleitung/FAQ</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'impressum' %}">Impressum</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'impressum' %}">Impressum</a>
           </li>
         </ul>
       </div>
@@ -115,13 +116,13 @@
     <div class="row hero-header content-ct" style="padding-top: 15px; padding-bottom: 20px;">
 
         <a href="#page-top">
-            <div class="col-lg-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
+            <div class="col-lg-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #8ea995;">
                 <p style="padding-top: 5px">top</p>
             </div>
         </a>
     </div>
     <div class="row" style="padding-top: 15px; padding-bottom: 20px;">
-        <div class="col-lg-6 text-center" style="color:#ffffff; background: #ebac52; margin-top: 10px; border-radius: 20px">
+        <div class="col-lg-6 text-center" style="color:#ffffff; background: #9cc5ca; margin-top: 10px; border-radius: 20px">
             <h2 style="margin-top: 10px"><b>Einkaufsauftrag erstellen</b></h2>
 
                 {% for message in messages %}
@@ -152,7 +153,7 @@
             </div>
         </div>
 
-        <div class="col-lg-6" style="color:#ffffff; background: #3ec6eb; margin-top: 10px; padding-left: 30px; border-radius: 20px">
+        <div class="col-lg-6 text-center" style="color:#ffffff; background: #8eb4b5; margin-top: 10px; padding-left: 30px; border-radius: 20px">
             <h2 style="margin-top: 10px"><b>Ihre aktuellen Einkaufswünsche/Dienste</b></h2>
                     {% for message in messages_act %}
                         <div class="alert {{ message.tags }} alert-dismissible" role="alert">
@@ -162,14 +163,18 @@
                             {{ message }}
                         </div>
                     {% endfor %}
-                <div class="col-md-auto" style="background: #0f6674; border-radius: 20px">
+
+                <div class="col-md-auto" style="background: #8ea995; border-radius: 20px">
                     {% if akt_auftrag %}
                         <div class="row">
                             <div class="col-md-10" style="margin-left: 10px">
                                 <div class="row content-ct">
                                     <div class="img-rounded col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px; border-radius: 5px">STATUS:</div>
-                                    <div class="img-rounded col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag.status }}
-                                    </div>
+                                    {% if akt_auftrag.status == "aktiv" or akt_auftrag.status == "angenommen" %}
+                                        <div class="img-rounded col-md-3" style="background: #9bcaa7; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag.status }}</div>
+                                    {% else %}
+                                        <div class="img-rounded col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag.status }}</div>
+                                    {% endif %}
                                 </div>
                                 <p style="text-align: left">Nachricht: <br>{{ akt_auftrag.nachricht }}</p>
                                 <p style="text-align: left">Einkaufsliste: <br>{{ akt_auftrag.liste_text }}</p>
@@ -201,13 +206,17 @@
                     {% endif %}
                 </div>
 
-                <div class="col-md-auto" style="background: #798f96; margin-top: 10px; margin-bottom: 10px; border-radius: 20px">
+                <div class="col-md-auto" style="background: #f5c182; margin-top: 10px; margin-bottom: 10px; border-radius: 20px">
                     {% if akt_auftrag2 %}
                         <div class="row">
                             <div class="col-md-10" style="margin-left: 10px">
                                 <div class="row content-ct">
                                     <div class="img-rounded col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px; border-radius: 5px">STATUS:</div>
-                                    <div class="img-rounded col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag2.status }}
+                                    {% if akt_auftrag2.status == "aktiv" or akt_auftrag.status == "angenommen" %}
+                                        <div class="img-rounded col-md-3" style="background: #9bcaa7; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag2.status }}</div>
+                                    {% else %}
+                                        <div class="img-rounded col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag2.status }}
+                                    {% endif %}
                                     </div>
                                 </div>
                                 <p style="text-align: left">Nachricht: <br>{{ akt_auftrag2.nachricht }}</p>
