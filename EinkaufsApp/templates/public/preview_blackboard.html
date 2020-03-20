@@ -1,88 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
-{% load static %}
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<html lang="en"style="height: 100%">
 
-      gtag('config', 'UA-161194303-1');
-    </script>
+<head>
+
+  {% load static %}
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Corona Einkaufshelfer">
   <meta name="author" content="Marius Steger">
-  <meta http-equiv="refresh" content="600" >
+  <meta http-equiv="refresh" content="300" >
   <title>Einkaufshelfer - offene Aufträge</title>
 
+  <!-- Custom fonts for this theme -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-161194303-1');
+    </script>
 
     <!-- Dialog Plugin -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="{% static 'js/build_dialog/jquery.dialog.js' %}"></script>
     <link rel="stylesheet" href="{% static 'js/build_dialog/jquery.dialog.css' %}">
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet">
     <link href="{% static 'css/dosis-font.css' %}" rel="stylesheet" type='text/css'>
+    -->
 
 </head>
-<body id="page-top" data-spy="scroll" data-target=".side-menu"">
-    {% load widget_tweaks %}
-  <div class="container-fluid" style="background: #99aeb5;">
-    <!-- HEADER -->
-    <div class="row hero-header " style="padding-top: 15px; padding-bottom: 20px;">
 
-        <a href="/">
-            <div class="col-md-2 img-rounded content-ct" style="font-size: 25px; color:#ffffff; background: #99aeb5;">
-                <p style="padding-top: 3px">Zurück zur Startseite</p>
+<body id="page-top" style="min-height: 100%;background: #99AEB5">
+{% load widget_tweaks %}
+  <!-- Navigation -->
+
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container-fluid">
+     {% if user.is_authenticated %}
+      <a class="navbar-brand btn btn-success" href="{% url "logout" %}">Abmelden</a>
+     {% else %}
+        <form class="form-inline my-0 my-lg-0" role="form" action="{% url "login" %}"
+            method="post" accept-charset="utf-8">
+          <div class="form-group mr-sm-2 d-none d-md-block">
+            <input type="text" placeholder="Benutzername" class="form-control" name="username">
+          </div>
+          <div class="form-group mr-sm-2 d-none d-md-block">
+            <input type="password" placeholder="Passwort" class="form-control" name="password">
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success d-none d-md-block">Anmelden</button>
+        </form>
+
+         <form class="form-inline my-0 my-lg-0 d-md-none" role="form" action="{% url "login" %}"
+            method="post" accept-charset="utf-8">
+          <div class="form-group">
+            <input type="text" placeholder="Benutzername" class="form-control" name="username" size="7">
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Passwort" class="form-control" name="password" size="7">
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success">Anmelden</button>
+        </form>
+     {% endif %}
+
+    <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menü
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'start' %}">Starseite</a>
+          </li>
+            {% if user.is_authenticated %}
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'home' %}">Mein Bereich</a>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'blackboard' %}">Schwarzes Brett</a>
+              </li>
+            {% else %}
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
+              </li>
+            {% endif %}
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'faq' %}">Anleitung/FAQ</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'impressum' %}">Impressum</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+    <header class="masthead" style="margin-top: -5rem; background: #99aeb5;">
+      <div class="container-fluid">
+
+        <div class="row justify-content-between" style="padding-top: 10px; padding-bottom: 10px; padding-left: 2rem; padding-right: 1rem;
+                background: #7a8e95; border-radius: 20px">
+            <div class="col-md-5" style="background: #0f6674; font-size: 2.5rem; text-align: center; margin: auto; margin-bottom: 10px;
+                color: white; border-radius: 20px">
+                Aktuelle Einkaufsaufträge / Hilfsdienste</div>
+
+
+           {% for field in form %}
+                <div class="col-md-auto" style="font-size: 20px; background: #129ba9; margin-left: 10px; border-radius: 20px; text-align: center; margin-bottom: 5px">
+                        <div class="form-group" style="color:#000000; padding-top: 6%; font-size: larger; border-radius: 20px">
+                            {{ field }}
+                        </div>
+                </div>
+           {% endfor %}
+        </div>
+
+        <div class="row justify-content-center" style="padding-top: 10px; padding-bottom: 10px; padding-left: 2rem; padding-right: 1rem;">
+            <!-- BLACKBOARD -->
+            <div class="col-lg-12 img-rounded" id="blackboard" style="background:#99AEB5; color: #ffffff; width: 100%; height: 100%; margin-top: 5px;">
+                <div class="row content-ct" id="blackboard_elements"></div>
             </div>
-        </a>
-
-    <div class="col-md-6">
-
-    </div>
-
-    <div class="col-md-4">
-       {% for field in form %}
-        <div class="col-md-4 img-rounded" style="font-size: 20px; background: #129ba9; margin-left: 10px; padding-top: 4px;">
-            <div class="form-group" style="margin: auto; margin-bottom: 4px; color:#000000; font-size: larger;">
-                {{ field }}
-            </div>
-        </div>
-       {% endfor %}
-    </div>
-
-    </div>
-
-    <!-- BLACKBOARD -->
-    <div class="col-lg-12 img-rounded" id="blackboard" style="background:#99AEB5; color: #ffffff; width: 100%; height: 100%; margin-top: 5px;">
-        <div class="row content-ct">
-            <div class="col-md-auto img-rounded" style="background: #0f6674; font-size: 45px; text-align: center; margin-top: 10px; margin-bottom: 10px">Aktuelle Einkaufsaufträge / Hilfsdienste</div>
         </div>
 
-        <div class="row content-ct" id="blackboard_elements">
 
-        </div>
-
-    </div>
-  </div>
+      </div>
+  </header>
 
   <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'js/scrolling-nav.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-
 
 <script>
 function addElement(elementTag, elementId, dict, map) {
@@ -92,23 +153,23 @@ function addElement(elementTag, elementId, dict, map) {
     newElement.setAttribute('id', elementId);
     newElement.innerHTML = dict["nachricht"];
 
-    newElement.className = 'col-md-auto img-rounded';
-    newElement.innerHTML = '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
-            '<div class="col-md12 img-rounded" style="background: #798f96; padding-left: 3px; margin-bottom: 25px"> '+
-            dict["nachricht"]+'</div>'+
-            '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
-            '<div class="col-md12 img-rounded" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px"> '+
-            dict["liste_text"]+'</div>'+
-            //'<div class="row">'+
-            '<div class="col-md-6">'+'Budget: '+ dict["budget"]+ '€</div>'+
-            '<div class="col-md-6">'+ 'Ort: '+ map[dict["user"]] +
-            //'</div>'+
-            '</div>';
+        newElement.className = 'col-xs-4';
+        newElement.innerHTML = '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
+        '<div class="col-md12" style="background: #798f96; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
+        dict["nachricht"]+'</div>'+
+        '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
+        '<div class="col-md12" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
+        dict["liste_text"]+'</div>'+
+        '<div class="row justify-content-between">'+
+        '<div class="col-3">'+'Budget: '+ dict["budget"]+ '€</div>'+
+        '<div class="col-3">'+ 'Ort: '+ map[dict["user"]] +'</div>'
+        +'</div>'
+        ;
 
     // Css styling
     newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
-        "left; margin-right: 10px; min-width: 10%; max-width: 25%; padding: 5px; margin-bottom: 10px;" +
-        "padding-bottom: 5px");
+        "left; margin-right: 10px; min-width: 15%; max-width: 30%; padding: 5px; margin-bottom: 10px;" +
+        "border-radius: 15px; border: 2px solid #798f96; padding-bottom: 5px");
     newElement.setAttribute("id", elementId);
 
     p.appendChild(newElement);
@@ -144,8 +205,6 @@ function addNoElementsMessage(){
             success: function (response) {
                 // if not valid user, alert the user
                 if(response["valid"]){
-                    console.log("You selected location:" + response["selected_loc"]);
-                    console.log(response["data"]);
 
                     var auftraege = JSON.parse(response["data"]);
                     if (auftraege.length > 0) {
