@@ -133,7 +133,8 @@
 
         <div class="row justify-content-center" style="padding-top: 10px; padding-bottom: 10px; padding-left: 2rem; padding-right: 1rem;">
             <!-- BLACKBOARD -->
-            <div class="col-lg-12 img-rounded" id="blackboard" style="color: #ffffff; width: 100%; height: 100%; margin-top: 5px;">
+            <div class="col-lg-12 img-rounded" id="blackboard" style="color: #ffffff; width: 100%;
+            height: 100%; margin-top: 5px;">
                 <div class="row content-ct" id="blackboard_elements"></div>
             </div>
         </div>
@@ -209,7 +210,7 @@ function addElement(elementTag, elementId, dict, map) {
     newElement.setAttribute('id', elementId);
     newElement.innerHTML = dict["nachricht"];
 
-        newElement.className = 'col-xs-4';
+        newElement.className = 'col-sm-6 col-md-4 col-xl-2';
         newElement.innerHTML = '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px">Nachricht an die Helfer:</div>' +
         '<div class="col-md12" style="background: #798f96; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
         dict["nachricht"]+'</div>'+
@@ -224,8 +225,8 @@ function addElement(elementTag, elementId, dict, map) {
 
     // Css styling
     newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
-        "left; margin-right: 10px; min-width: 10%; max-width: 30%; padding: 5px; margin-bottom: 10px;" +
-        "border-radius: 15px; border: 2px solid #798f96; cursor: pointer; padding-bottom: 5px");
+        "left; margin-right: 10px; padding: 5px; margin-bottom: 10px;" +
+        "border-radius: 15px; border: 3px solid #798f96; cursor: pointer; padding-bottom: 5px");
     newElement.setAttribute("id", elementId);
     newElement.setAttribute("onclick","onClickAuftrag(this)");
 
