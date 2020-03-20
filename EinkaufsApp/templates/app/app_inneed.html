@@ -1,37 +1,115 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<html lang="en"style="height: 100%">
 
-      gtag('config', 'UA-161194303-1');
-    </script>
+<head>
+
+  {% load static %}
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Corona Einkaufshelfer">
   <meta name="author" content="Marius Steger">
   <meta http-equiv="refresh" content="600" >
   <title>Einkaufshilfe erhalten</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-161194303-1');
+    </script>
 
     <!-- Dialog Plugin -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="{% static 'js/build_dialog/jquery.dialog.js' %}"></script>
     <link rel="stylesheet" href="{% static 'js/build_dialog/jquery.dialog.css' %}">
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet">
     <link href="{% static 'css/dosis-font.css' %}" rel="stylesheet" type='text/css'>
+    -->
 
 </head>
-<body id="page-top" data-spy="scroll" data-target=".side-menu">
+
+<body id="page-top" style="min-height: 100%;background: #99AEB5">
+{% load widget_tweaks %}
+  <!-- Navigation -->
+
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container-fluid">
+     {% if user.is_authenticated %}
+      <a class="navbar-brand btn btn-success" href="{% url "logout" %}">Abmelden</a>
+     {% else %}
+        <form class="form-inline my-0 my-lg-0" role="form" action="{% url "login" %}"
+            method="post" accept-charset="utf-8">
+          <div class="form-group mr-sm-2 d-none d-md-block">
+            <input type="text" placeholder="Benutzername" class="form-control" name="username">
+          </div>
+          <div class="form-group mr-sm-2 d-none d-md-block">
+            <input type="password" placeholder="Passwort" class="form-control" name="password">
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success d-none d-md-block">Anmelden</button>
+        </form>
+
+         <form class="form-inline my-0 my-lg-0 d-md-none" role="form" action="{% url "login" %}"
+            method="post" accept-charset="utf-8">
+          <div class="form-group">
+            <input type="text" placeholder="Benutzername" class="form-control" name="username" size="7">
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Passwort" class="form-control" name="password" size="7">
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success">Anmelden</button>
+        </form>
+     {% endif %}
+
+    <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menü
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'start' %}">Starseite</a>
+          </li>
+            {% if user.is_authenticated %}
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'home' %}">Mein Bereich</a>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'blackboard' %}">Schwarzes Brett</a>
+              </li>
+            {% else %}
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
+              </li>
+            {% endif %}
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'faq' %}">Anleitung/FAQ</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'impressum' %}">Impressum</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <div class="container-fluid" style="background: #99aeb5;">
     <!-- Start: Schwarzes Brett -->
     <div class="row hero-header content-ct" style="padding-top: 15px; padding-bottom: 20px;">
@@ -50,38 +128,39 @@
         </div>
         {% endif %}
     </div>
-    <div class="row hero-header content-ct" style="padding-top: 15px; padding-bottom: 20px;">
-        <div class="col-lg-6 img-rounded" style="color:#ffffff; background: #ebac52; margin-top: 5px;">
-            <h2><b>Einkaufsauftrag erstellen</b></h2>
+    <div class="row" style="padding-top: 15px; padding-bottom: 20px;">
+        <div class="col-lg-6 text-center" style="color:#ffffff; background: #ebac52; margin-top: 10px; border-radius: 20px">
+            <h2 style="margin-top: 10px"><b>Einkaufsauftrag erstellen</b></h2>
             <h3><b>{{ message }}</b></h3>
             <div class="form-group" style="color:#000000; font-size: larger">
-            {% block content %}
                 <form method="post">
                     {% csrf_token %}
                     {% for field in form %}
-                      <div class="col-md-auto">
+                      <div class="col-md-12">
                         {% if field.help_text %}
                         {{ field.help_text }}<br>
                         {% endif %}
                         {{ field }}
                       </div>
                     {% endfor %}
-                    <button type="submit">Auftrag erstellen</button>
+                <div class="row justify-content-center">
+                    <div class="md-col-3" style="font-size: xx-large">
+                        <button class="btn btn-success" type="submit" style="font-size: xx-large">Auftrag erstellen</button>
+                    </div>
+                </div>
                 </form>
-            {% endblock %}
             </div>
         </div>
 
-        <div class="col-lg-6 img-rounded" style="color:#ffffff; background: #3ec6eb; margin-top: 5px; margin-left: 10px; margin-right: -10px">
-            <h2><b>Ihre aktuellen Einkaufswünsche/Dienste</b></h2>
-            {% block content_akt_auftrag %}
-                <div class="col-md-auto img-rounded" style="background: #0f6674">
+        <div class="col-lg-6" style="color:#ffffff; background: #3ec6eb; margin-top: 10px; padding-left: 30px; border-radius: 20px">
+            <h2 style="margin-top: 10px"><b>Ihre aktuellen Einkaufswünsche/Dienste</b></h2>
+                <div class="col-md-auto" style="background: #0f6674; border-radius: 20px">
                     {% if akt_auftrag %}
                         <div class="row">
                             <div class="col-md-10" style="margin-left: 10px">
                                 <div class="row content-ct">
-                                    <div class="img-rounded col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px">STATUS:</div>
-                                    <div class="img-rounded col-md-2" style="background: #9d9d9d; font-size: large; margin-top: 5px"> {{ akt_auftrag.status }}
+                                    <div class="img-rounded col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px; border-radius: 5px">STATUS:</div>
+                                    <div class="img-rounded col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag.status }}
                                     </div>
                                 </div>
                                 <p style="text-align: left">Nachricht: <br>{{ akt_auftrag.nachricht }}</p>
@@ -93,13 +172,13 @@
                         <div class="col-md-1">
                             </div>
                             {% if akt_auftrag.status == "aktiv" or akt_auftrag.status == "angenommen" %}
-                                <div class="col-md-3" style="margin-bottom: 5px">
+                                <div class="col-md-4" style="margin-bottom: 5px">
                                     <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" id="abschließen">
-                                        <p style="padding-top: 5px">Auftrag als abgeschlossen markieren</p>
+                                        <p style="padding-top: 5px">Ich habe meinen Wunsch erhalten. Hiermit abschließen</p>
                                     </button>
                                 </div>
                             {% endif %}
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                             </div>
                             {% if akt_auftrag.status == "aktiv" %}
                                 <div class="col-md-2" style="margin-bottom: 5px">
@@ -113,16 +192,14 @@
                         </div>
                     {% endif %}
                 </div>
-            {% endblock %}
 
-            {% block content_akt_auftrag_2 %}
-                <div class="col-md-auto img-rounded" style="background: #798f96; margin-top: 10px; margin-bottom: 10px">
+                <div class="col-md-auto" style="background: #798f96; margin-top: 10px; margin-bottom: 10px; border-radius: 20px">
                     {% if akt_auftrag2 %}
                         <div class="row">
                             <div class="col-md-10" style="margin-left: 10px">
                                 <div class="row content-ct">
-                                    <div class="img-rounded col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px">STATUS:</div>
-                                    <div class="img-rounded col-md-2" style="background: #9d9d9d; font-size: large; margin-top: 5px"> {{ akt_auftrag2.status }}
+                                    <div class="img-rounded col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px; border-radius: 5px">STATUS:</div>
+                                    <div class="img-rounded col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag2.status }}
                                     </div>
                                 </div>
                                 <p style="text-align: left">Nachricht: <br>{{ akt_auftrag2.nachricht }}</p>
@@ -130,18 +207,20 @@
                                 <p style="text-align: left">Budget: {{ akt_auftrag2.budget }}</p>
                             </div>
                         </div>
+
                         <div class="row">
-                            <div class="col-md-1">
-                            </div>
+                            <div class="col-md-1"></div>
+
                             {% if akt_auftrag.status == "aktiv" or akt_auftrag.status == "angenommen" %}
-                                <div class="col-md-3" style="margin-bottom: 5px">
+                                <div class="col-md-4" style="margin-bottom: 5px">
                                     <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" id="abschließen2">
-                                        <p style="padding-top: 5px">Auftrag als abgeschlossen markieren</p>
+                                        <p style="padding-top: 5px">Ich habe meinen Wunsch erhalten. Hiermit abschließen</p>
                                     </button>
                                 </div>
                             {% endif %}
-                            <div class="col-md-3">
-                            </div>
+
+                            <div class="col-md-2"></div>
+
                             {% if akt_auftrag.status == "aktiv" %}
                                 <div class="col-md-2" style="margin-bottom: 5px">
                                     <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;" id="widerrufen2">
@@ -149,27 +228,19 @@
                                     </button>
                                 </div>
                             {% endif %}
-                            <div class="col-md-1">
-                            </div>
+
+                            <div class="col-md-1"></div>
+
                         </div>
                     {% endif %}
                 </div>
-            {% endblock %}
         </div>
-
-         <!-- <pre id="output" style="display: none; font-size: 20px; color:#ffffff; width: 854px; max-height: 480px; background: #B5C9C3;"></pre> -->
-        </div>
+    </div>
     </div>
 
   <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'js/scrolling-nav.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
 
 <script>
 $("#widerrufen").click(function (e) {
@@ -299,3 +370,4 @@ $("#abschließen2").click(function (e) {
   </script>
 
 </body>
+</html>
