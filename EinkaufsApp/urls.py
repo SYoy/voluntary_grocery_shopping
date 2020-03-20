@@ -22,7 +22,6 @@ from . import views
 urlpatterns = [
     # public urls
     path('', views.start, name='start'),
-    path('test', views.test, name='test'),
     path('faq', views.faq, name='faq'),
     path('impressum', views.impressum, name='impressum'),
     path('datenschutz', views.datenschutz, name='datenschutz'),

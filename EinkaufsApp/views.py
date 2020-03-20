@@ -24,11 +24,6 @@ from django.db.models import Q
 
 
 ## PUBLIC
-def test(request):
-    return render(request, 'public/index.html')
-
-
-## PUBLIC
 def start(request):
     query = User.objects.filter(person__group="H")
     return render(request, 'public/start.html', {"helfer_count": len(query)})

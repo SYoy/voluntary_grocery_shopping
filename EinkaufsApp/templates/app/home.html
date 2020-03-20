@@ -11,47 +11,32 @@
 {% bootstrap_messages %}
 
 {% block content %}
-    <h2>Herzlich Willkommen!</h2><br>
-    <p>Sie sind angemeldet als {{ username }},
-        Gruppe: {% if group == "E" %}
-            Empfänger der Einkaufshilfe.
+    <h2>Herzlich Willkommen {{ username }}!</h2><br>
+    <h4>Sie sind angemeldet als {% if group == "E" %}
+            Empfänger der Nachbarschaftshilfe.
             {% elif group == "H" %}
-            Einkaufshelfer.
+            EinkaufshelferIn.
         {% endif %}
-    </p>
-    <div class="row content-ct">
+    </h4> <br>
 
-    {% if group == "E" %}
-        <a href="{% url 'einkaufsliste' %}">
-            <div class="col-md-8 img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
-                <p style="padding-top: 5px">Klicken Sie hier um einen Einkaufswunsch abzusetzen!</p>
-            </div>
-        </a>
-    {% elif group == "H" %}
-        <a href="{% url 'blackboard' %}">
-            <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
-                <p style="padding-top: 5px">Klicken Sie hier um aktuelle Einkaufswünsche zu sehen!</p>
-            </div>
-        </a>
-        <a href="{% url 'helfer_einkaufslisten' %}">
-            <div class="col-md-auto img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
-                    <p style="padding-top: 5px">Klicken Sie hier um Ihre angenommenen Einkaufsaufträge anzusehen!</p>
-            </div>
-        </a>
-    {% endif %}
-
-    <div class="row col-md-8">
-        <a href="{% url 'start' %}">
-            <div class="col-md-auto float-left" style="font-size: 20px; color:#ffffff; background: #73b56e;">
-                <p style="padding-top: 5px">Zurück zur Startseite</p>
-            </div>
-        </a>
-        <a href="{% url 'logout' %}">
-            <div class="col-md-auto float-right" style="font-size: 20px; color:#ffffff; background: #a3352f;">
-                <p style="padding-top: 5px">Abmelden</p>
-            </div>
-        </a>
-    </div>
-
+    <div class="row justify-content-center">
+        {% if group == "E" %}
+            <a href="{% url 'einkaufsliste' %}">
+                <div class="col-md-auto img-rounded" style="font-size: x-large; color:#ffffff; background: #63b58c;">
+                    <p style="padding-top: 5px">Klicken Sie hier um einen Einkaufswunsch abzusetzen!</p>
+                </div>
+            </a>
+        {% elif group == "H" %}
+            <a href="{% url 'blackboard' %}">
+                <div class="col-md-auto img-rounded" style="font-size: x-large; color:#ffffff; background: #63b58c;">
+                    <p style="padding-top: 5px">Klicken Sie hier um aktuelle Einkaufswünsche zu sehen!</p>
+                </div>
+            </a>
+            <a href="{% url 'helfer_einkaufslisten' %}">
+                <div class="col-md-auto img-rounded" style="font-size: x-large; color:#ffffff; background: #63b58c;">
+                        <p style="padding-top: 5px">Klicken Sie hier um Ihre angenommenen Einkaufsaufträge anzusehen!</p>
+                </div>
+            </a>
+        {% endif %}
     </div>
 {% endblock %}

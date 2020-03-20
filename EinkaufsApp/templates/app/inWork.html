@@ -1,165 +1,232 @@
-<!doctype html>
-
-{# Load the tag library #}
-{% load bootstrap4 %}
-
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Corona Einkaufshelfer">
+  <meta name="author" content="Marius Steger">
+  <meta http-equiv="refresh" content="600" >
+
+  <title>Einkaufshelfer - Auftragsübersicht</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    gtag('config', 'UA-161194303-1');
+        gtag('config', 'UA-161194303-1');
     </script>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Einkaufshelfer - Registrierung</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-      <script>
-        function addElement(elementTag, elementId, dict, map, id) {
-            // Adds an element to the document
-            var p = document.getElementById(id);
-            var newElement = document.createElement(elementTag);
-            newElement.setAttribute('id', elementId);
+<script>
+    function addElement(elementTag, elementId, dict, map, id) {
+        // Adds an element to the document
+        var p = document.getElementById(id);
+        var newElement = document.createElement(elementTag);
+        newElement.setAttribute('id', elementId);
 
-            newElement.className = 'col-md-auto img-rounded';
-            newElement.innerHTML = '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
-            '<div class="col-md12 img-rounded" style="background: #798f96; padding-left: 3px; margin-bottom: 25px"> '+
-            dict["nachricht"]+'</div>'+
-            '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
-            '<div class="col-md12 img-rounded" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px"> '+
-            dict["liste_text"]+'</div>'+
-            '<div class="row-col-12">'+
-            '<div class="col-md-6">'+'Budget: '+ dict["budget"]+ '€</div>'+
-            '<div class="col-md-6">'+ 'Ort: '+ map[dict["user"]] +'</div>'+'</div>'+
-            '<div class="col-md-12" style="background: #BA2D0B; color: white">Telefonnumer: '+ dict["telefonnummer"]+'</div>';
+        newElement.className = 'col-md-auto img-rounded';
+        newElement.innerHTML = '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
+        '<div class="col-md12 img-rounded" style="background: #798f96; padding-left: 3px; margin-bottom: 25px"> '+
+        dict["nachricht"]+'</div>'+
+        '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
+        '<div class="col-md12 img-rounded" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px"> '+
+        dict["liste_text"]+'</div>'+
+        '<div class="row-col-12">'+
+        '<div class="col-md-6">'+'Budget: '+ dict["budget"]+ '€</div>'+
+        '<div class="col-md-6">'+ 'Ort: '+ map[dict["user"]] +'</div>'+'</div>'+
+        '<div class="col-md-12" style="background: #BA2D0B; color: white">Telefonnumer: '+ dict["telefonnummer"]+'</div>';
 
 
-            // Css styling
-            newElement.setAttribute("style", "background: #0f6674; color: white; float: left; text-align: " +
-                "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;"
-            //   + "cursor: pointer"
-            );
-            newElement.setAttribute("id", elementId);
-            //newElement.setAttribute("onclick","onClickAuftrag(this)");
+        // Css styling
+        newElement.setAttribute("style", "background: #0f6674; color: white; float: left; text-align: " +
+            "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;"
+        //   + "cursor: pointer"
+        );
+        newElement.setAttribute("id", elementId);
+        //newElement.setAttribute("onclick","onClickAuftrag(this)");
 
-            p.appendChild(newElement);
+        p.appendChild(newElement);
+    }
+
+    function clearElements(id){
+        var element = document.getElementById(id);
+        while (element.firstChild) {
+          element.removeChild(element.firstChild);
         }
+    }
+    function addNoElementsMessage(id){
+        var p = document.getElementById(id);
+        var newElement = document.createElement("div");
+        newElement.setAttribute('id', "NoElementsMessage");
+        newElement.innerHTML = "Aktuell haben Sie keine aktiven Einkaufsaufträge";
 
-        function clearElements(id){
-            var element = document.getElementById(id);
-            while (element.firstChild) {
-              element.removeChild(element.firstChild);
-            }
-        }
-        function addNoElementsMessage(id){
-            var p = document.getElementById(id);
-            var newElement = document.createElement("div");
-            newElement.setAttribute('id', "NoElementsMessage");
-            newElement.innerHTML = "Aktuell haben Sie keine aktiven Einkaufsaufträge";
+        p.appendChild(newElement);
+    }
 
-            p.appendChild(newElement);
-        }
+</script>
 
-        </script>
-        <script>
-        function showAccepted() {
+<script>
+function showAccepted() {
 
-            $.ajax({
-                type: 'GET',
-                url: "{% url 'getAccepted' %}",
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'getAccepted' %}",
 
-                success: function (response) {
-                    // if not valid user, alert the user
-                    if(response["valid"]){
-                        console.log(response["data"]);
+        success: function (response) {
+            // if not valid user, alert the user
+            if(response["valid"]){
+                console.log(response["data"]);
 
-                        var auftraege_ang = JSON.parse(response["data_a"]);
+                var auftraege_ang = JSON.parse(response["data_a"]);
 
-                        if (auftraege_ang.length > 0) {
-                            clearElements("elements_active");
-                            auftraege_ang.forEach(function(element) {
-                                addElement("div", element["pk"], element["fields"], response["map"], "elements_active");
-                            });
-                        } else {
-                            clearElements("elements_active");
-                            addNoElementsMessage("elements_active");
-                        }
-
-                        var auftraege_closed = JSON.parse(response["data_closed"]);
-
-                        if (auftraege_closed.length > 0) {
-                            clearElements("elements_closed");
-                            auftraege_closed.forEach(function(element) {
-                                addElement("div", element["pk"], element["fields"], response["map"], "elements_closed");
-                            });
-                        } else {
-                            clearElements("elements_closed");
-                            addNoElementsMessage("elements_closed");
-                        }
-                    }
-                },
-                error: function (response) {
-                    console.log(response)
+                if (auftraege_ang.length > 0) {
+                    clearElements("elements_active");
+                    auftraege_ang.forEach(function(element) {
+                        addElement("div", element["pk"], element["fields"], response["map"], "elements_active");
+                    });
+                } else {
+                    clearElements("elements_active");
+                    addNoElementsMessage("elements_active");
                 }
-            })
-        }
-        </script>
-    <script>
-        window.onload = showAccepted;
-    </script>
-  </head>
 
-  <body>
+                var auftraege_closed = JSON.parse(response["data_closed"]);
+
+                if (auftraege_closed.length > 0) {
+                    clearElements("elements_closed");
+                    auftraege_closed.forEach(function(element) {
+                        addElement("div", element["pk"], element["fields"], response["map"], "elements_closed");
+                    });
+                } else {
+                    clearElements("elements_closed");
+                    addNoElementsMessage("elements_closed");
+                }
+            }
+        },
+        error: function (response) {
+            console.log(response)
+        }
+    })
+}
+</script>
+
+<script>
+    window.onload = showAccepted;
+</script>
+
+</head>
+
+<body id="page-top">
+{% load widget_tweaks %}
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container-fluid">
+     {% if user.is_authenticated %}
+      <a class="navbar-brand btn btn-success" href="{% url "logout" %}">Abmelden</a>
+     {% else %}
+        <form class="form-inline my-0 my-lg-0" role="form" action="{% url "login" %}"
+            method="post" accept-charset="utf-8">
+          <div class="form-group mr-sm-2 d-none d-md-block">
+            <input type="text" placeholder="Benutzername" class="form-control" name="username">
+          </div>
+          <div class="form-group mr-sm-2 d-none d-md-block">
+            <input type="password" placeholder="Passwort" class="form-control" name="password">
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success d-none d-md-block">Anmelden</button>
+        </form>
+
+         <form class="form-inline my-0 my-lg-0 d-md-none" role="form" action="{% url "login" %}"
+            method="post" accept-charset="utf-8">
+          <div class="form-group">
+            <input type="text" placeholder="Benutzername" class="form-control" name="username" size="7">
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Passwort" class="form-control" name="password" size="7">
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success">Anmelden</button>
+        </form>
+     {% endif %}
+
+    <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menü
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'start' %}">Starseite</a>
+          </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'home' %}">Mein Bereich</a>
+              </li>
+            {% endif %}
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'faq' %}">Anleitung/FAQ</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'impressum' %}">Impressum</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-10">
-          <h1 class="mt-2">Einkaufshelfer Rauenberg</h1>
+            <br>
+          <h1 class="mt-2">Angemeldet als {{ username }}</h1>
           <hr class="mt-0 mb-4">
-            {% block content %}
-                <h2>Ihre angenommenen Einkaufsaufträge:</h2><br>
-                <p>Sie sind angemeldet als {{ username }},
-                    Gruppe: {% if group == "E" %}
-                        Empfänger der Einkaufshilfe.
-                        {% elif group == "H" %}
-                        Einkaufshelfer.
-                    {% endif %}
-                </p>
-                <a href="{% url 'home' %}">
-                    <div class="col-md-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
-                        <p style="padding-top: 5px">Zurück zur Übersicht</p>
-                    </div>
-                </a>
-                <a href="{% url 'logout' %}">
-                    <div class="col-md-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #a3352f;">
-                        <p style="padding-top: 5px">Abmelden</p>
-                    </div>
-                </a>
+                <h4>Auf dieser Seite können Sie Ihre angenommenen und abgeschlossenen Aufträge einsehen.</h4>
+            <br>
+                <h4>Außerdem sind bei den Aufträgen auch die Kontaktdaten des Auftragsgebers einsehbar.</h4>
+            <br>
+            <h4>Zur Info: <br>Aktuell kann nur der Auftraggeber den Auftrag als abgeschlossen markieren.</h4>
+            <br>
+
                 <div class="row-cols-8">
                     <h2 class="mt-2">Angenommene Aufträge (aktiv)</h2>
-                    <div class="row content-ct" id="elements_active">
+                    <div class="row content-ct" id="elements_active"></div>
                 </div>
-                </div>
+
                 <div class="row-cols-8">
                     <h2 class="mt-2">Abgeschlossene Aufträge</h2>
-                    <div class="row content-ct" id="elements_closed">
+                    <div class="row content-ct" id="elements_closed"></div>
                 </div>
-                </div>
-            {% endblock %}
+
         </div>
       </div>
     </div>
+  </section>
+
+    <!-- Bootstrap CDN
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </body>
 </html>
