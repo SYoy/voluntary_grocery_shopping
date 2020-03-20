@@ -196,7 +196,7 @@ def einkaufsliste(request):
             inaktiv = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="inaktiv").order_by("-date_added")
             set2 = abgeschlossen | inaktiv
             set2 = set2.values()
-            if set2.count() == 2:
+            if set2.count() > 1:
                 most_recent = set2.values()[0]
                 most_recent2 = set2.values()[1]
             elif set2.count() == 1:
