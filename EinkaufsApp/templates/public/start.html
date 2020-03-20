@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"style="height: 100%">
 
 <head>
 
@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Corona Einkaufshelfer">
   <meta name="author" content="Marius Steger">
-  <meta http-equiv="refresh" content="600" >
+  <meta http-equiv="refresh" content="300" >
 
   <title>Einkaufshelfer - Startseite</title>
 
@@ -33,7 +33,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" style="min-height: 100%">
 {% load widget_tweaks %}
 
   <!-- Navigation -->
@@ -74,25 +74,25 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'start' %}">Starseite</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'start' %}">Starseite</a>
           </li>
             {% if user.is_authenticated %}
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'home' %}">Mein Bereich</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942; border: 1px solid #798f96" href="{% url 'home' %}">Mein Bereich</a>
               </li>
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'blackboard' %}">Schwarzes Brett</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942; border: 1px solid #798f96" href="{% url 'blackboard' %}">Schwarzes Brett</a>
               </li>
             {% else %}
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
               </li>
             {% endif %}
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'faq' %}">Anleitung/FAQ</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'faq' %}">Anleitung/FAQ</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'impressum' %}">Impressum</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'impressum' %}">Impressum</a>
           </li>
         </ul>
       </div>

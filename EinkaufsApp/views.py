@@ -224,7 +224,7 @@ def einkaufsliste(request):
 ## EMPFAENGER
 @login_required
 def setInactive(request):
-    if request.user.is_authenticated and request.is_ajax and request.method == "POST":
+    if request.user.is_authenticated and request.is_ajax and request.method == "POST" and request.user.person.group in ["E","S"]:
         ID_auftrag = request.POST.get("id_listing", None)
         ID_user = request.POST.get("user_id", None)
         auftrag = Einkaufsauftrag.objects.filter(id=ID_auftrag, user_id=ID_user)
@@ -240,7 +240,7 @@ def setInactive(request):
 ## EMPFAENGER
 @login_required
 def setDone(request):
-    if request.user.is_authenticated and request.is_ajax and request.method == "POST":
+    if request.user.is_authenticated and request.is_ajax and request.method == "POST" and request.user.person.group in ["E","S"]:
         ID_auftrag = request.POST.get("id_listing", None)
         ID_user = request.POST.get("user_id", None)
         auftrag = Einkaufsauftrag.objects.filter(id=ID_auftrag, user_id=ID_user)
@@ -257,14 +257,23 @@ def setDone(request):
 ## HELFER
 @login_required
 def helfen(request):
-    form = SelectionForm
-    return render(request, 'app/app_helper.html', {'form': form})
+    if request.user.is_authenticated and request.user.person.group in ["H","S"]:
+        form = SelectionForm
+        return render(request, 'app/app_helper.html', {'form': form})
+
+    else:
+        messages.info(request, "Sie sind als Empfänger angemeldet und wurden deshalb in Ihren Bereich umgeleitet. Das schwarze Brett steht Ihnen nicht zur Verfügung.")
+        return redirect("home")
 
 
 ## HELFER
 @login_required
 def helfer_einkaufslisten(request):
-    return render(request, 'app/inWork.html', {'group': request.user.person.group, 'username': request.user.username})
+    if request.user.is_authenticated and request.user.person.group in ["H", "S"]:
+        return render(request, 'app/inWork.html', {'group': request.user.person.group, 'username': request.user.username})
+    else:
+        messages.info(request, "Sie sind als Empfänger angemeldet und wurden deshalb in Ihren Bereich umgeleitet. Das schwarze Brett steht Ihnen nicht zur Verfügung.")
+        return redirect("home")
 
 
 ## HELFER

@@ -10,6 +10,7 @@
   <meta name="description" content="Corona Einkaufshelfer">
   <meta name="author" content="Marius Steger">
   <meta http-equiv="refresh" content="300" >
+
   <title>Einkaufshelfer - offene Aufträge</title>
 
   <!-- Custom fonts for this theme -->
@@ -34,13 +35,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="{% static 'js/build_dialog/jquery.dialog.js' %}"></script>
     <link rel="stylesheet" href="{% static 'js/build_dialog/jquery.dialog.css' %}">
-
-    <!-- Bootstrap
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet">
-    <link href="{% static 'css/dosis-font.css' %}" rel="stylesheet" type='text/css'>
-    -->
 
 </head>
 
@@ -86,25 +80,25 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'start' %}">Starseite</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'start' %}">Starseite</a>
           </li>
             {% if user.is_authenticated %}
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'home' %}">Mein Bereich</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942; border: 1px solid #798f96" href="{% url 'home' %}">Mein Bereich</a>
               </li>
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'blackboard' %}">Schwarzes Brett</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942; border: 1px solid #798f96" href="{% url 'blackboard' %}">Schwarzes Brett</a>
               </li>
             {% else %}
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
               </li>
             {% endif %}
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'faq' %}">Anleitung/FAQ</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'faq' %}">Anleitung/FAQ</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72" href="{% url 'impressum' %}">Impressum</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'impressum' %}">Impressum</a>
           </li>
         </ul>
       </div>
@@ -139,9 +133,13 @@
             </div>
         </div>
 
-
       </div>
   </header>
+
+  <!-- Bootstrap CDN -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
   <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
