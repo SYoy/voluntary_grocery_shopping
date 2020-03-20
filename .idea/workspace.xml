@@ -2,9 +2,110 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/freelancer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/css/freelancer.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/img/avataaars.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/cabin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/cake.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/circus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/game.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/safe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/submarine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/contact_me.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/contact_me.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/freelancer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/freelancer.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/jqBootstrapValidation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/js/jqBootstrapValidation.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/scss/base/_page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/scss/base/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/scss/components/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/scss/components/_divider.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/scss/freelancer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/scss/layout/_contact.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/scss/layout/_footer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/scss/layout/_masthead.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/scss/layout/_navbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/scss/layout/_portfolio.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/bootstrap/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/bootstrap/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/bootstrap/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/bootstrap/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/bootstrap/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/bootstrap/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/bootstrap/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/all.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/brands.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/brands.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/fontawesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/fontawesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/regular.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/regular.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/solid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/solid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/svg-with-js.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/svg-with-js.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/v4-shims.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/css/v4-shims.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-brands-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-brands-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-brands-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-brands-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-regular-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-regular-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-regular-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-regular-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-solid-900.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-solid-900.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-solid-900.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-solid-900.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/jquery-easing/jquery.easing.compatibility.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/jquery-easing/jquery.easing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/jquery-easing/jquery.easing.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/jquery/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/jquery/jquery.min.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/jquery/jquery.slim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/jquery/jquery.slim.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/static/vendor/jquery/jquery.slim.min.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start_old.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/app_inneed.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/inWork.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/inWork.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap-theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap-theme.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/css/dosis-font.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/css/themify-icons.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/3isE9muMMOq1K7TQ7HkKvIDGDUGfDkXyfkzVDelzfFk.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/O6SOu9hYsPHTU43R17NS5XYhjbSpvc47ee6xR_80Hnw.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/RPKDmaFi75RJkvjWaDDb0nYhjbSpvc47ee6xR_80Hnw.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/VK-RlLrn4NFhRGqPkj6IwBkAz4rYn47Zy2rvigWQf6w.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/dosis/oaBFj7Fz9Y9_eW3k9Jd9X6CWcynf_cDxXwCLxiixG1c.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/fonts/themify.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/js/jquery.easing.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/js/scrolling-nav.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/js/validator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
@@ -68,25 +169,26 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates/public" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/app/app_helper.html" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/public/startnew.html" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\public" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\js\build_dialog" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked\dist" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\app" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\public" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\accounts" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\app1" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\js\build_dialog" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked\dist" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -146,6 +248,7 @@
       <workItem from="1584515700820" duration="13402000" />
       <workItem from="1584533319136" duration="9316000" />
       <workItem from="1584546698423" duration="5774000" />
+      <workItem from="1584683154035" duration="10571000" />
     </task>
     <servers />
   </component>
