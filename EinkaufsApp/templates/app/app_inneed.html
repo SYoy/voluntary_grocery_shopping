@@ -110,28 +110,28 @@
     </div>
   </nav>
 
-  <div class="container-fluid" style="background: #99aeb5;">
+  <section class="container-fluid" style="background: #99aeb5;">
     <!-- Start: Schwarzes Brett -->
     <div class="row hero-header content-ct" style="padding-top: 15px; padding-bottom: 20px;">
-        <a href="{% url 'logout' %}">
+
+        <a href="#page-top">
             <div class="col-lg-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
-                <p style="padding-top: 5px">Abmelden</p>
+                <p style="padding-top: 5px">top</p>
             </div>
         </a>
-        {% if messages %}
-        <p class="col-lg-2 img-rounded" style="font-size: 20px; color:#ffffff; background: #63b58c;">
-            {% for msg in messages %}
-                <p style="padding-top: 3px">
-                    {{msg.message}}
-                </p>
-            {% endfor %}
-        </div>
-        {% endif %}
     </div>
     <div class="row" style="padding-top: 15px; padding-bottom: 20px;">
         <div class="col-lg-6 text-center" style="color:#ffffff; background: #ebac52; margin-top: 10px; border-radius: 20px">
             <h2 style="margin-top: 10px"><b>Einkaufsauftrag erstellen</b></h2>
-            <h3><b>{{ message }}</b></h3>
+
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
             <div class="form-group" style="color:#000000; font-size: larger">
                 <form method="post">
                     {% csrf_token %}
@@ -154,6 +154,14 @@
 
         <div class="col-lg-6" style="color:#ffffff; background: #3ec6eb; margin-top: 10px; padding-left: 30px; border-radius: 20px">
             <h2 style="margin-top: 10px"><b>Ihre aktuellen Einkaufswünsche/Dienste</b></h2>
+                    {% for message in messages_act %}
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
                 <div class="col-md-auto" style="background: #0f6674; border-radius: 20px">
                     {% if akt_auftrag %}
                         <div class="row">
@@ -211,7 +219,7 @@
                         <div class="row">
                             <div class="col-md-1"></div>
 
-                            {% if akt_auftrag.status == "aktiv" or akt_auftrag.status == "angenommen" %}
+                            {% if akt_auftrag2.status == "aktiv" or akt_auftrag.status == "angenommen" %}
                                 <div class="col-md-4" style="margin-bottom: 5px">
                                     <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" id="abschließen2">
                                         <p style="padding-top: 5px">Ich habe meinen Wunsch erhalten. Hiermit abschließen</p>
@@ -221,7 +229,7 @@
 
                             <div class="col-md-2"></div>
 
-                            {% if akt_auftrag.status == "aktiv" %}
+                            {% if akt_auftrag2.status == "aktiv" %}
                                 <div class="col-md-2" style="margin-bottom: 5px">
                                     <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;" id="widerrufen2">
                                         <p style="padding-top: 5px">Auftrag widerrufen</p>
@@ -236,7 +244,7 @@
                 </div>
         </div>
     </div>
-    </div>
+</section>
 
   <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

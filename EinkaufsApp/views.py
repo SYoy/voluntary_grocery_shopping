@@ -15,12 +15,17 @@ from django.core import serializers
 from EinkaufsApp.backend_forms.forms_signup import SignUpForm
 from EinkaufsApp.backend_forms.forms_einkaufliste import EinkaufsauftragForm
 from EinkaufsApp.backend_forms.forms_blackboard import SelectionForm
+import logging
 
 # Queries
 from EinkaufsApp.models import Einkaufsauftrag
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db.models import Q
+
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 
 ## PUBLIC
@@ -135,6 +140,7 @@ def einkaufsliste(request):
         message_app = ""
         # "Wenn Sie Hilfe beim Ausfüllen des Formular benötigen, schreiben Sie eine Mail an:" \
         #                       "helfer@uber.space"
+
         if request.method == 'POST':
             form = EinkaufsauftragForm(request.POST)
             if form.is_valid():
@@ -156,9 +162,12 @@ def einkaufsliste(request):
                     auftrag.user_id = request.user.id
 
                     auftrag.save()
+
+                    messages.success(request, "Ihr Auftrag wurde erfolgreich gelistet. Die HelferInnen können Ihnen nun helfen")
+
                     return redirect("einkaufsliste")
                 else:
-                    message_app = "Sie haben schon 2 aktive/angenommene Aufträge, bitte schließen Sie diese ab oder widerrufen sie."
+                    messages.warning(request, "Sie haben schon 2 aktive/angenommene Aufträge, bitte schließen Sie diese vorher ab oder widerrufen sie.")
         else:
             form = EinkaufsauftragForm()
 
@@ -187,7 +196,7 @@ def einkaufsliste(request):
                     most_recent2 = set2.values()[0]
 
         elif set.count() > 2:
-            print("ERROR IN DATABASE")# TODO
+            logger.error("more than 2 active/inWork listings."+str(request.user.id))
 
         elif set.count() == 0:
             # fill with inaktiv/abgeschlossen
