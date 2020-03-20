@@ -39,22 +39,24 @@
         var newElement = document.createElement(elementTag);
         newElement.setAttribute('id', elementId);
 
-        newElement.className = 'col-md-auto img-rounded';
-        newElement.innerHTML = '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
-        '<div class="col-md12 img-rounded" style="background: #798f96; padding-left: 3px; margin-bottom: 25px"> '+
+
+        newElement.className = 'col-md-auto';
+        newElement.innerHTML = '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
+        '<div class="col-md12" style="background: #798f96; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
         dict["nachricht"]+'</div>'+
-        '<div class="col-md12 img-rounded" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
-        '<div class="col-md12 img-rounded" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px"> '+
+        '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
+        '<div class="col-md12" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
         dict["liste_text"]+'</div>'+
         '<div class="row-col-12">'+
         '<div class="col-md-6">'+'Budget: '+ dict["budget"]+ '€</div>'+
         '<div class="col-md-6">'+ 'Ort: '+ map[dict["user"]] +'</div>'+'</div>'+
-        '<div class="col-md-12" style="background: #BA2D0B; color: white">Telefonnumer: '+ dict["telefonnummer"]+'</div>';
+        '<div class="col-md-12" style="background: #BA2D0B; color: white; border-radius: 5px">Telefonnumer: '+ dict["telefonnummer"]+'</div>';
 
 
         // Css styling
         newElement.setAttribute("style", "background: #0f6674; color: white; float: left; text-align: " +
-            "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;"
+            "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;" +
+            "border-radius: 15px; border: 2px solid #798f96;"
         //   + "cursor: pointer"
         );
         newElement.setAttribute("id", elementId);
@@ -174,13 +176,17 @@ function showAccepted() {
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'start' %}">Starseite</a>
           </li>
             {% if user.is_authenticated %}
-            <li class="nav-item mx-0 mx-lg-1">
+              <li class="nav-item mx-0 mx-lg-1">
                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'home' %}">Mein Bereich</a>
               </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'blackboard' %}">Schwarzes Brett</a>
+              </li>
+            {% else %}
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
+              </li>
             {% endif %}
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
-          </li>
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'faq' %}">Anleitung/FAQ</a>
           </li>
@@ -191,7 +197,6 @@ function showAccepted() {
       </div>
     </div>
   </nav>
-
   <!-- Portfolio Section -->
   <section class="page-section portfolio" id="portfolio">
     <div class="container">
