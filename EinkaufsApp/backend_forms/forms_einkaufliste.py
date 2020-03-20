@@ -20,7 +20,7 @@ class EinkaufsauftragForm(forms.ModelForm):
                                          'oder\nTransport zum Arzt: von .. nach ..')
 
     telefonnummer = forms.CharField(widget=forms.Textarea(attrs={"rows": 1, "cols": 25}), required=True,
-                                help_text="Telefonnummer hier eintragen. (Ihre Nummer wird nur an die HelferIn übermittelt, die ihren Einkauf/Auftag tätigen wird)",
+                                help_text="Telefonnummer hier eintragen. (Ihre Nummer wird nur an die HelferIn übermittelt, die ihren Einkauf/Auftrag tätigen wird)",
                                     initial="z.B. 06222-12345")
 
     budget = forms.CharField(max_length=4, widget=forms.Textarea(attrs={"rows": 1, "cols": 6}), required=True,
