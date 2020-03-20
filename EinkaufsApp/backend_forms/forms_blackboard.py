@@ -1,12 +1,12 @@
 from django import forms
 from django.db import models
 
-from .choices import STATUS_CHOICES, LOCATION_CHOICES_BLACKBOARD
+from .choices import STATUS_CHOICES_BLACKBOARD, LOCATION_CHOICES_BLACKBOARD
 
 
 class SelectionForm(forms.Form):
     location = forms.ChoiceField(choices=LOCATION_CHOICES_BLACKBOARD)
-    status = forms.ChoiceField(choices=STATUS_CHOICES)
+    status = forms.ChoiceField(choices=STATUS_CHOICES_BLACKBOARD)
 
     objects = models.Manager()
 

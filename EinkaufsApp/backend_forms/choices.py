@@ -5,6 +5,11 @@ STATUS_CHOICES = (
     ("abgeschlossen", "abgeschlossen")
 )
 
+STATUS_CHOICES_BLACKBOARD = (
+    ("aktiv", "aktiv"),
+    ("angenommen", "angenommen")
+)
+
 LOCATION_CHOICES = (
     ('ALL', 'Alle Ortsteile'),
     ('MBG', 'Malschenberg'),
