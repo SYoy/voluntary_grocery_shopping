@@ -43,11 +43,11 @@
             </div>
         </a>
     </div>
-    <div class="row" style="padding-top: 15px; padding-bottom: 20px;">
-        <div class="col-lg-6 text-center" style="color:#ffffff; background: #9cc5ca; margin-top: 10px; border-radius: 20px">
+    <div class="row justify-content-center" style="padding-top: 15px; padding-bottom: 20px;">
+        <div class="col-lg-5 text-center" style="color:#ffffff; background: #9cc5ca; margin-top: 2rem; border-radius: 20px">
             <h2 style="margin-top: 10px"><b>Einkaufsauftrag erstellen</b></h2>
 
-            <div class="form-group" style="color:#000000; font-size: larger">
+            <div class="form-group row justify-content-center" style="color:#000000; font-size: larger">
                 <form method="post">
                     {% csrf_token %}
                     {% for field in form %}
@@ -67,8 +67,10 @@
             </div>
         </div>
 
-        <div class="col-lg-6 text-center" style="color:#ffffff; background: #8eb4b5; margin-top: 10px; padding-left: 30px; border-radius: 20px">
-            <h2 style="margin-top: 10px"><b>Ihre aktuellen Einkaufswünsche/Dienste</b></h2>
+        <div class="col-lg-1"></div>
+
+        <div class="col-lg-5 text-center" style="color:#ffffff; background: #8eb4b5; margin-top: 2rem; padding-left: 30px; border-radius: 20px">
+            <h2 style="margin-top: 10px"><b>Ihre aktuellen Einkaufswünsche und Dienste</b></h2>
                     {% for message in messages_act %}
                         <div class="alert {{ message.tags }} alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -87,7 +89,7 @@
                                     {% if akt_auftrag.status == "aktiv" or akt_auftrag.status == "angenommen" %}
                                         <div class="img-rounded col-md-3" style="background: #9bcaa7; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag.status }}</div>
                                     {% else %}
-                                        <div class="img-rounded col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag.status }}</div>
+                                        <div class="img-roundedS col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag.status }}</div>
                                     {% endif %}
                                 </div>
                                 <p style="text-align: left">Nachricht: <br>{{ akt_auftrag.nachricht }}</p>
