@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf82e671-b37f-4ab2-b2e2-5a969066e238" name="Default Changelist" comment="">
+    <list default="true" id="9ccae6b2-79d5-412b-ad4e-75cb23d7249d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/inWork.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/inWork.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/faq.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/faq.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base_less.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base_less.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
