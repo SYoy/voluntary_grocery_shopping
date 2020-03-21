@@ -31,7 +31,8 @@ logger = logging.getLogger(__name__)
 ## PUBLIC
 def start(request):
     query = User.objects.filter(person__group="H")
-    return render(request, 'public/start.html', {"helfer_count": len(query)})
+    query2 = User.objects.filter(person__group="E")
+    return render(request, 'public/start.html', {"count_helfer": len(query), "count_Em": len(query2)})
 
 
 ## PUBLIC
