@@ -1,8 +1,18 @@
-<!DOCTYPE html>
-<html lang="en"style="height: 100%">
+{% extends 'base_less.html' %}
 
-<head>
+{# Load the tag library #}
+{% load bootstrap4 %}
 
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% load static %}
+
+{% block headcontent %}
   {% load static %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,99 +23,13 @@
 
   <title>Einkaufshelfer - offene Aufträge</title>
 
-  <!-- Custom fonts for this theme -->
-  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-  <!-- Theme CSS -->
-  <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-161194303-1');
-    </script>
-
     <!-- Dialog Plugin -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="{% static 'js/build_dialog/jquery.dialog.js' %}"></script>
     <link rel="stylesheet" href="{% static 'js/build_dialog/jquery.dialog.css' %}">
+{% endblock %}
 
-</head>
-
-<body id="page-top" style="min-height: 100%;background: #99AEB5">
-{% load widget_tweaks %}
-  <!-- Navigation -->
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container-fluid">
-     {% if user.is_authenticated %}
-      <a class="navbar-brand btn btn-success" href="{% url "logout" %}">Abmelden</a>
-     {% else %}
-        <form class="form-inline my-0 my-lg-0" role="form" action="{% url "login" %}"
-            method="post" accept-charset="utf-8">
-          <div class="form-group mr-sm-2 d-none d-md-block">
-            <input type="text" placeholder="Benutzername" class="form-control" name="username">
-          </div>
-          <div class="form-group mr-sm-2 d-none d-md-block">
-            <input type="password" placeholder="Passwort" class="form-control" name="password">
-          </div>
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success d-none d-md-block">Anmelden</button>
-        </form>
-
-         <form class="form-inline my-0 my-lg-0 d-md-none" role="form" action="{% url "login" %}"
-            method="post" accept-charset="utf-8">
-          <div class="form-group">
-            <input type="text" placeholder="Benutzername" class="form-control" name="username" size="7">
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Passwort" class="form-control" name="password" size="7">
-          </div>
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success">Anmelden</button>
-        </form>
-     {% endif %}
-
-    <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menü
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'start' %}">Starseite</a>
-          </li>
-            {% if user.is_authenticated %}
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942; border: 1px solid #798f96" href="{% url 'home' %}">Mein Bereich</a>
-              </li>
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942; border: 1px solid #798f96" href="{% url 'blackboard' %}">Schwarzes Brett</a>
-              </li>
-            {% else %}
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
-              </li>
-            {% endif %}
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'faq' %}">Anleitung/FAQ</a>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'impressum' %}">Impressum</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
+{% block header %}
     <header class="masthead" style="margin-top: -5rem; background: #f5dab2;">
     <!-- TODO wallpaper -->
       <div class="container-fluid">
@@ -133,22 +57,18 @@
                 <div class="row content-ct" id="blackboard_elements"></div>
             </div>
         </div>
-
-
       </div>
   </header>
+{% endblock %}
 
-  <!-- Bootstrap CDN -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{% block section %}
+{% endblock %}
 
+{% block add_scripts %}
   <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
-  <!-- Custom scripts for this template -->
-  <script href="{% static 'js/freelancer.min.js' %}"></script>
 
 <script>
 function addElement(elementTag, elementId, dict, map) {
@@ -173,7 +93,7 @@ function addElement(elementTag, elementId, dict, map) {
 
     // Css styling
     newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
-        "left; margin-right: 10px; padding: 5px; margin-bottom: 10px;" +
+        "left; padding-right: 10px; padding: 5px; margin-bottom: 10px;" +
         "border-radius: 15px; border: 3px solid #798f96; padding-bottom: 5px");
     newElement.setAttribute("id", elementId);
 
@@ -248,5 +168,5 @@ function addNoElementsMessage(){
         updateBlockboard(e, location, status)
     })
 </script>
-</body>
-</html>
+
+{% endblock %}

@@ -23,18 +23,18 @@
         {% if group == "E" %}
             <a href="{% url 'einkaufsliste' %}">
                 <div class="col-md-auto text-center" style="font-size: x-large; color:#ffffff; background: #9bcaa7; border-radius: 5px">
-                    <p style="padding-top: 5px">Klicken Sie hier um einen Einkaufswunsch oder anderen Dienst auf dem schwarzen Brett zu veröffentlichen.</p>
+                    <p style="padding-top: 5px">Klicken Sie hier um einen <b style="color: #356774">Einkaufswunsch oder anderen Dienst auf dem schwarzen Brett zu veröffentlichen</b>. Oder einen Auftrag <b style="color: #356774">abzuschließen</b>, beziehungsweise einen Auftrag zu <b style="color: #356774">widerrufen</b>.</p>
                 </div>
             </a>
         {% elif group == "H" %}
             <a href="{% url 'blackboard' %}">
                 <div class="col-md-auto text-center" style="font-size: x-large; color:#ffffff; background: #356774;border-radius: 5px">
-                    <p style="padding-top: 5px">Klicken Sie hier um aktuelle Einkaufswünsche/Aufträge auf dem schwarzen Brett zu sehen!</p>
+                    <p style="padding-top: 5px">Klicken Sie hier um aktuelle Einkaufswünsche/Aufträge auf dem <b style="color: black">schwarzen Brett</b> zu sehen!</p>
                 </div>
             </a>
             <a href="{% url 'helfer_einkaufslisten' %}">
                 <div class="col-md-auto text-center" style="font-size: x-large; color:#ffffff; background: #9bcaa7;border-radius: 5px">
-                        <p style="padding-top: 5px">Klicken Sie hier um Ihre angenommenen Einkaufsaufträge/Aufträge anzusehen! <br>Sie finden hier außerdem die Kontaktdaten der Auftraggeber</p>
+                    <p style="padding-top: 5px">Klicken Sie hier um Ihre <b style="color: #356774">angenommenen Einkaufsaufträge/Aufträge</b> anzusehen! <br>Sie finden hier außerdem die <b style="color: #356774">Kontaktdaten der Auftraggeber.</b></p>
                 </div>
             </a>
         {% endif %}

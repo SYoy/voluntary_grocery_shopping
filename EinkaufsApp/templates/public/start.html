@@ -1,9 +1,18 @@
-<!DOCTYPE html>
-<html lang="en"style="height: 100%">
+{% extends 'base_less.html' %}
 
-<head>
+{# Load the tag library #}
+{% load bootstrap4 %}
 
-  {% load static %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% load static %}
+
+{% block headcontent %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,103 +22,25 @@
 
   <title>Einkaufshelfer Rauenberg - Startseite</title>
 
-  <!-- Custom fonts for this theme -->
-  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+{% endblock %}
 
-  <!-- Theme CSS -->
-  <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-161194303-1');
-    </script>
-
-</head>
-
-<body id="page-top" style="min-height: 100%">
-{% load widget_tweaks %}
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container-fluid">
-     {% if user.is_authenticated %}
-      <a class="navbar-brand btn btn-success" href="{% url "logout" %}">Abmelden</a>
-     {% else %}
-        <form class="form-inline my-0 my-lg-0" role="form" action="{% url "login" %}"
-            method="post" accept-charset="utf-8">
-          <div class="form-group mr-sm-2 d-none d-md-block">
-            <input type="text" placeholder="Benutzername" class="form-control" name="username">
-          </div>
-          <div class="form-group mr-sm-2 d-none d-md-block">
-            <input type="password" placeholder="Passwort" class="form-control" name="password">
-          </div>
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success d-none d-md-block">Anmelden</button>
-        </form>
-
-         <form class="form-inline my-0 my-lg-0 d-md-none" role="form" action="{% url "login" %}"
-            method="post" accept-charset="utf-8">
-          <div class="form-group">
-            <input type="text" placeholder="Benutzername" class="form-control" name="username" size="7">
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Passwort" class="form-control" name="password" size="7">
-          </div>
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success">Anmelden</button>
-        </form>
-     {% endif %}
-
-    <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menü
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'start' %}">Starseite</a>
-          </li>
-            {% if user.is_authenticated %}
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942; border: 1px solid #798f96" href="{% url 'home' %}">Mein Bereich</a>
-              </li>
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942; border: 1px solid #798f96" href="{% url 'blackboard' %}">Schwarzes Brett</a>
-              </li>
-            {% else %}
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
-              </li>
-            {% endif %}
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'faq' %}">Anleitung/FAQ</a>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'impressum' %}">Impressum</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
-  <!-- Masthead -->
+{% block header %}
+<!-- Masthead -->
   <header class="masthead text-white text-center" style="background: #ca6e5c">
-    <div class="container d-flex align-items-center flex-column">
+    <div class="container d-flex align-items-center flex-column" style="margin-bottom: -3rem">
 
       <!-- Masthead Heading -->
-      <h1 class="masthead-heading text-uppercase mb-0">Willkommen bei den Rauenberger Einkaufshelfern!</h1>
-
-      <p class="masthead-subheading  mb-0" style="margin-top: 20px">Mit dieser WebApp kann Nachbarschaftshilfe in Rauenberg koordiniert werden.</p>
-      <p class="masthead-subheading  mb-0" style="margin-top: 20px">Wir wollen ermöglichen, dass Ältere und Gefährdete angesichts der Corona-Krise nicht vergessen werden.</p>
-        <p class="masthead-subheading  mb-0">Auf dem <a style="color: rgba(1,5,6,1)" href="{%  url 'public_blackboard' %}">schwarzen Brett</a> finden Sie aktuelle Aufträge.</p>
+        <div class="d-none d-xl-block" style="margin-top: -2rem;">
+          <h1 class="masthead-heading text-uppercase mb-0">Willkommen bei den Rauenberger Einkaufshelfern!</h1>
+            <p class="masthead-subheading  mb-0" style="margin-top: 20px">Mit dieser WebApp kann Nachbarschaftshilfe in Rauenberg koordiniert werden.</p>
+            <p class="masthead-subheading  mb-0" style="margin-top: 20px">Wir wollen ermöglichen, dass Ältere und Gefährdete angesichts der Corona-Krise nicht vergessen werden.</p>
+            <p class="masthead-subheading  mb-0">Auf dem <a style="color: rgba(1,5,6,1)" href="{%  url 'public_blackboard' %}">schwarzen Brett</a> finden Sie aktuelle Aufträge.</p>
+        </div>
+        <div class="d-xl-none" style="margin-top: -3rem">
+          <h1 class="masthead-heading text-uppercase mb-0" style="font-size: xx-large">Willkommen bei den Rauenberger Einkaufshelfern!</h1>
+            <p class="masthead-subheading  mb-0" style="margin-top: 20px">Wir wollen ermöglichen, dass Ältere und Gefährdete angesichts der Corona-Krise nicht vergessen werden.</p>
+            <p class="masthead-subheading  mb-0">Auf dem <a style="color: rgba(1,5,6,1)" href="{%  url 'public_blackboard' %}">schwarzen Brett</a> finden Sie aktuelle Aufträge.</p>
+        </div>
 
       <!-- Icon Divider -->
       <div class="divider-custom divider-light">
@@ -121,27 +52,18 @@
       </div>
 
       <!-- Masthead Subheading -->
-      <p class="masthead-subheading font-weight-light mb-0">Einkaufshilfe - Transporte - Nachbarschaftshilfe</p>
+      <p class="masthead-subheading font-weight-light mb-0"">Einkaufshilfe - Transporte - Nachbarschaftshilfe</p>
 
     </div>
   </header>
+{% endblock %}
+
+{% block section %}
 
   <!-- Portfolio Section -->
   <section class="page-section portfolio" id="portfolio">
     <div class="container">
 
-      <!-- Portfolio Section Heading
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
-        -->
-      <!-- Icon Divider
-      <div class="divider-custom">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <i class="fas fa-star"></i>
-        </div>
-        <div class="divider-custom-line"></div>
-      </div>
-       -->
       <!-- Portfolio Grid Items -->
       <div class="row">
 
@@ -178,20 +100,6 @@
     </div>
   </section>
 
-  <!-- Copyright Section -->
-  <section class="copyright py-4 text-center text-white">
-    <div class="container">
-      <small>Copyright &copy; Einkaufshelfer-Rauenberg 2020</small>
-    </div>
-  </section>
-
-  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-  <div class="scroll-to-top d-lg-none position-fixed ">
-    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-      <i class="fa fa-chevron-up"></i>
-    </a>
-  </div>
-
 
   <!-- POPUP Modal 1 -->
   <div class="portfolio-modal modal fade" id="ModalHelfer" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
@@ -210,13 +118,14 @@
                 <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">HelferIn werden</h2>
                   <br>
                 <!-- Portfolio Modal - Image -->
-                <img class="img-fluid rounded mb-5" src="{% static 'img/portfolio/Helfer_Button.png' %}" alt="">
+                <img class="img-fluid rounded mb-5" src="{% static 'img/portfolio/Helfer_Button.png' %}" alt="" style="width: 70%">
 
                 <!-- Portfolio Modal - Text -->
                 <p class="mb-4" style="margin-top: 30px">Ihr könnt aktiv werden und Dienste für Eure Nachbarn übernehmen. Registriert euch und wählt Aufträge auf dem scharzen Brett aus.
                     Nach Annahme von Aufträgen könnt ihr mit dem Auftraggeber Kontakt aufnehmen.
-                    Die ist unter "Mein Bereich" möglich, sobald ihr angemeldet seid.</p>
-                <p class="mb-4">Das "schwarze Brett" ist anschließend auch zur Auftragsannahme freigeschaltet.</p>
+                    Die ist unter <a style="color: #eb9b72;"><b>"Mein Bereich"</b></a> möglich, sobald ihr angemeldet seid.</p>
+                <p class="mb-4">Das  <a style="color: #eb9b72;"><b>"Schwarze Brett"</b></a> ist anschließend auch zur Auftragsannahme freigeschaltet.</p>
+                <p class="mb-4">Weitere Hilfe erhalten Sie unter <a style="color: #eb9b72;"><b>"Anleitung/FAQ"</b></a></p>
               <div class="row">
                 <div class="col-md-1"></div>
                     <button class="col-md-4 btn btn-primary" onclick="myhref('registrieren_helfender')">
@@ -237,15 +146,16 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript
-  <script href="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-  <script href="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
-  <script href="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-    -->
-  <!-- Plugin JavaScript
-  <script href="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-    -->
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white d-none d-sm-block" style="position:fixed;padding:20px;left:0;bottom:0;background-color:#000;color:#FFF;text-align:center;width:100%;z-index:99999;">
+    <div class="container">
+      <small>Einkaufshelfer-Rauenberg</small>
+    </div>
+  </section>
 
+{% endblock %}
+
+{% block add_scripts %}
   <!-- Bootstrap CDN -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -259,6 +169,4 @@
       window.location.href = web;}
   </script>
 
-</body>
-
-</html>
+{% endblock %}
