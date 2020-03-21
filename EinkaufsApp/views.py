@@ -15,6 +15,7 @@ from django.core import serializers
 from EinkaufsApp.backend_forms.forms_signup import SignUpForm
 from EinkaufsApp.backend_forms.forms_einkaufliste import EinkaufsauftragForm
 from EinkaufsApp.backend_forms.forms_blackboard import SelectionForm
+from EinkaufsApp.backend_forms.check_form import check_form
 import logging
 
 # Queries
@@ -148,6 +149,7 @@ def einkaufsliste(request):
                 query = Einkaufsauftrag.objects.filter(user__id=request.user.id)
 
                 if len(query.filter(Q(status='aktiv')|Q(status='angenommen'))) < 2:
+                    # check_form(form.cleaned_data)
                     auftrag = form.save()
                     auftrag.refresh_from_db()
 
@@ -169,6 +171,10 @@ def einkaufsliste(request):
                     return redirect("einkaufsliste")
                 else:
                     messages.warning(request, "Sie haben schon 2 aktive/angenommene Aufträge, bitte schließen Sie diese vorher ab oder widerrufen sie.")
+            else:
+                form = EinkaufsauftragForm()
+                messages.warning(request, "Ihr Auftrag wurde nicht gelistet. Bitte achten Sie darauf eine gültige Telefonnummer anzugeben und alle Felder auszfüllen."
+                                        "Versuchen Sie es erneut oder wenden Sie sich an helfer@uber.space für Hilfe")
         else:
             form = EinkaufsauftragForm()
 
@@ -219,6 +225,8 @@ def einkaufsliste(request):
         return redirect("helfen")
 
     else:
+        messages.add_message(request, messages.INFO,
+                             'Leider ist etwas schief gegangen. Versuchen Sie es erneut oder wenden Sie sich an helfer@uber.space')
         return redirect("start")
 
 

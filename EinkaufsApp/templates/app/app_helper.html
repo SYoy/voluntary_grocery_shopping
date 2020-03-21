@@ -170,10 +170,20 @@ function addNoElementsMessage(){
     var newElement = document.createElement("div");
     newElement.setAttribute('id', "NoElementsMessage");
     newElement.innerHTML = "Für Ihre Auswahl wurden keine Treffer gefunden, bitte vergrößern Sie Ihren Suchraum.";
+    newElement.setAttribute('style', 'color: black; font-size: x-large; margin-left: 2rem; margin-right: 2rem');
 
     p.appendChild(newElement);
 }
 
+function addNoElementsMessageALL(){
+    var p = document.getElementById("blackboard_elements");
+    var newElement = document.createElement("div");
+    newElement.setAttribute('id', "NoElementsMessage");
+    newElement.innerHTML = "Zur Zeit sind glücklicherweise alle Aufträge in Bearbeitung, schauen Sie doch später wieder vorbei!";
+    newElement.setAttribute('style', 'color: black; font-size: x-large; margin-left: 2rem; margin-right: 2rem');
+    p.appendChild(newElement);
+}
+s
 </script>
 <script>
     function updateBlockboard(e, location, status) {
@@ -197,8 +207,13 @@ function addNoElementsMessage(){
                             addElement("div", element["pk"], element["fields"], response["map"]);
                         });
                     } else {
-                        clearElements();
-                        addNoElementsMessage();
+                        if (location == "ALL") {
+                            clearElements();
+                            addNoElementsMessageALL();
+                        } else {
+                            clearElements();
+                            addNoElementsMessage();
+                        }
                     }
                 }
             },
