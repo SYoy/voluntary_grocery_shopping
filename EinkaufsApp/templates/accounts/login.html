@@ -12,11 +12,6 @@
 
 {% block content %}
 
-  {% if form.errors %}
-    <p>Ihr Benutzername und Passwort stimmt nicht überein. Bitte versuche Sie es erneut.</p>
-    <p>Falls Sie Ihr Passwort vergessen haben melden Sie sich bitte unter: <a href="mailto:helfer@uber.space">helfer@uber.space</a></p>
-  {% endif %}
-
   {% if next %}
     {% if user.is_authenticated %}
       <p>Your account doesn't have access to this page. To proceed,
@@ -38,8 +33,15 @@
         <td>{{ form.password }}</td>
       </tr>
     </table>
-    <input type="submit" value="Anmelden" />
-    <input type="hidden" name="Weiter" value="{{ next }}" />
+      <br>
+    <input class="btn btn-success" type="submit" value="Anmelden" />
+    <input class="btn btn-warning" type="hidden" name="Weiter" value="{{ next }}" />
   </form>
+
+  {% if form.errors %}
+      <br>
+    <p>Ihr Benutzername und Passwort stimmt nicht überein. Bitte versuche Sie es erneut.</p>
+    <p>Falls Sie Ihr Passwort vergessen haben melden Sie sich bitte unter: <a href="mailto:helfer@uber.space">helfer@uber.space</a></p>
+  {% endif %}
 
 {% endblock %}
