@@ -2,9 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base_less.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_einkaufliste.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_einkaufliste.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/faq.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/faq.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/backend_forms/forms_signup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/img/avataaars.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/cabin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/cake.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/circus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/game.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/safe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/static/img/portfolio/submarine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/impressum.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/impressum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,26 +80,26 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/public/startnew.html" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\public" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\js\build_dialog" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\forked\dist" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\app" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\public" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\accounts" />
       <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\app1" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\public" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\js\build_dialog" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -151,6 +165,7 @@
       <workItem from="1584721964098" duration="44000" />
       <workItem from="1584722060983" duration="1159000" />
       <workItem from="1584724338484" duration="219000" />
+      <workItem from="1584777616791" duration="4933000" />
     </task>
     <servers />
   </component>

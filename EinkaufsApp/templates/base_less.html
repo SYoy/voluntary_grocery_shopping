@@ -1,15 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-{% load static %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Corona Einkaufshelfer">
-  <meta name="author" content="Marius Steger">
-  <meta http-equiv="refresh" content="600" >
+<!DOCTYPE html>
+<html lang="en"style="height: 100%">
 
-  <title>Einkaufshelfer Rauenberg</title>
+<head>
+
+{% load static %}
+  {% block headcontent %}
+  {% endblock %}
 
   <!-- Custom fonts for this theme -->
   <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -18,12 +14,6 @@
 
   <!-- Theme CSS -->
   <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
-
-
-  <!-- Dialog Plugin -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="{% static 'js/build_dialog/jquery.dialog.js' %}"></script>
-  <link rel="stylesheet" href="{% static 'js/build_dialog/jquery.dialog.css' %}">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
@@ -35,11 +25,10 @@
         gtag('config', 'UA-161194303-1');
     </script>
 
-  {% block headcontent %}
-  {% endblock %}
+
 </head>
 
-<body>
+<body id="page-top" style="min-height: 100%">
 {% load widget_tweaks %}
 
   <!-- Navigation -->
@@ -114,45 +103,46 @@
     </div>
   </nav>
 
-  <!-- New Section -->
-  <section class="page-section" id="main_section">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-10">
-        <br>
-          <h1 class="mt-2">Einkaufshelfer Rauenberg</h1>
-          <hr class="mt-0 mb-4">
-          {% block content %}
-          {% endblock %}
-        </div>
-      </div>
-    </div>
-  </section>
+    {% block header %}
+    {% endblock %}
 
- <!-- Copyright Section -->
+    {% block section %}
+    {% endblock %}
+
+
+  <!-- Copyright Section -->
   <section class="copyright py-4 text-center text-white d-none d-sm-block" style="position:fixed;padding:20px;left:0;bottom:0;background-color:#000;color:#FFF;text-align:center;width:100%;z-index:99999;">
     <div class="container">
       <small>Einkaufshelfer-Rauenberg</small>
     </div>
   </section>
 
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
 
-  <!-- Bootstrap CDN -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Bootstrap CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-  <!-- Custom scripts for this template -->
-  <script href="{% static 'js/freelancer.min.js' %}"></script>
+    <!-- Custom scripts for this template -->
+    <script href="{% static 'js/freelancer.min.js' %}"></script>
 
-  <script type="text/javascript">
+{% block add_scripts %}
+{% endblock %}
+
+    <script type="text/javascript">
     function myhref(web){
       window.location.href = web;}
-  </script>
+    </script>
 
     <script>
         (function() {
-	        if (!localStorage.getItem('cookieconsent')) {
+            if (!localStorage.getItem('cookieconsent')) {
                 document.body.innerHTML += '\
                 <div class="cookieconsent" style="position:fixed;padding:20px;left:0;bottom:0;background-color:#000;color:#FFF;text-align:center;width:100%;z-index:99999;">\
                     This site uses cookies. By continuing to use this website, you agree to their use. \
