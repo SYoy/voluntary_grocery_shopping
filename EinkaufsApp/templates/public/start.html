@@ -25,16 +25,22 @@
 {% endblock %}
 
 {% block header %}
-        <!-- Masthead -->
+<!-- Masthead -->
   <header class="masthead text-white text-center" style="background: #ca6e5c">
-    <div class="container d-flex align-items-center flex-column">
+    <div class="container d-flex align-items-center flex-column" style="margin-bottom: -3rem">
 
       <!-- Masthead Heading -->
-      <h1 class="masthead-heading text-uppercase mb-0">Willkommen bei den Rauenberger Einkaufshelfern!</h1>
-
-      <p class="masthead-subheading  mb-0" style="margin-top: 20px">Mit dieser WebApp kann Nachbarschaftshilfe in Rauenberg koordiniert werden.</p>
-      <p class="masthead-subheading  mb-0" style="margin-top: 20px">Wir wollen ermöglichen, dass Ältere und Gefährdete angesichts der Corona-Krise nicht vergessen werden.</p>
-        <p class="masthead-subheading  mb-0">Auf dem <a style="color: rgba(1,5,6,1)" href="{%  url 'public_blackboard' %}">schwarzen Brett</a> finden Sie aktuelle Aufträge.</p>
+        <div class="d-none d-xl-block" style="margin-top: -2rem;">
+          <h1 class="masthead-heading text-uppercase mb-0">Willkommen bei den Rauenberger Einkaufshelfern!</h1>
+            <p class="masthead-subheading  mb-0" style="margin-top: 20px">Mit dieser WebApp kann Nachbarschaftshilfe in Rauenberg koordiniert werden.</p>
+            <p class="masthead-subheading  mb-0" style="margin-top: 20px">Wir wollen ermöglichen, dass Ältere und Gefährdete angesichts der Corona-Krise nicht vergessen werden.</p>
+            <p class="masthead-subheading  mb-0">Auf dem <a style="color: rgba(1,5,6,1)" href="{%  url 'public_blackboard' %}">schwarzen Brett</a> finden Sie aktuelle Aufträge.</p>
+        </div>
+        <div class="d-xl-none" style="margin-top: -3rem">
+          <h1 class="masthead-heading text-uppercase mb-0" style="font-size: xx-large">Willkommen bei den Rauenberger Einkaufshelfern!</h1>
+            <p class="masthead-subheading  mb-0" style="margin-top: 20px">Wir wollen ermöglichen, dass Ältere und Gefährdete angesichts der Corona-Krise nicht vergessen werden.</p>
+            <p class="masthead-subheading  mb-0">Auf dem <a style="color: rgba(1,5,6,1)" href="{%  url 'public_blackboard' %}">schwarzen Brett</a> finden Sie aktuelle Aufträge.</p>
+        </div>
 
       <!-- Icon Divider -->
       <div class="divider-custom divider-light">
@@ -46,7 +52,7 @@
       </div>
 
       <!-- Masthead Subheading -->
-      <p class="masthead-subheading font-weight-light mb-0">Einkaufshilfe - Transporte - Nachbarschaftshilfe</p>
+      <p class="masthead-subheading font-weight-light mb-0"">Einkaufshilfe - Transporte - Nachbarschaftshilfe</p>
 
     </div>
   </header>
@@ -58,18 +64,6 @@
   <section class="page-section portfolio" id="portfolio">
     <div class="container">
 
-      <!-- Portfolio Section Heading
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
-        -->
-      <!-- Icon Divider
-      <div class="divider-custom">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <i class="fas fa-star"></i>
-        </div>
-        <div class="divider-custom-line"></div>
-      </div>
-       -->
       <!-- Portfolio Grid Items -->
       <div class="row">
 
@@ -152,6 +146,12 @@
     </div>
   </div>
 
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white d-none d-sm-block" style="position:fixed;padding:20px;left:0;bottom:0;background-color:#000;color:#FFF;text-align:center;width:100%;z-index:99999;">
+    <div class="container">
+      <small>Einkaufshelfer-Rauenberg</small>
+    </div>
+  </section>
 
 {% endblock %}
 
