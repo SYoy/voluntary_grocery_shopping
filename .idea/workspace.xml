@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9ccae6b2-79d5-412b-ad4e-75cb23d7249d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/inWork.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/inWork.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base_less.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base_less.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
