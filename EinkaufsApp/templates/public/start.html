@@ -151,10 +151,17 @@
     </div>
   </div>
 
-  <!-- Copyright Section -->
-  <section class="copyright py-4 text-center text-white d-none d-sm-block" style="position:fixed;padding:20px;left:0;bottom:0;background-color:#000;color:#FFF;text-align:center;width:100%;z-index:99999;">
+ <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white d-none d-md-block" style="position:fixed;padding:20px;left:0;bottom:0;background-color:#000;color:#FFF;text-align:center;width:100%;z-index:99999;">
     <div class="container">
-      <small>Einkaufshelfer-Rauenberg</small>
+      <small>Einkaufshelfer-Rauenberg - </small>
+        <a href="{% url 'impressum' %}">
+      <small>Impressum</small>
+        </a>
+        <small> - </small>
+        <a href="{% url 'datenschutz' %}">
+      <small>Datenschutz</small>
+        </a>
     </div>
   </section>
 
