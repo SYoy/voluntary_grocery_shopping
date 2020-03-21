@@ -33,7 +33,8 @@ logger = logging.getLogger(__name__)
 def start(request):
     query = User.objects.filter(person__group="H")
     query2 = User.objects.filter(person__group="E")
-    return render(request, 'public/start.html', {"count_helfer": len(query), "count_Em": len(query2)})
+    query_auftraege = Einkaufsauftrag.objects.filter(status="aktiv")
+    return render(request, 'public/start.html', {"count_helfer": len(query), "count_Em": len(query2), "count_Auftraege": len(query_auftraege)})
 
 
 ## PUBLIC
