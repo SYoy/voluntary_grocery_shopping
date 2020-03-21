@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="">
+    <list default="true" id="bf82e671-b37f-4ab2-b2e2-5a969066e238" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/accounts/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base_less.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base_less.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/preview_blackboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,81 +15,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db" type="feb32156:DbDataSourceImpl" />
-      </path>
-    </expand>
-    <select />
-  </component>
-  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" module-name="EinkaufsApp" is-module-sdk="true">
-    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
-    <option name="myUseModuleSdk" value="true" />
-    <option name="myModuleName" value="EinkaufsApp" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-        <option value="JavaScript File" />
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="D:\voluntary_grocery_shopping\.idea" />
-      </set>
-    </option>
-  </component>
-  <component name="ProjectId" id="1ZCXzRqvdNb6qxXYXKrWmOWO9Y4" />
+  <component name="ProjectId" id="1ZRQZ8pM4oxa6TiUCjD0lZrf2zb" />
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="sqlite" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp/templates/app" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/EinkaufsApp/templates/public/startnew.html" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\app" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\public" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static\templates\accounts" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\app1" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\app" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\templates\public" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp\static" />
-      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -103,20 +36,18 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="EinkaufsApp" type="Python.DjangoServer" factoryName="Django server">
-      <module name="EinkaufsApp" />
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="EinkaufsApp.settings" />
-        <env name="DEBUG" value="True" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\mariu\AppData\Local\Programs\Python\Python36\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
       <option name="host" value="" />
@@ -134,26 +65,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ce0b8a7e-3780-428a-877b-b2496f893e96" name="Default Changelist" comment="" />
-      <created>1584344312042</created>
+      <changelist id="bf82e671-b37f-4ab2-b2e2-5a969066e238" name="Default Changelist" comment="" />
+      <created>1584799480515</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1584344312042</updated>
-      <workItem from="1584344314829" duration="829000" />
-      <workItem from="1584345528785" duration="9456000" />
-      <workItem from="1584355007355" duration="23994000" />
-      <workItem from="1584434098935" duration="15860000" />
-      <workItem from="1584458994416" duration="8772000" />
-      <workItem from="1584515700820" duration="13402000" />
-      <workItem from="1584533319136" duration="9316000" />
-      <workItem from="1584546698423" duration="5774000" />
-      <workItem from="1584683154035" duration="21145000" />
-      <workItem from="1584719769420" duration="1037000" />
-      <workItem from="1584720845810" duration="953000" />
-      <workItem from="1584721964098" duration="44000" />
-      <workItem from="1584722060983" duration="1159000" />
-      <workItem from="1584724338484" duration="219000" />
-      <workItem from="1584777616791" duration="7127000" />
+      <updated>1584799480515</updated>
+      <workItem from="1584799483575" duration="437000" />
     </task>
     <servers />
   </component>
@@ -165,20 +82,10 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="Python.DjangoServer">
-        <watch expression="user" />
-        <watch expression="request" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

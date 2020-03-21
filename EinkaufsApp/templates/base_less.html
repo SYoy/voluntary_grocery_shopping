@@ -37,7 +37,7 @@
          {% if user.is_authenticated %}
           <a class="navbar-brand btn btn-warning" href="{% url "logout" %}">Abmelden</a>
          {% else %}
-         <div class="col-5">
+         <div class="col-6">
             <form class="form-inline my-0 my-lg-0" role="form" action="{% url "login" %}"
                 method="post" accept-charset="utf-8">
               <div class="form-group mr-sm-2 d-none d-xl-block">
