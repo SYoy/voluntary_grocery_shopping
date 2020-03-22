@@ -13,13 +13,13 @@ class EinkaufsauftragForm(forms.ModelForm):
                                         "Bitte nennen Sie nicht Ihren Namen oder andere private Information."}), required=True,
                                         help_text='Nachricht an die Helfer:')
 
-    liste_text = forms.CharField(widget=forms.Textarea(attrs={"rows": 10, "placeholder":"Einkaufsliste/Auftrag hier genauer angeben. Wenn Sie eine Apothekenabholung oder einen Transport/Fahrt benötigen, schreiben Sie das auch hier"}), required=True,
+    liste_text = forms.CharField(widget=forms.Textarea(attrs={"rows": 10, "placeholder":"Einkaufsliste/Auftrag hier genauer angeben. Wenn Sie eine Apothekenabholung oder einen Transport/Fahrt benötigen, schreiben Sie das auch hier"}), required=False,
                                 help_text="Einkaufsliste/Auftrag hier genauer angeben. Wenn Sie eine Apothekenabholung oder einen Transport/Fahrt benötigen, schreiben Sie das auch hier")
 
-    telefonnummer = forms.CharField(widget=forms.Textarea(attrs={"rows": 1, "cols": 25, "placeholder":"z.B. 06222-12345"}), required=True, validators=[tel_regex],
+    telefonnummer = forms.CharField(widget=forms.Textarea(attrs={"rows": 1, "cols": 25, "placeholder":"z.B. 06222-12345"}), required=True,# validators=[tel_regex],
                                 help_text="Telefonnummer hier eintragen. (Ihre Nummer wird nur an die HelferIn übermittelt, die ihren Einkauf/Auftrag tätigen wird)")
 
-    budget = forms.CharField(max_length=4, widget=forms.Textarea(attrs={"rows": 1, "cols": 6, "placeholder": "0"}), required=True, validators=[budget_regex],
+    budget = forms.CharField(max_length=4, widget=forms.Textarea(attrs={"rows": 1, "cols": 6, "placeholder": "0"}), required=False, initial="0",
                              help_text="Falls für Sie eingekauft wird: Wie viel Geld darf Ihr Einkauf maximal kosten? (Angabe in €)")
 
     class Meta:
