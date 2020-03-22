@@ -34,7 +34,7 @@ def start(request):
     query = User.objects.filter(person__group="H")
     query2 = User.objects.filter(person__group="E")
     query_auftraege = Einkaufsauftrag.objects.filter(status="aktiv")
-    return render(request, 'public/start.html', {"count_helfer": len(query), "count_Em": len(query2), "count_Auftraege": len(query_auftraege)})
+    return render(request, 'public/start.html', {"count_helfer": len(query), "count_Em": len(query2), "count_Auftraege": len(query_auftraege), "count_user": len(query.union(query2))})
 
 
 ## PUBLIC
