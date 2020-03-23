@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11058f4a-8a17-4a84-92e5-f3a2cd3604bc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/app/inWork.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/app/inWork.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/base_less.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/base_less.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,8 +42,13 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/EinkaufsApp" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\voluntary_grocery_shopping\EinkaufsApp" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -65,10 +69,11 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DEBUG" value="&quot;True&quot;" />
         <env name="DJANGO_SETTINGS_MODULE" value="EinkaufsApp.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -76,8 +81,8 @@
       <option name="port" value="8000" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="http://127.0.0.1:8000/" />
-      <option name="runTestServer" value="true" />
+      <option name="browserUrl" value="http://0.0.0.0:8000/" />
+      <option name="runTestServer" value="false" />
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
@@ -143,7 +148,11 @@
 >>>>>>> farbauswahl
 =======
       <workItem from="1584870231272" duration="2104000" />
+<<<<<<< HEAD
 >>>>>>> wording
+=======
+      <workItem from="1584950502605" duration="3883000" />
+>>>>>>> formularresizetoscreen
     </task>
     <servers />
   </component>
