@@ -18,7 +18,7 @@ LOCATION_CHOICES = (
 )
 
 LOCATION_CHOICES_BLACKBOARD = (
-    ('default', 'Bitte auswählen'),
+    ('default', 'Ort auswählen'),
     ('ALL', 'Alle Ortsteile'),
     ('MBG', 'Malschenberg'),
     ('RBG', 'Rauenberg'),
