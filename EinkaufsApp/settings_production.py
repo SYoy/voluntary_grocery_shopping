@@ -38,7 +38,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['helfer.uber.space']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -93,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            'read_default_file': '/home/helfer/mysql/my.cnf',
+            'read_default_file': '/home/helfer/mysql/my_stleon.cnf',
         },
     }
 }
