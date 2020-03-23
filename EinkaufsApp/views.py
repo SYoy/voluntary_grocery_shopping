@@ -141,15 +141,13 @@ def home(request):
 def einkaufsliste(request):
     if request.user.is_authenticated and request.user.person.group in ["E", "D", "S"]:
         message_app = ""
-        # "Wenn Sie Hilfe beim Ausfüllen des Formular benötigen, schreiben Sie eine Mail an:" \
-        #                       "helfer@uber.space"
 
         if request.method == 'POST':
             form = EinkaufsauftragForm(request.POST)
             if form.is_valid():
                 query = Einkaufsauftrag.objects.filter(user__id=request.user.id)
 
-                if len(query.filter(Q(status='aktiv')|Q(status='angenommen'))) < 2:
+                if len(query.filter(Q(status='aktiv')|Q(status='angenommen'))) < 2 or request.user.group == "S":
                     # check_form(form.cleaned_data)
                     auftrag = form.save()
                     auftrag.refresh_from_db()
