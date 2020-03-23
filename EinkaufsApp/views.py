@@ -12,14 +12,14 @@ from django.http import JsonResponse
 from django.core import serializers
 
 # Forms
-from EinkaufsApp.backend_forms.forms_signup import SignUpForm
-from EinkaufsApp.backend_forms.forms_einkaufliste import EinkaufsauftragForm
-from EinkaufsApp.backend_forms.forms_blackboard import SelectionForm
-from EinkaufsApp.backend_forms.check_form import check_form
+from EinkaufsAppStLeon.backend_forms.forms_signup import SignUpForm
+from EinkaufsAppStLeon.backend_forms.forms_einkaufliste import EinkaufsauftragForm
+from EinkaufsAppStLeon.backend_forms.forms_blackboard import SelectionForm
+from EinkaufsAppStLeon.backend_forms.check_form import check_form
 import logging
 
 # Queries
-from EinkaufsApp.models import Einkaufsauftrag
+from EinkaufsAppStLeon.models import Einkaufsauftrag
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db.models import Q

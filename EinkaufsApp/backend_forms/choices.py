@@ -11,22 +11,19 @@ STATUS_CHOICES_BLACKBOARD = (
 )
 
 LOCATION_CHOICES = (
-    ('ALL', 'Alle Ortsteile'),
-    ('MBG', 'Malschenberg'),
-    ('RBG', 'Rauenberg'),
-    ('ROTBG', 'Rotenberg'),
+    ('ALL', 'Alle Städte'),
+    ('STL', 'St. Leon'),
+    ('ROT', 'Rot'),
 )
 
 LOCATION_CHOICES_BLACKBOARD = (
-    ('default', 'Ort auswählen'),
-    ('ALL', 'Alle Ortsteile'),
-    ('MBG', 'Malschenberg'),
-    ('RBG', 'Rauenberg'),
-    ('ROTBG', 'Rotenberg'),
+    ('default', 'Stadt auswählen'),
+    ('ALL', 'Alle Städte'),
+    ('STL', 'St. Leon'),
+    ('ROT', 'Rot'),
 )
 
 LOCATION_CHOICES_FORM = (
-    ('RBG', 'Rauenberg'),
-    ('ROTBG', 'Rotenberg'),
-    ('MBG', 'Malschenberg'),
+    ('STL', 'St. Leon'),
+    ('ROT', 'Rot'),
 )
