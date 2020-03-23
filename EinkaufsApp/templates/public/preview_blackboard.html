@@ -31,35 +31,35 @@
 
 {% block header %}
     <header class="masthead" style="margin-top: -5rem; background: #f5dab2;">
-    <!-- TODO wallpaper -->
       <div class="container-fluid">
 
-        <div class="row justify-content-between" style="padding-top: 10px; padding-bottom: 10px; padding-left: 2rem; padding-right: 1rem;
+        <div class="row justify-content-between" style="padding-top: 10px; padding-bottom: 10px; padding-left: 1rem; padding-right: 1rem;
                 background: #7a8e95; border-radius: 20px">
-            <div class="col-md-8 d-none d-md-block" style="background: #f5cd9a; font-size: 2.5rem; text-align: center; margin: auto; margin-bottom: 10px;
+            <div class="col-lg-8 d-none d-lg-block" style="background: #f5cd9a; font-size: 2.5rem; text-align: center; margin-bottom: 10px;
                 color: white; border-radius: 20px">
                 Aktuelle Einkaufsaufträge / Hilfsgesuche</div>
 
-            <div class="col-md-8 d-md-none" style="background: #f5cd9a; font-size: 2rem; text-align: center; margin: auto; margin-bottom: 10px;
+            <div class="col-12 d-lg-none" style="background: #f5cd9a; font-size: 1.5rem; text-align: center; margin: auto; margin-bottom: 10px;
                 color: white; border-radius: 20px">
                 Aktuelle Einkaufsaufträge / Hilfsgesuche</div>
 
-
-           {% for field in form %}
-                <div class="col-md-auto" style="font-size: 20px; background: #8ea995; margin-left: 10px;
-                border-radius: 20px; text-align: center; margin-bottom: 5px; height: 4rem; padding-top: 0.8rem">
-                        <div class="form-group" style="color:#000000; font-size: larger; border-radius: 20px">
-                            {{ field }}
-                        </div>
-                </div>
-           {% endfor %}
+            <div class="row" style="padding-left: 1rem; padding-right: 1rem;">
+               {% for field in form %}
+                    <div class="col-auto" style="font-size: 20px; background: #8ea995;
+                    border-radius: 20px; text-align: center; margin-bottom: 5px; height: 4rem; padding-top: 0.8rem; margin-left: 5px">
+                            <div class="form-group" style="color:#000000; font-size: x-large; border-radius: 20px">
+                                {{ field }}
+                            </div>
+                    </div>
+               {% endfor %}
+            </div>
         </div>
 
-        <div class="row justify-content-center" style="padding-top: 10px; padding-bottom: 10px; padding-left: 2rem; padding-right: 1rem;">
+        <div class="row" style="padding-top: 10px; padding-bottom: 10px; padding-left: 1rem; padding-right: 1rem;">
             <!-- BLACKBOARD -->
             <div class="col-lg-12" id="blackboard" style="color: #ffffff; width: 100%;
             height: 100%; margin-top: 5px;">
-                <div class="row content-ct" id="blackboard_elements"></div>
+                <div class="row justify-content-start" id="blackboard_elements"></div>
             </div>
         </div>
       </div>
@@ -98,7 +98,7 @@ function addElement(elementTag, elementId, dict, map) {
 
     // Css styling
     newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
-        "left; padding-right: 10px; padding: 5px; margin-bottom: 10px;" +
+        "left; margin-bottom: 10px;" +
         "border-radius: 15px; border: 3px solid #798f96; padding-bottom: 5px");
     newElement.setAttribute("id", elementId);
 
@@ -126,7 +126,7 @@ function addNoElementsMessageALL(){
     var newElement = document.createElement("div");
     newElement.setAttribute('id', "NoElementsMessage");
     newElement.innerHTML = "Zur Zeit sind glücklicherweise alle Aufträge in Bearbeitung, schauen Sie doch später wieder vorbei!";
-    newElement.setAttribute('style', 'color: black; font-size: x-large;  margin-left: 2rem; margin-right: 2rem');
+    newElement.setAttribute('style', 'color: black; font-size: x-large; margin-left: 2rem; margin-right: 2rem');
     p.appendChild(newElement);
 }
 s
