@@ -4,6 +4,7 @@
     <list default="true" id="11058f4a-8a17-4a84-92e5-f3a2cd3604bc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/impressum.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/impressum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +82,7 @@
       <option name="port" value="8000" />
       <option name="host" value="" />
       <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="http://127.0.0.1:8000/" />
+      <option name="browserUrl" value="http://0.0.0.0:8000/" />
       <option name="runTestServer" value="false" />
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
@@ -128,7 +129,7 @@
       <workItem from="1584819011930" duration="22000" />
       <workItem from="1584863795352" duration="4770000" />
       <workItem from="1584870231272" duration="2104000" />
-      <workItem from="1584950502605" duration="1840000" />
+      <workItem from="1584950502605" duration="3409000" />
     </task>
     <servers />
   </component>
