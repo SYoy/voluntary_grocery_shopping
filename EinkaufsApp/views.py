@@ -147,7 +147,7 @@ def einkaufsliste(request):
             if form.is_valid():
                 query = Einkaufsauftrag.objects.filter(user__id=request.user.id)
 
-                if len(query.filter(Q(status='aktiv')|Q(status='angenommen'))) < 2 or request.user.group == "S":
+                if len(query.filter(Q(status='aktiv')|Q(status='angenommen'))) < 2 or request.user.person.group == "S":
                     # check_form(form.cleaned_data)
                     auftrag = form.save()
                     auftrag.refresh_from_db()
@@ -180,16 +180,24 @@ def einkaufsliste(request):
         # Angezeigte Aufträge (rechts)
         most_recent = None
         most_recent2 = None
+        most_recent_super = None
 
         aktiv = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="aktiv").order_by("-date_added")
         ang = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="angenommen").order_by("-date_added")
 
         set = aktiv | ang
         set = set.values()
-        if set.count() > 0 and set.count() < 3:
+        if (set.count() > 0 and set.count() < 3) or (set.count() > 0 and request.user.person.group == "S"):
             if set.count() == 2:
                 most_recent = set[0]
                 most_recent2 = set[1]
+
+            # SuperUser
+            elif set.count() > 2 and request.user.person.group == "S":
+                most_recent = set[0]
+                most_recent2 = set[1]
+                most_recent_super = set[2:]
+
             elif set.count() == 1:
                 most_recent = set.values()[0]
 
@@ -201,8 +209,8 @@ def einkaufsliste(request):
                 if set2.count() > 0:
                     most_recent2 = set2.values()[0]
 
-        elif set.count() > 2:
-            logger.error("more than 2 active/inWork listings."+str(request.user.id))
+        elif set.count() > 2 and not request.user.person.group == "S":
+            logger.error("more than 2 active/inWork listings." + str(request.user.id))
 
         elif set.count() == 0:
             # fill with inaktiv/abgeschlossen
@@ -217,7 +225,7 @@ def einkaufsliste(request):
             elif set2.count() == 1:
                 most_recent = set2.values()[0]
 
-        return render(request, 'app/app_inneed.html', {'form': form, "akt_auftrag": most_recent, "akt_auftrag2": most_recent2, "message": message_app})
+        return render(request, 'app/app_inneed.html', {'form': form, "akt_auftrag": most_recent, "akt_auftrag2": most_recent2, "message": message_app, "super_auftraege": most_recent_super})
 
     elif request.user.is_authenticated and request.user.person.group == "H":
         messages.add_message(request, messages.INFO, 'Sie sind als Helfer angemeldet und werden deshalb auf das schwarze Brett umgeleitet.')
