@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f0d29676-5a1a-4457-93e2-165199b3ed93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EinkaufsApp/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/EinkaufsApp/templates/public/start.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +70,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DEBUG" value="&quot;True&quot;" />
-        <env name="DJANGO_SETTINGS_MODULE" value="EinkaufsApp.settings" />
+        <env name="DJANGO_SETTINGS_MODULE" value="EinkaufsApp.settings_development" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -117,7 +117,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="11058f4a-8a17-4a84-92e5-f3a2cd3604bc" name="Default Changelist" comment="" />
+      <changelist id="f0d29676-5a1a-4457-93e2-165199b3ed93" name="Default Changelist" comment="" />
       <created>1584799480515</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -129,6 +129,7 @@
       <workItem from="1584863795352" duration="4770000" />
       <workItem from="1584870231272" duration="2104000" />
       <workItem from="1584950502605" duration="3883000" />
+      <workItem from="1585033781602" duration="129000" />
     </task>
     <servers />
   </component>
