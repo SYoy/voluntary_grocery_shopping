@@ -102,7 +102,7 @@
                             </div>
                             {% if akt_auftrag.status == "aktiv" or akt_auftrag.status == "angenommen" %}
                                 <div class="col-md-4" style="margin-bottom: 5px">
-                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" id="abschließen">
+                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" onclick="AbschließenID({{ akt_auftrag.id }}, {{ akt_auftrag.user_id }})">
                                         <p style="padding-top: 5px">Ich habe meinen Wunsch erhalten. Hiermit abschließen</p>
                                     </button>
                                 </div>
@@ -111,7 +111,7 @@
                             </div>
                             {% if akt_auftrag.status == "aktiv" %}
                                 <div class="col-md-2" style="margin-bottom: 5px">
-                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;" id="widerrufen">
+                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;" onclick="RemoveID({{ akt_auftrag.id }}, {{ akt_auftrag.user_id }})">
                                         <p style="padding-top: 5px">Auftrag widerrufen</p>
                                     </button>
                                 </div>
@@ -127,45 +127,86 @@
                         <div class="row">
                             <div class="col-md-10" style="margin-left: 10px">
                                 <div class="row content-ct">
-                                    <div class="img-rounded col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px; border-radius: 5px">STATUS:</div>
+                                    <div class="col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px; border-radius: 5px">STATUS:</div>
                                     {% if akt_auftrag2.status == "aktiv" or akt_auftrag2.status == "angenommen" %}
-                                        <div class="img-rounded col-md-3" style="background: #9bcaa7; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag2.status }}</div>
+                                        <div class="col-md-3" style="background: #9bcaa7; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag2.status }}</div>
                                     {% else %}
-                                        <div class="img-rounded col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag2.status }}
+                                        <div class="col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ akt_auftrag2.status }}</div>
                                     {% endif %}
-                                    </div>
                                 </div>
                                 <p style="text-align: left">Nachricht: <br>{{ akt_auftrag2.nachricht }}</p>
                                 <p style="text-align: left">Einkaufsliste: <br>{{ akt_auftrag2.liste_text }}</p>
                                 <p style="text-align: left">Budget: {{ akt_auftrag2.budget }}</p>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-1"></div>
-
+                    <div class="row">
+                        <div class="col-md-1">
+                            </div>
                             {% if akt_auftrag2.status == "aktiv" or akt_auftrag2.status == "angenommen" %}
                                 <div class="col-md-4" style="margin-bottom: 5px">
-                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" id="abschließen2">
+                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" onclick="AbschließenID({{ akt_auftrag2.id }}, {{ akt_auftrag2.user_id }})">
                                         <p style="padding-top: 5px">Ich habe meinen Wunsch erhalten. Hiermit abschließen</p>
                                     </button>
                                 </div>
                             {% endif %}
-
-                            <div class="col-md-2"></div>
-
+                            <div class="col-md-2">
+                            </div>
                             {% if akt_auftrag2.status == "aktiv" %}
                                 <div class="col-md-2" style="margin-bottom: 5px">
-                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;" id="widerrufen2">
+                                    <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;" onclick="RemoveID({{ akt_auftrag2.id }}, {{ akt_auftrag2.user_id }})">
                                         <p style="padding-top: 5px">Auftrag widerrufen</p>
                                     </button>
                                 </div>
                             {% endif %}
-
-                            <div class="col-md-1"></div>
+                            <div class="col-md-1">
+                            </div>
                         </div>
                     {% endif %}
                 </div>
+
+                {% for auf_super in super_auftraege %}
+                    <div class="col-md-auto" style="background: #f5c182; margin-top: 10px; margin-bottom: 10px; border-radius: 20px">
+                            <div class="row">
+                                <div class="col-md-10" style="margin-left: 10px">
+                                    <div class="row content-ct">
+                                        <div class="img-rounded col-md-2 col-md-offset-4" style="font-size: large; margin-top: 5px; border-radius: 5px">STATUS:</div>
+                                        {% if auf_super.status == "aktiv" or auf_super.status == "angenommen" %}
+                                            <div class="img-rounded col-md-3" style="background: #9bcaa7; font-size: large; margin-top: 5px; border-radius: 5px"> {{ auf_super.status }}</div>
+                                        {% else %}
+                                            <div class="img-rounded col-md-3" style="background: #9d9d9d; font-size: large; margin-top: 5px; border-radius: 5px"> {{ auf_super.status }}</div>
+                                        {% endif %}
+                                        </div>
+                                    <p style="text-align: left">Nachricht: <br>{{ auf_super.nachricht }}</p>
+                                    <p style="text-align: left">Einkaufsliste: <br>{{ auf_super.liste_text }}</p>
+                                    <p style="text-align: left">Budget: {{ auf_super.budget }}</p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-1"></div>
+
+                                {% if auf_super.status == "aktiv" or auf_super.status == "angenommen" %}
+                                    <div class="col-md-4" style="margin-bottom: 5px">
+                                        <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #63b58c;" onclick="AbschließenID({{ auf_super.id }}, {{ auf_super.user_id }})">
+                                            <p style="padding-top: 5px">Ich habe meinen Wunsch erhalten. Hiermit abschließen</p>
+                                        </button>
+                                    </div>
+                                {% endif %}
+
+                                <div class="col-md-2"></div>
+
+                                {% if auf_super.status == "aktiv" %}
+                                    <div class="col-md-2" style="margin-bottom: 5px">
+                                        <button type="button" class="btn" style="font-size: 20px; color:#ffffff; background: #a3352f;"  onclick="RemoveID({{ auf_super.id }}, {{ auf_super.user_id }})">
+                                            <p style="padding-top: 5px">Auftrag widerrufen</p>
+                                        </button>
+                                    </div>
+                                {% endif %}
+
+                            <div class="col-md-1"></div>
+                        </div>
+                    </div>
+                {% endfor %}
         </div>
     </div>
 </section>
@@ -182,59 +223,37 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
 <script>
-$("#widerrufen").click(function (e) {
-      dialog.confirm({
-        message: 'Sind Sie sicher, dass Sie ihren aktuellen Einkaufswunsch widerrufen möchten?',
-        cancel: "Nein, den Aufrag gelistet lassen",
-        button: "Ja!",
-        required: true,
-        callback: function(response){
-            var ID_auftrag = "{{ akt_auftrag.id }}";
-            var ID_user_auftrag = "{{ akt_auftrag.user_id }}";
-            removeListing(e, ID_auftrag, ID_user_auftrag)
-        }
-    });
-});
-$("#abschließen").click(function (e) {
-  dialog.confirm({
-        message: "Ist Ihr Auftrag erfolgreich abgeschlossen worden?",
-        cancel: "Nein, den Aufrag aktiv lassen",
-        button: "Ja!",
-        required: true,
-        callback: function(response){
-            var ID_auftrag = "{{ akt_auftrag.id }}";
-            var ID_user_auftrag = "{{ akt_auftrag.user_id }}";
-            closeListing(e, ID_auftrag, ID_user_auftrag)
-        }
-    });
-});
 
-$("#widerrufen2").click(function (e) {
-      dialog.confirm({
+function AbschließenID(ID_auftrag, ID_user_auftrag) {
+  dialog.confirm({
+      message: "Ist Ihr Auftrag erfolgreich abgeschlossen worden?",
+      cancel: "Nein, den Aufrag aktiv lassen",
+      button: "Ja!",
+      required: true,
+      callback: function (response) {
+            if (response) {
+                var e = 0;
+                closeListing(e, ID_auftrag, ID_user_auftrag);
+            }
+        }
+    })
+}
+
+function RemoveID(ID_auftrag, ID_user_auftrag) {
+  dialog.confirm({
         message: 'Sind Sie sicher, dass Sie ihren aktuellen Einkaufswunsch widerrufen möchten?',
         cancel: "Nein, den Aufrag gelistet lassen",
         button: "Ja!",
         required: true,
-        callback: function(response){
-            var ID_auftrag = "{{ akt_auftrag2.id }}";
-            var ID_user_auftrag = "{{ akt_auftrag2.user_id }}";
-            removeListing(e, ID_auftrag, ID_user_auftrag)
+        callback: function (response) {
+            if (response) {
+                var e = 0;
+                removeListing(e, ID_auftrag, ID_user_auftrag);
+            }
         }
-    });
-});
-$("#abschließen2").click(function (e) {
-  dialog.confirm({
-        message: "Ist Ihr Auftrag erfolgreich abgeschlossen worden?",
-        cancel: "Nein, den Aufrag aktiv lassen",
-        button: "Ja!",
-        required: true,
-        callback: function(response){
-            var ID_auftrag = "{{ akt_auftrag2.id }}";
-            var ID_user_auftrag = "{{ akt_auftrag2.user_id }}";
-            closeListing(e, ID_auftrag, ID_user_auftrag)
-        }
-    });
-});
+    })
+}
+
 </script>
   <script>
       function removeListing(e, ID, ID_user) {
