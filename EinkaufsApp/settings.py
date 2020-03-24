@@ -38,7 +38,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['helfer.uber.space', 'www.st.leon-hilft.laier-gmbh.de', 'st.leon-hilft.laier-gmbh.de']
+ALLOWED_HOSTS = ['stleon.uber.space', 'www.st.leon-hilft.laier-gmbh.de', 'st.leon-hilft.laier-gmbh.de']
 
 # Application definition
 
