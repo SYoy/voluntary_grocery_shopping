@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.start, name='start'),
     path('faq', views.faq, name='faq'),
     path('impressum', views.impressum, name='impressum'),
+    path('local', views.local, name='local'),
     path('datenschutz', views.datenschutz, name='datenschutz'),
     path('schwarzes_brett_public/', views.helfen_voransicht, name='public_blackboard'),
     path('get/ajax/listings', views.listings, name="query_listings_blackboard"),

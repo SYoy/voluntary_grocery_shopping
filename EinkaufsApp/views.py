@@ -56,6 +56,11 @@ def faq(request):
     return render(request, 'public/faq.html')
 
 
+## PUBLIC
+def local(request):
+    return render(request, 'public/angebote_lokal.html')
+
+
 ## PUBLIC - BLACKBOARD
 def helfen_voransicht(request):
     form = SelectionForm
