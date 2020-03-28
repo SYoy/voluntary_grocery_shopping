@@ -36,6 +36,11 @@ SECRET_KEY = '!+%a4zx0y4y+r8v^vir2%#fd37%3%z&*k#lfw)36*^1t%#lkb_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+if DEBUG:
+    # Password Reset
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # dev only
+else:
+    None
 
 ALLOWED_HOSTS = []
 
