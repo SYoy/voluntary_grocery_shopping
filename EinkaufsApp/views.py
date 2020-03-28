@@ -34,7 +34,11 @@ def start(request):
     query = User.objects.filter(person__group="H")
     query2 = User.objects.filter(person__group="E")
     query_auftraege = Einkaufsauftrag.objects.filter(status="aktiv")
-    return render(request, 'public/start.html', {"count_helfer": len(query), "count_Em": len(query2), "count_Auftraege": len(query_auftraege), "count_user": len(query.union(query2))})
+    query_geholfen = Einkaufsauftrag.objects.filter(status__in=["abgeschlossen", "angenommen"])
+    return render(request, 'public/start.html', {"count_helfer": len(query), "count_Em": len(query2),
+                                                 "count_Auftraege": len(query_auftraege), "count_user": len(query.union(query2)),
+                                                 "count_geholfen": len(query_geholfen)}
+                  )
 
 
 ## PUBLIC
@@ -50,6 +54,11 @@ def datenschutz(request):
 ## PUBLIC
 def faq(request):
     return render(request, 'public/faq.html')
+
+
+## PUBLIC
+def local(request):
+    return render(request, 'public/angebote_lokal.html')
 
 
 ## PUBLIC - BLACKBOARD

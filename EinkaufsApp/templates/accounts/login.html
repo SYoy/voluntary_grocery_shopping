@@ -14,8 +14,8 @@
 
   {% if next %}
     {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
+      <p>Sie haben keine Zugriffsberechtigung für diese Seite.
+      </p>
     {% else %}
       <p>Bitte anmelden, um diese Seite zu sehen.</p>
     {% endif %}
@@ -41,7 +41,8 @@
   {% if form.errors %}
       <br>
     <p>Ihr Benutzername und Passwort stimmt nicht überein. Bitte versuche Sie es erneut.</p>
-    <p>Falls Sie Ihr Passwort vergessen haben melden Sie sich bitte unter: <a href="mailto:helfer@uber.space">helfer@uber.space</a></p>
+    <p>Falls Sie Ihr Passwort vergessen haben und es zurücksetzen möchten, klicken Sie bitte <a href="{% url 'password_reset' %}">hier</a>.</p>
+    <!--<p>Falls Sie Ihr Passwort vergessen haben melden Sie sich bitte unter: <a href="mailto:helfer@uber.space">helfer@uber.space</a></p>-->
   {% endif %}
 
 {% endblock %}
