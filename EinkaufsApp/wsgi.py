@@ -11,11 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-if os.environ.get('DEBUG'):
-    print("DEBUG-MODUS")
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EinkaufsApp.settings_development')
-else:
-    print("PRODUCTION-MODUS")
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EinkaufsApp.settings_production')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EinkaufsApp.settings_production')
 
 application = get_wsgi_application()

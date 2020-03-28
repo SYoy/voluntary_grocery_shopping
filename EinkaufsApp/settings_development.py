@@ -27,7 +27,6 @@ MESSAGE_LEVEL = message_constants.INFO
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -36,6 +35,17 @@ SECRET_KEY = '!+%a4zx0y4y+r8v^vir2%#fd37%3%z&*k#lfw)36*^1t%#lkb_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+if DEBUG:
+    # Password Reset
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # dev only
+else:
+    # EMail set in uwsgi ini
+    EMAIL_HOST = os.environ.get('MAIL_HOST')
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = os.environ.get('MAIL_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('MAIL_PW')
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = 'Rauenberg-Hilft-Team <noreply@example.com>'
 
 ALLOWED_HOSTS = []
 
