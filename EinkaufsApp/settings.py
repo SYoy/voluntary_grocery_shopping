@@ -148,3 +148,11 @@ SESSION_SAVE_EVERY_REQUEST = True
 # SECURE_SSL_REDIRECT = True
 # SESSION_COOKIE_SECURE = True
 # CSRF_COOKIE_SECURE = True
+
+# EMail set in uwsgi ini
+EMAIL_HOST = os.environ.get('MAIL_HOST')
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('MAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('MAIL_PW')
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Rauenberg-Hilft-Team <noreply@example.com>'
