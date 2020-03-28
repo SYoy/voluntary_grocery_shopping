@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+
 {# Load the tag library #}
 {% load bootstrap4 %}
 
@@ -10,14 +12,10 @@
 
 {% block content %}
 
-  {% if form.errors %}
-    <p>Ihr Benutzername und Passwort stimmt nicht überein. Bitte versuche Sie es erneut.</p>
-  {% endif %}
-
   {% if next %}
     {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
+      <p>Sie haben keine Zugriffsberechtigung für diese Seite.
+      </p>
     {% else %}
       <p>Bitte anmelden, um diese Seite zu sehen.</p>
     {% endif %}
@@ -35,8 +33,16 @@
         <td>{{ form.password }}</td>
       </tr>
     </table>
-    <input type="submit" value="login" />
-    <input type="hidden" name="next" value="{{ next }}" />
+      <br>
+    <input class="btn btn-success" type="submit" value="Anmelden" />
+    <input class="btn btn-warning" type="hidden" name="Weiter" value="{{ next }}" />
   </form>
+
+  {% if form.errors %}
+      <br>
+    <p>Ihr Benutzername und Passwort stimmt nicht überein. Bitte versuche Sie es erneut.</p>
+    <p>Falls Sie Ihr Passwort vergessen haben und es zurücksetzen möchten, klicken Sie bitte <a href="{% url 'password_reset' %}">hier</a>.</p>
+    <!--<p>Falls Sie Ihr Passwort vergessen haben melden Sie sich bitte unter: <a href="mailto:helfer@uber.space">helfer@uber.space</a></p>-->
+  {% endif %}
 
 {% endblock %}

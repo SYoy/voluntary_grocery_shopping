@@ -1,8 +1,18 @@
-<!DOCTYPE html>
-<html lang="en"style="height: 100%">
+{% extends 'base_less.html' %}
 
-<head>
+{# Load the tag library #}
+{% load bootstrap4 %}
 
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% load static %}
+
+{% block headcontent %}
   {% load static %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,137 +20,54 @@
   <meta name="description" content="Corona Einkaufshelfer">
   <meta name="author" content="Marius Steger">
   <meta http-equiv="refresh" content="300" >
+
   <title>Einkaufshelfer - offene Aufträge</title>
-
-  <!-- Custom fonts for this theme -->
-  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-  <!-- Theme CSS -->
-  <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161194303-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-161194303-1');
-    </script>
 
     <!-- Dialog Plugin -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="{% static 'js/build_dialog/jquery.dialog.js' %}"></script>
     <link rel="stylesheet" href="{% static 'js/build_dialog/jquery.dialog.css' %}">
+{% endblock %}
 
-    <!-- Bootstrap
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet">
-    <link href="{% static 'css/dosis-font.css' %}" rel="stylesheet" type='text/css'>
-    -->
-
-</head>
-
-<body id="page-top" style="min-height: 100%;background: #99AEB5">
-{% load widget_tweaks %}
-  <!-- Navigation -->
-
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container-fluid">
-     {% if user.is_authenticated %}
-      <a class="navbar-brand btn btn-success" href="{% url "logout" %}">Abmelden</a>
-     {% else %}
-        <form class="form-inline my-0 my-lg-0" role="form" action="{% url "login" %}"
-            method="post" accept-charset="utf-8">
-          <div class="form-group mr-sm-2 d-none d-md-block">
-            <input type="text" placeholder="Benutzername" class="form-control" name="username">
-          </div>
-          <div class="form-group mr-sm-2 d-none d-md-block">
-            <input type="password" placeholder="Passwort" class="form-control" name="password">
-          </div>
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success d-none d-md-block">Anmelden</button>
-        </form>
-
-         <form class="form-inline my-0 my-lg-0 d-md-none" role="form" action="{% url "login" %}"
-            method="post" accept-charset="utf-8">
-          <div class="form-group">
-            <input type="text" placeholder="Benutzername" class="form-control" name="username" size="7">
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Passwort" class="form-control" name="password" size="7">
-          </div>
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success">Anmelden</button>
-        </form>
-     {% endif %}
-
-    <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menü
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'start' %}">Starseite</a>
-          </li>
-            {% if user.is_authenticated %}
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'home' %}">Mein Bereich</a>
-              </li>
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'blackboard' %}">Schwarzes Brett</a>
-              </li>
-            {% else %}
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
-              </li>
-            {% endif %}
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'faq' %}">Anleitung/FAQ</a>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'impressum' %}">Impressum</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
-    <header class="masthead" style="margin-top: -5rem; background: #99aeb5;">
+{% block header %}
+    <header class="masthead" style="margin-top: -5rem; background: #f5dab2;">
       <div class="container-fluid">
 
-        <div class="row justify-content-between" style="padding-top: 10px; padding-bottom: 10px; padding-left: 2rem; padding-right: 1rem;
+        <div class="row justify-content-between" style="padding-top: 10px; padding-bottom: 10px; padding-left: 1rem; padding-right: 1rem;
                 background: #7a8e95; border-radius: 20px">
-                <div class="col-lg-6" style="background: #0f6674; font-size: 2.5rem; text-align: center; margin: auto;
-                    color: white; border-radius: 20px">
-                    Aktuelle Einkaufsaufträge / Hilfsdienste</div>
+            <div class="col-lg-8 d-none d-lg-block" style="background: #f5cd9a; font-size: 2.5rem; text-align: center; margin-bottom: 10px;
+                color: white; border-radius: 20px">
+                Aktuelle Einkaufsaufträge / Hilfsgesuche</div>
+
+            <div class="col-12 d-lg-none" style="background: #f5cd9a; font-size: 1.5rem; text-align: center; margin: auto; margin-bottom: 10px;
+                color: white; border-radius: 20px">
+                Aktuelle Einkaufsaufträge / Hilfsgesuche</div>
 
 
-            <div class="col-lg-3 text-center" style="font-size: 20px; background: #129ba9; margin-left: 10px; padding-top: 4px; border-radius: 20px">
-                    <div class="form-group" style="margin: auto; color:#000000; font-size: larger; border-radius: 20px">
-                        Wählen Sie einen Ortsteil aus:
+            <div class="col-md-auto" style="font-size: 20px; background: #8ea995;
+            border-radius: 20px; text-align: center; margin-bottom: 5px; height: 4rem; padding-top: 0.8rem; margin-left: 5px">
+                    <div class="form-group" style="color:#000000; font-size: x-large; border-radius: 20px">
                         {{ form.location }}
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row justify-content-center" style="padding-top: 10px; padding-bottom: 10px; padding-left: 2rem; padding-right: 1rem;">
+        <div class="row" style="padding-top: 10px; padding-bottom: 10px; padding-left: 1rem; padding-right: 1rem;">
             <!-- BLACKBOARD -->
-            <div class="col-lg-12 img-rounded" id="blackboard" style="background:#99AEB5; color: #ffffff; width: 100%; height: 100%; margin-top: 5px;">
-                <div class="row content-ct" id="blackboard_elements"></div>
+            <div class="col-lg-12" id="blackboard" style="color: #ffffff; width: 100%;
+            height: 100%; margin-top: 5px;">
+                <div class="row justify-content-start" id="blackboard_elements"></div>
             </div>
         </div>
-
-
       </div>
   </header>
+{% endblock %}
 
+{% block section %}
+{% endblock %}
+
+{% block add_scripts %}
   <!-- jQuery (necessary for AJAX / JQuery JavaScript plugins) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -208,11 +135,11 @@ function addElement(elementTag, elementId, dict, map) {
     newElement.setAttribute('id', elementId);
     newElement.innerHTML = dict["nachricht"];
 
-        newElement.className = 'col-xs-4';
-        newElement.innerHTML = '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
+        newElement.className = 'col-sm-6 col-md-4 col-xl-2';
+        newElement.innerHTML = '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px">Nachricht an die Helfer:</div>' +
         '<div class="col-md12" style="background: #798f96; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
         dict["nachricht"]+'</div>'+
-        '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
+        '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px">Wunsch:</div>'+
         '<div class="col-md12" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
         dict["liste_text"]+'</div>'+
         '<div class="row justify-content-between">'+
@@ -223,8 +150,8 @@ function addElement(elementTag, elementId, dict, map) {
 
     // Css styling
     newElement.setAttribute("style", "background: #0f6674; float: left; text-align: " +
-        "left; margin-right: 10px; min-width: 10%; max-width: 30%; padding: 5px; margin-bottom: 10px;" +
-        "border-radius: 15px; border: 2px solid #798f96; cursor: pointer; padding-bottom: 5px");
+        "left; margin-bottom: 10px;" +
+        "border-radius: 15px; border: 3px solid #798f96; cursor: pointer; padding-bottom: 5px");
     newElement.setAttribute("id", elementId);
     newElement.setAttribute("onclick","onClickAuftrag(this)");
 
@@ -242,10 +169,20 @@ function addNoElementsMessage(){
     var newElement = document.createElement("div");
     newElement.setAttribute('id', "NoElementsMessage");
     newElement.innerHTML = "Für Ihre Auswahl wurden keine Treffer gefunden, bitte vergrößern Sie Ihren Suchraum.";
+    newElement.setAttribute('style', 'color: black; font-size: x-large; margin-left: 2rem; margin-right: 2rem');
 
     p.appendChild(newElement);
 }
 
+function addNoElementsMessageALL(){
+    var p = document.getElementById("blackboard_elements");
+    var newElement = document.createElement("div");
+    newElement.setAttribute('id', "NoElementsMessage");
+    newElement.innerHTML = "Zur Zeit sind glücklicherweise alle Aufträge in Bearbeitung, schauen Sie doch später wieder vorbei!";
+    newElement.setAttribute('style', 'color: black; font-size: x-large; margin-left: 2rem; margin-right: 2rem');
+    p.appendChild(newElement);
+}
+s
 </script>
 <script>
     function updateBlockboard(e, location, status) {
@@ -269,8 +206,13 @@ function addNoElementsMessage(){
                             addElement("div", element["pk"], element["fields"], response["map"]);
                         });
                     } else {
-                        clearElements();
-                        addNoElementsMessage();
+                        if (location == "ALL") {
+                            clearElements();
+                            addNoElementsMessageALL();
+                        } else {
+                            clearElements();
+                            addNoElementsMessage();
+                        }
                     }
                 }
             },
@@ -289,5 +231,5 @@ function addNoElementsMessage(){
         updateBlockboard(e, location, status)
     })
 </script>
-</body>
-</html>
+
+{% endblock %}

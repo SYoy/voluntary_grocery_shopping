@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth import views as auth_views
 from django.urls import path
 from django.conf.urls import url, include
 from . import views
@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.start, name='start'),
     path('faq', views.faq, name='faq'),
     path('impressum', views.impressum, name='impressum'),
+    path('local', views.local, name='local'),
     path('datenschutz', views.datenschutz, name='datenschutz'),
     path('schwarzes_brett_public/', views.helfen_voransicht, name='public_blackboard'),
     path('get/ajax/listings', views.listings, name="query_listings_blackboard"),
@@ -31,9 +32,28 @@ urlpatterns = [
     # account related urls
     path('registrieren_helfender/', views.signupHelper, name='signup_helper'),
     path('registrieren_empfaenger/', views.signupInNeed, name='signup_inneed'),
-    url(r'^anmelden/$', LoginView.as_view(template_name='accounts/login.html'), name="login"),
-    url(r'^abmelden/$', LogoutView.as_view(template_name='accounts/logout.html'), name="logout"),
-    path(r'abmelden/', LogoutView.as_view(template_name='accounts/logout.html'), name="logout"),
+    url(r'^anmelden/$', auth_views.LoginView.as_view(template_name='accounts/login.html'), name="login"),
+    url(r'^abmelden/$', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name="logout"),
+    path(r'abmelden/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name="logout"),
+
+    # pw reset
+    path('password_change/done/',
+         auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'),
+         name='password_change_done'),
+
+    path('password_change/', auth_views.PasswordChangeView.as_view(template_name='registration/password_change.html'),
+         name='password_change'),
+
+    path('password_reset/done/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_done.html'),
+         name='password_reset_done'),
+
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+
+    path('reset/done/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'),
+         name='password_reset_complete'),
 
     # home view
     path('home/', views.home, name='home'),

@@ -11,21 +11,43 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from django.contrib.messages import constants as message_constants
+from django.contrib.messages import constants as messages
+
+# Django-Messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+MESSAGE_LEVEL = message_constants.INFO
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = '!+%a4zx0y4y+r8v^vir2%#fd37%3%z&*k#lfw)36*^1t%#lkb_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+if DEBUG:
+    # Password Reset
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # dev only
+else:
+    # EMail set in uwsgi ini
+    EMAIL_HOST = os.environ.get('MAIL_HOST')
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = os.environ.get('MAIL_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('MAIL_PW')
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = 'Rauenberg-Hilft-Team <noreply@example.com>'
 
-ALLOWED_HOSTS = ['helfer.uber.space', 'www.rauenberg-hilft.de', 'rauenberg-hilft.de']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -77,11 +99,8 @@ WSGI_APPLICATION = 'EinkaufsApp.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            'read_default_file': '/home/helfer/mysql/my.cnf',
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -138,8 +157,3 @@ LOGOUT_REDIRECT_URL = '/'
 
 SESSION_COOKIE_AGE = 3600
 SESSION_SAVE_EVERY_REQUEST = True
-
-# Deployment
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True

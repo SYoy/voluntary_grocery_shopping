@@ -15,6 +15,8 @@ from django.core import serializers
 from EinkaufsApp.backend_forms.forms_signup import SignUpForm
 from EinkaufsApp.backend_forms.forms_einkaufliste import EinkaufsauftragForm
 from EinkaufsApp.backend_forms.forms_blackboard import SelectionForm
+from EinkaufsApp.backend_forms.check_form import check_form
+import logging
 
 # Queries
 from EinkaufsApp.models import Einkaufsauftrag
@@ -23,10 +25,20 @@ from django.utils import timezone
 from django.db.models import Q
 
 
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
+
 ## PUBLIC
 def start(request):
     query = User.objects.filter(person__group="H")
-    return render(request, 'public/start.html', {"helfer_count": len(query)})
+    query2 = User.objects.filter(person__group="E")
+    query_auftraege = Einkaufsauftrag.objects.filter(status="aktiv")
+    query_geholfen = Einkaufsauftrag.objects.filter(status__in=["abgeschlossen", "angenommen"])
+    return render(request, 'public/start.html', {"count_helfer": len(query), "count_Em": len(query2),
+                                                 "count_Auftraege": len(query_auftraege), "count_user": len(query.union(query2)),
+                                                 "count_geholfen": len(query_geholfen)}
+                  )
 
 
 ## PUBLIC
@@ -42,6 +54,11 @@ def datenschutz(request):
 ## PUBLIC
 def faq(request):
     return render(request, 'public/faq.html')
+
+
+## PUBLIC
+def local(request):
+    return render(request, 'public/angebote_lokal.html')
 
 
 ## PUBLIC - BLACKBOARD
@@ -133,14 +150,14 @@ def home(request):
 def einkaufsliste(request):
     if request.user.is_authenticated and request.user.person.group in ["E", "D", "S"]:
         message_app = ""
-        # "Wenn Sie Hilfe beim Ausfüllen des Formular benötigen, schreiben Sie eine Mail an:" \
-        #                       "helfer@uber.space"
+
         if request.method == 'POST':
             form = EinkaufsauftragForm(request.POST)
             if form.is_valid():
                 query = Einkaufsauftrag.objects.filter(user__id=request.user.id)
 
-                if len(query.filter(Q(status='aktiv')|Q(status='angenommen'))) < 2:
+                if len(query.filter(Q(status='aktiv')|Q(status='angenommen'))) < 2 or request.user.person.group == "S":
+                    # check_form(form.cleaned_data)
                     auftrag = form.save()
                     auftrag.refresh_from_db()
 
@@ -156,25 +173,40 @@ def einkaufsliste(request):
                     auftrag.user_id = request.user.id
 
                     auftrag.save()
+
+                    messages.success(request, "Ihr Auftrag wurde erfolgreich gelistet. Die HelferInnen können Ihnen nun helfen")
+
                     return redirect("einkaufsliste")
                 else:
-                    message_app = "Sie haben schon 2 aktive/angenommene Aufträge, bitte schließen Sie diese ab oder widerrufen sie."
+                    messages.warning(request, "Sie haben schon 2 aktive/angenommene Aufträge, bitte schließen Sie diese vorher ab oder widerrufen sie.")
+            else:
+                form = EinkaufsauftragForm()
+                messages.warning(request, "Ihr Auftrag wurde nicht gelistet. Bitte achten Sie darauf eine gültige Telefonnummer anzugeben und alle Felder auszfüllen."
+                                        "Versuchen Sie es erneut oder wenden Sie sich an helfer@uber.space für Hilfe")
         else:
             form = EinkaufsauftragForm()
 
         # Angezeigte Aufträge (rechts)
         most_recent = None
         most_recent2 = None
+        most_recent_super = None
 
         aktiv = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="aktiv").order_by("-date_added")
         ang = Einkaufsauftrag.objects.filter(user_id=request.user.id, status="angenommen").order_by("-date_added")
 
         set = aktiv | ang
         set = set.values()
-        if set.count() > 0 and set.count() < 3:
+        if (set.count() > 0 and set.count() < 3) or (set.count() > 0 and request.user.person.group == "S"):
             if set.count() == 2:
                 most_recent = set[0]
                 most_recent2 = set[1]
+
+            # SuperUser
+            elif set.count() > 2 and request.user.person.group == "S":
+                most_recent = set[0]
+                most_recent2 = set[1]
+                most_recent_super = set[2:]
+
             elif set.count() == 1:
                 most_recent = set.values()[0]
 
@@ -186,8 +218,8 @@ def einkaufsliste(request):
                 if set2.count() > 0:
                     most_recent2 = set2.values()[0]
 
-        elif set.count() > 2:
-            print("ERROR IN DATABASE")# TODO
+        elif set.count() > 2 and not request.user.person.group == "S":
+            logger.error("more than 2 active/inWork listings." + str(request.user.id))
 
         elif set.count() == 0:
             # fill with inaktiv/abgeschlossen
@@ -202,20 +234,22 @@ def einkaufsliste(request):
             elif set2.count() == 1:
                 most_recent = set2.values()[0]
 
-        return render(request, 'app/app_inneed.html', {'form': form, "akt_auftrag": most_recent, "akt_auftrag2": most_recent2, "message": message_app})
+        return render(request, 'app/app_inneed.html', {'form': form, "akt_auftrag": most_recent, "akt_auftrag2": most_recent2, "message": message_app, "super_auftraege": most_recent_super})
 
     elif request.user.is_authenticated and request.user.person.group == "H":
         messages.add_message(request, messages.INFO, 'Sie sind als Helfer angemeldet und werden deshalb auf das schwarze Brett umgeleitet.')
         return redirect("helfen")
 
     else:
+        messages.add_message(request, messages.INFO,
+                             'Leider ist etwas schief gegangen. Versuchen Sie es erneut oder wenden Sie sich an helfer@uber.space')
         return redirect("start")
 
 
 ## EMPFAENGER
 @login_required
 def setInactive(request):
-    if request.user.is_authenticated and request.is_ajax and request.method == "POST":
+    if request.user.is_authenticated and request.is_ajax and request.method == "POST" and request.user.person.group in ["E","S"]:
         ID_auftrag = request.POST.get("id_listing", None)
         ID_user = request.POST.get("user_id", None)
         auftrag = Einkaufsauftrag.objects.filter(id=ID_auftrag, user_id=ID_user)
@@ -231,7 +265,7 @@ def setInactive(request):
 ## EMPFAENGER
 @login_required
 def setDone(request):
-    if request.user.is_authenticated and request.is_ajax and request.method == "POST":
+    if request.user.is_authenticated and request.is_ajax and request.method == "POST" and request.user.person.group in ["E","S"]:
         ID_auftrag = request.POST.get("id_listing", None)
         ID_user = request.POST.get("user_id", None)
         auftrag = Einkaufsauftrag.objects.filter(id=ID_auftrag, user_id=ID_user)
@@ -248,14 +282,23 @@ def setDone(request):
 ## HELFER
 @login_required
 def helfen(request):
-    form = SelectionForm
-    return render(request, 'app/app_helper.html', {'form': form})
+    if request.user.is_authenticated and request.user.person.group in ["H","S"]:
+        form = SelectionForm
+        return render(request, 'app/app_helper.html', {'form': form})
+
+    else:
+        messages.info(request, "Sie sind als Empfänger angemeldet und wurden deshalb in Ihren Bereich umgeleitet. Das schwarze Brett steht Ihnen nicht zur Verfügung.")
+        return redirect("home")
 
 
 ## HELFER
 @login_required
 def helfer_einkaufslisten(request):
-    return render(request, 'app/inWork.html', {'group': request.user.person.group, 'username': request.user.username})
+    if request.user.is_authenticated and request.user.person.group in ["H", "S"]:
+        return render(request, 'app/inWork.html', {'group': request.user.person.group, 'username': request.user.username})
+    else:
+        messages.info(request, "Sie sind als Empfänger angemeldet und wurden deshalb in Ihren Bereich umgeleitet. Das schwarze Brett steht Ihnen nicht zur Verfügung.")
+        return redirect("home")
 
 
 ## HELFER

@@ -40,23 +40,24 @@
         newElement.setAttribute('id', elementId);
 
 
-        newElement.className = 'col-md-auto';
+        newElement.className = 'col-sm-12 col-md-5 col-lg-3';
         newElement.innerHTML = '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px">Nachricht:</div>' +
         '<div class="col-md12" style="background: #798f96; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
         dict["nachricht"]+'</div>'+
         '<div class="col-md12" style="padding-left: 3px; margin-bottom: 5px"> Einkaufswunsch:</div>'+
         '<div class="col-md12" style="background: #99aeb5; padding-left: 3px; margin-bottom: 25px; border-radius: 5px"> '+
         dict["liste_text"]+'</div>'+
-        '<div class="row-col-12">'+
-        '<div class="col-md-6">'+'Budget: '+ dict["budget"]+ '€</div>'+
-        '<div class="col-md-6">'+ 'Ort: '+ map[dict["user"]] +'</div>'+'</div>'+
+        '<div class="row justify-content-between">'+
+        '<div class="col-md-3">'+'Budget: '+ dict["budget"]+ '€</div>'+
+        '<div class="col-md-3">'+ 'Ort: '+ map[dict["user"]] +'</div>'+
+        '</div>'+
         '<div class="col-md-12" style="background: #BA2D0B; color: white; border-radius: 5px">Telefonnumer: '+ dict["telefonnummer"]+'</div>';
 
 
         // Css styling
         newElement.setAttribute("style", "background: #0f6674; color: white; float: left; text-align: " +
-            "left; margin-right: 10px; min-width: 10%; max-width: 33%; padding: 5px; margin-bottom: 10px;" +
-            "border-radius: 15px; border: 2px solid #798f96;"
+            "left; margin-left: 10px; padding: 5px; margin-bottom: 10px;" +
+            "border-radius: 15px; border: 3px solid #798f96;"
         //   + "cursor: pointer"
         );
         newElement.setAttribute("id", elementId);
@@ -136,35 +137,48 @@ function showAccepted() {
 {% load widget_tweaks %}
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+  <nav class="navbar navbar-expand-xl bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container-fluid">
-     {% if user.is_authenticated %}
-      <a class="navbar-brand btn btn-success" href="{% url "logout" %}">Abmelden</a>
-     {% else %}
-        <form class="form-inline my-0 my-lg-0" role="form" action="{% url "login" %}"
-            method="post" accept-charset="utf-8">
-          <div class="form-group mr-sm-2 d-none d-md-block">
-            <input type="text" placeholder="Benutzername" class="form-control" name="username">
-          </div>
-          <div class="form-group mr-sm-2 d-none d-md-block">
-            <input type="password" placeholder="Passwort" class="form-control" name="password">
-          </div>
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success d-none d-md-block">Anmelden</button>
-        </form>
+         {% if user.is_authenticated %}
+          <a class="navbar-brand btn btn-warning" href="{% url "logout" %}">Abmelden</a>
+         {% else %}
+         <div class="col-6">
+            <form class="form-inline my-0 my-lg-0" role="form" action="{% url "login" %}"
+                method="post" accept-charset="utf-8">
+              <div class="form-group mr-sm-2 d-none d-xl-block">
+                <input type="text" placeholder="Benutzername" class="form-control" name="username" size="12">
+              </div>
+              <div class="form-group mr-sm-2 d-none d-xl-block">
+                <input type="password" placeholder="Passwort" class="form-control" name="password" size="12">
+              </div>
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success d-none d-xl-block">Anmelden</button>
+            </form>
 
-         <form class="form-inline my-0 my-lg-0 d-md-none" role="form" action="{% url "login" %}"
-            method="post" accept-charset="utf-8">
-          <div class="form-group">
-            <input type="text" placeholder="Benutzername" class="form-control" name="username" size="7">
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Passwort" class="form-control" name="password" size="7">
-          </div>
-          {% csrf_token %}
-          <button type="submit" class="btn btn-success">Anmelden</button>
-        </form>
+              <form class="form-inline my-0 my-lg-0 d-xl-none" role="form" action="{% url "login" %}"
+                method="post" accept-charset="utf-8">
+              <div class="form-group d-none d-sm-block" style="margin-right: 5px">
+                <input type="text" placeholder="Benutzername" class="form-control" name="username" size="6">
+              </div>
+              <div class="form-group d-none d-sm-block" style="margin-right: 5px">
+                <input type="password" placeholder="Passwort" class="form-control" name="password" size="6">
+              </div>
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success">Anmelden</button>
+            </form>
+         </div>
+
+
      {% endif %}
+
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert" style="margin-top: 10px;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            {{ message }}
+        </div>
+    {% endfor %}
 
     <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menü
@@ -173,30 +187,34 @@ function showAccepted() {
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'start' %}">Starseite</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'start' %}">Startseite</a>
           </li>
             {% if user.is_authenticated %}
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'home' %}">Mein Bereich</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center" style="background: #f27942; border: 1px solid #798f96" href="{% url 'home' %}">Mein Bereich</a>
               </li>
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #f27942" href="{% url 'blackboard' %}">Schwarzes Brett</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center" style="background: #f27942; border: 1px solid #798f96" href="{% url 'blackboard' %}">Schwarzes Brett</a>
               </li>
             {% else %}
               <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'public_blackboard' %}">Schwarzes Brett</a>
               </li>
             {% endif %}
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'faq' %}">Anleitung/FAQ</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'faq' %}">Anleitung/FAQ</a>
           </li>
+        <!--
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="background: #ebac52" href="{% url 'impressum' %}">Impressum</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-center" style="background: #eb9b72; border: 1px solid #798f96" href="{% url 'impressum' %}">Impressum</a>
           </li>
+          -->
         </ul>
       </div>
     </div>
   </nav>
+
+
   <!-- Portfolio Section -->
   <section class="page-section portfolio" id="portfolio">
     <div class="container">
@@ -227,9 +245,7 @@ function showAccepted() {
     </div>
   </section>
 
-    <!-- Bootstrap CDN
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-   -->
+    <!-- Bootstrap CDN -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
